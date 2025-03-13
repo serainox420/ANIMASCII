@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                             8LfC                                                                   \n                             ;   G                                                                  \n                             : ..C                                                                  \n                             ;   C                      L;;iC                                       \n                             i,..G                      :.. ,8                                      \n                 0CCCG0      1ii;0                      :,,.t                      0CLLCG8          \n              8f;,..,,,:t8  8:,::0       8Li;;;0       8.  ,8                    C;.    .,;C        \n             0ti;i1ff,,.;   0...,8      C;:;:: :G8     8iiit    8Cf1iC          f,: ,1f; ..C        \n            0i1;i0  8,,.t   0;::i      L:1LLC0L:..;G   8LLfC   Gf;.   G        CtffL8  f;1i8        \n           81iii8   01t1G   0LLLC     0tfLfG   Gfi.,   8LLLG 8LfLL1:, ;       GfLf0    CLLL         \n           LtLf8    8fLf0   0LCC0    8CCCC0    8LCLf8  C,;1G8LLCLLGfi:,8     8fLfC     CffL         \n          8tffC     0fLf0   GfLfG    GfLLL8     LfLL8  G1i:Gt,;if88LLL10     LfLL8     CfLC         \n          GCCC8     8CCC8   GLCL0    CLLLG      GLLL8  0CCCGLf1t8 8i;1f0    0.:1C      CLLG         \n          GGGG      0CCC8   GCCC0   8CCCC8      GLCL8  0LCCCCC0    L1i:C    L.,.L      GCC0         \n         8GGG0      0CGC8   GCCC8   0CCCG       0CGG8  0GGGGGG     0GGC0    f;:,0      GGG0         \n         0LCL0      GfLL8   0GGG8   0CGCG       Cttt8  Li1ii18     f;1iL   811ii8     8CCC0         \n         i,,.G      i.,:8   ttff8   C1;,L       i...0  i....i      f.. t   G ..t      G::.L         \n         :,::0      1;;i8   i;;i8   1;;;G       i::;8  i,::,L      C::,t   L,:,t      C.:,L         \n        8;::;8     8;::i    i::;8   i:::0      0:::1   ;::::0      G:;:1   f:;:C      f.,,C         \n        0:::i      8;::i    i::i    i:;;0      C:;:f  8i;;;i8      0;i;t   f;i;G      t., L         \n        G;i;t      G;i;1    t;i18   1;ii8      t;ii0  8iiiit       8iii1   tiiiG      t;;:C         \n        Gi1if     0ti1it    fii18   fiii8     0i1if   0ii1if        t1118  ti110     L;ii;C         \n        01t1L    Gt1tt1f    C1t1G  8f1110     f1t10   01111C        f1110  f1110   8fiiii;C         \n         fttf  0L1tttttf    0tttf0GfttttL888GLtftG    0tfftG        CfffG  Gtff0 8GfffffftG         \n         0ftfCLttffftffL     LtfffftfLffffffffffG     Gtfff0        GfLfC   GLLCGLfLLCLLLL0         \n          8L1i11tC88L11L     8ftttfC8 GLfftfffC8      8Lfff0        8LffL8   0LffLLC0 0LLL0         \n            8808     008       0G08     880088          888           888      888      88          \n                                                                                                    \n                                                                                                    \n';n[1] = '                                                                                                    \n                             8GG0                                                                   \n                             L1tt0                                                                  \n                             Lttt0                                                                  \n                             Lttt0                      0CCC0                                       \n                             LfLL0                      GCCCG8                                      \n                 00GG08      ftt10                      000G0                      888888           \n              8Cf11111ttC8  8ffff8        888008        GCCG                     8GCCCCCCCG8        \n             0f111fCCt11f   8LG00       800000G08      8GGG0     80008          GCCCCG0GLCL0        \n            0t11f0  8tttC   8GG00      800GG080CGG08    GG08   0GGGGGG8        GfLLG   GfLL8        \n           8fttf8   8LfL0   80000     80GGG8   0GGG0   80GG0 80GGGGCCLC       GfCL0    GLCC8        \n           CtfL8    8CLL0   800G0     GGCC0    8G000   8GGG8 0GGCC0Cfff8     8LfLG     GLLC         \n          8fLfC     80008   0CG08    80GGG      0GG08  8GGG8GLCLL88ffff0     Ltft0     LffL         \n          GLCC8      8008   0GG08    GCGC0      CLLL8  0ffLCfLfC   ftft0    8tttL      CLLC         \n          CCG0      800G8   0GG08    GCGC8      GLCL8  GLCCCCC0    LfftG    GtttG      ft1L         \n         8GGG0      0GGG8   0G008   8GGG0       0CCL8  GfLLLfC     LtftG    Lfff8     8fffC         \n         8GGC0      0GGG8   0GGG8   0GGCG       GLLL8  CfLLfL8     Cfff0    GG00      8G008         \n         0GCL8      0GGG    0GG0    GLttG       GLLL8  CfLLfG      GffC0   80808       8008         \n         GCCC8      0GGG    0GGG8   CLfL8       CCCC   CLCCL0      0LCLG   0LCLG      8CCC0         \n         GCCG       GGGG    0CCC    CCCC8      8CCLG   GCCCC8      8LLLC   GLLL0      0LLL0         \n        8G0G0       0G00    GLCC    CLLC8      0LLLG   LLLLC       8LLLC   GLLL0      GLLL0         \n        800G0      800CG    CLLL    CLLC8      CLLL8  8LLLLC       8LLLC   CLLf0      CLLf0         \n        8GGCG     8GGCLC    CLLL8   GLLL8     8LLLC   8fLLfC        LfLL8  LfLf8     GfLLf0         \n        80CLG    0LLLLLL    Gfff0  8LfLf0     LfLf8   0ffffG        Cfff0  Lfff8   8CfLfLf0         \n         CfLC  0Lffffttf    0tftf0GLffffL8 80LfffG    0ffffG        CfffG  Gtff0 8Gfffffff0         \n         0fttCLtttfCLLfL     LtfftttfLttfffLffffG     Gtfft0        CtftL   CttLCftffLffffG         \n          8CfttffC88LffC     8LfttfC8 GffttttfL0      0Lfft0        0ffff8   GLftffCG Gfff0         \n             888     808       0G08     800008          888           888      8888    888          \n                                                                                                    \n                                                                                                    \n';n[2] = '                                                                                                    \n                             8008                                                                   \n                             GLLL8                                                                  \n                             GCCC8                                                                  \n                             GCCC8                      L;;iC                                       \n                             0GGL0                      :   .8                                      \n                 0G0008      f1:.G                      ,.:.t                       8888            \n               GL1,itffLC   8,  .0        0GC1;0        i..,8                    0CLfttffff0        \n             8LffLCGGfffL   8f1tf8      0LLi   ;G8      Cfii    8Ct1iL          f;11itLftftG        \n            8LLLC8   LLLG   8LLLC      0CGt ifi .,iG   80000   Gt;:,,:0        0CCG8   80GL8        \n            GGCG    8fttG   8CCCG     8GG01f   i ,.:8  8LLL0 0i:i1i::;t       8G008    L;,:8        \n           80008    G...C   GfLfC    8CG0G0    0fGG;0  8C1,C8,   .: ..,8     8GGG0     i:if         \n           GGCG     G,,;0   t ..t    C1fLG      GL1.0  C;:,Gi . :08,,::G     t:it8     CCG8         \n          Ci:.C     C..,G   f:::L    ;,:,f      i.. G  G1;,; . i8 8,,;iG     0GG0      8808         \n         8,  .8     L...0   t:::C   8tffL8      Lt:.0  C:,;;..f    : ..L    GLG88      8008         \n         G . i      t   0   ;,:.C   C:;;1        G.:8  i t08f1     i  .f    titL8      8808         \n         t . f      1  .8   ;.;18   f,:,L       8i.;8  fC888G8     0f1:f   8G888       8808         \n         ; . C      i  ,8   :  :8   00GfG       L.:0   88888G      GL000    8888       8888         \n         ,   0      :  ,    : .,8   fLG0        L.:8   0Li1fG      L.iiL   80008      8008          \n        8,.:i8      :. :    , .:8   iitf8       G,.L   0Gt;:0      G .:f   80088      L.,;G         \n        8,fGf      8,  :    :..,8   ffCC8       G,.L  8tii118      0;;;1   LfLL0      1 ..C         \n        C:Cft      G   ,    : .:8   ;,iG        f.,0  8CLti1       8itLL   1:iiG      ; ,.L         \n        L.,.i     0, ..:    t:.:8   f:;G        1 i    L1,,L        1fLf8  Ci,.G     L,,:,C         \n        G   ;    f... ,i    80GL8     8        8;.G   8LG88         CC0G8  Ltff8   8L,,,tiC         \n         : .;  G;:tt:;LC                       C.f       0LG         8008  0GGC8  0CLi::LL0         \n         G,.1C1   :i f 88          88 08       1t     0L1i.L        88888   0000C11t1t;,;;C         \n          01,,:.:1G0;,;f8     0008GL8 CiitGGG880      0tt;.G           0t0      0Li;f8f...L         \n            8008     008      8GC08    80C0008           00            80              808          \n                                                                                                    \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

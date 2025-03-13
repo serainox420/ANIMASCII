@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '..............................,::;;iii11111111111111111111111iii;:.............,;i111i:i1111111111ti\n...............................,,;i1ttt1tt1111111111111111tt1iii;:,...........,:;i11f;,:;1t111111tft\n......................   ....,,.:ifCLt1i1tt1111111111111111111i;:,,...........,:;i1ti.,,::;1t11ttfft\n.................. .  ,;1ttttttt1i::,...1ftttt111111111111t11i;:,,.............,:;1t;,.;ft;:itffffL1\n................ ,,.:1ffti;:,,,,:;;, ...iftttttttt111111ttt11i;:,,.............,,:iit1::iff11fffLtti\n............... ,t,;Lt;,. ,:,;;;ii11;...:tttttttttt111111111i;:,,...............,,:;i1ti:;1fLLLf1iti\n................fC,:i:;;1ttffttiiiiii;;,,1111ttt111t111111ii;:,,.................,,:;ii1t;:1Lf1;1t1;\n......,,,,::::,1Ci,ifff1;:,,:,,.    ,:...:1tttttttt1111ii;:,,....,................,,:;ii1titf;;ti;11\n,,,,::;i111111i1t, ;t:.      1ftii::;,....,i1111111ii;:,,,,::i11tti;:,,.............,,:;iift::;,.,ii\n::;ii11ttttttft1,...      .,1ffitf1tfft,....:;;;;::,,,::;i1t11ttttt11;:,.............,,::;1,.,. ..,;\ni1tttttttttttft1,....:.:i1tffft1t1tfftft.......,,,:;i1tttt11t1i1111tti;:,.............,,,,:::;i,....\nttttttt11111ttf1.....1ffffffftfttffftf1,.. ....,1tttt111tt11i;:;ttttt1i;:,...............,,:;it1....\nfttttttttttttttf;....,tLffffffffffffff,  .i....,iftt111i;:,.....:ttttfti;,,...............,,:;it;...\nttttttttttttttt11,....:tLLfffffffffff: . ;1   ,:.:tttt1i;,...,,,.:tttttti:,.................,,:;i...\ntt11tt11ttt11111;;,.....:1ffffffffftt1..it1i;,... ;ffffffiii1111i,:1t1tt1;:,..................,,,...\nttttt11tt1t1111i;:,.....  :tttttttttffi1ttt11; ...,:::1tii1111111:,:1tttti;:,.......................\ntttttttttt11i;;:,..........;fftfttfftttttttt1.... :, ,,,:11;;i11t;,.,1ttt1i:,.......................\nttttttt11i;:,,..............;ffffffffftttttt,.....   ,...,,;i1ttt;...,1ft1i:,.......................\ntt11ii;::,...,,,.............ifffffffffttttt, ..,;:,,. .,:itttt1ti,...,it1;:,.......................\ni;;:,,..,:;ittt1i:,,....... ..tfffffftttttt1.,i:..:::i: .,:iiiiii;,.....:i;,,.......................\n,..,,:i1ttttttttt1;,,... .,:,.:tfffft1fffft:.f; .    .i1....::iiiii;,....,:,........................\n:i1tttttt1ttt11i;,......:1ttfi;1tfff1fffff1 :f........ :i..,11tttttt1;,....,........................\nttttttttt1i;:,.. ......ift111tffffftffffft, 1i ...... i;,;111ttt1111111:............................\nttttt1i;:,..  .........1ttttttttfffffffffi .f: ..... :fffffffffttttt111i,...........................\n1i;:,..  .............:tttttttttttffffftf: .,.....  .tfffffffffftffffi11;...........................\n,.   .................i1;ittttttttfffft1t:........,.,tftffffffffffffffi1t:..........................\n.................. ....,1ffftttttfffffffti,......;fti1t1LLfffffffffftf1itt;.........................\n..................,;..:tffft11111ttft;,ii........,;;ift1fftfffttff1ifft1fft:........................\n,.................,,.;fffffftttt11111. :, ........ ..:iit1ffttff1;,1fff1tfti........................\n;...................;Lffffffttttttttf:,i ............ ..;fttttf;...iLLLttft:........................\ni:...... ...........1ffffffffftttt11tf1:.................;,:1i,..,iff1ii1;:,.. ,,...................\n:;..................tLfffffffffftttttf: ....................  ...,:,.  .....:,..,...................\n.,..................i11ffff11ft11ttfffi:,,.....................   .,,,,,,,......... ................\n...,.................,itfLffiii;tt1111i:,,................ ,tfft;,:ii;:,..,...,....,................\n...,.................,;i1tfLft;iLi:::::,........  ..........,;tLCLt;,... .,,...,....................\n.................,.....:;:;fff1:fi,:::::,...... ;ti:........   ,i1:.  ,:...... .....................\n..............,.......,.,;itffi:i;.,,,,,.......:ii;,,..........     ................................\n......,.................:i11ii:,:,,.,,:::::::;i1ii::;;:;:,,,,,::,,.,,:,.,,.,......................,.\n';n[1] = '.........................,,,,.,,;iiii11ti;iiii111111111111i;iii11;..,.......,,.,;ii;ii:;i11iii1111i;\n..........................,....,,:;;;i;it11tttttfftftttfti;;;;11i,.,:,......,,.:i;iit:,i;itfftttt111\n.......................  ...,,.......,:;11tt11tttttttttti;:;;i1;,.,,:,,....,:,.,;;it;.ii;;:ittt11t1i\n................... ...,i1;;;iii1;..,,11i;1ttttttttttfti;1:,:11:,.,,,,.......,..:itt:,:it1;;1111t1ii\n.. ...,.......... .,.,,,:;iiiii;;:,,,:11i;:itt11tttttt1iiii:;1i:.,,,,,,,,...,,,.,:1tft:,i11ti1iiii1i\n......,,..,,,,,.. :;,,,,..:ii;:,:;1i;,ii;;iit111111t1ii::;ii11:,,,:,,.......,,:,.,:i1tfi,;1iii;;itLi\n,,,,,,,,,,:,,,,.. ;;,:;;;;:;i;i:,:::::;;1i1111ttttt11i;;;i;1i;:,,,,,,.........,:,.,:;tttt;,;1111Lft;\n,,,,,,.,.,,,,,::,,iii1i;::,,,,,,  ..;;,,:;i11tt11i;i::::::ii:,.,,;:..,,,,.  .  .,,.,:;1iit1i1ttf1iti\n...,,:;it11111t,,,;1;,,..    it;i;:;i,..,,,i11iiiii1::;;:;ti:;i111i1;,,,,,......,:,...;i1tt1i11:.,1i\n,::ii1t11i;;;1t,,,;t. .   .,;11i1ii1t1i,.,,.:11tt1i::;;;:;ti;ifftiii1;,..,:,....,,,,,..,,;ttii, ,,:i\n11t1t1tttttt1i1,.,iLi..,;i11ii1111111t1;,.::.,tfi::::;;;:;i;iiittt1ii1i,..,,....   .:,...,;1tft,.,:;\nt1;i1ttttttt1i1i.,,1t111i1t111i1t11ii1i,:11t1,:i::;;;;::;;;iii::1f1111t1:.,,,........,,,..,:;1f1,,:,\n1ii111t11ii11i1t;,,:ttt11tttt1t1t11iii:.ifii1;ii::::::::::;ti,..,it11iit;,,,:,........,,,,..,:if;,,.\niiiii11111iii111t:,,;f11tttt1ttttt11i,.,it1itti::;;;;;;:;:;ti;::.,;i111tt;,.,,..........,,,,.,:i1,,.\n11t1111tt11ttt11i;,,,iti:i1111t1ii111i.,:ii11i;;:i;it1i;;:;11itti.,it11;11:,.,,,........ ,::,,,.;;..\nii111111tt1i1111:,:,.,if1,,ii11i1i1t11;,iiiit1::;i1i11;;;:f1i1tt1,.,ii;:;f1,,,,,,...........,,,,,,..\ni11111111111ii;,.,,,.  .i1,:111tt111ii1;iit1t1iiii11ii1i:iti1tft1;,,,i1;i1i,..,,,...................\n111t111111;:,,..,:::,... ,i,;t111111tt11i;111iii;;;i1ii:;1;111tf1;,,,.iii11:,.,,,...................\n111iii;::,..,:;;:,,,:,... ,:,iftttt1t1iitii1itt1iiiii1ii1i;1111tt;.,,,.;i1i:,.,,:,..................\ni:;:,,.,,:i1i1i1i::,,,:,... .,1f111iiii1t1tfttfttt1tttftii11ttttt1;,,:,.,ii,.,,,,...................\n...,::;i;;i1tt111i;,,,,,...,.,,itt111i1fftttfffffff11t1111ii1tttt11;:..,,,;:.,,.....................\n;;;;i;iiii1tff1i:,,......,i1i,;;itttttffttfffffftf;iiittf111tttttt11i:,,,,,::,......................\n;;:::;:;;;;::,,....... .:t1i1,;ti;11tttt11tfffL;1f..;111111ttttfttt111i:,,,,,,,.....................\n;;;;:::,,,..,,,,,::...,,:tt1t1,it111tt1ti,ifft: ii.,i11ii111;i1t1tttt11i,,:,,:, ....................\nii;,.......,:::,,,,...,::i111ii;tf1ttttt,,tft.  ...;1i111iiiiii111ii1tt1i,...,,. ...................\n,....,,,,,::,,::,..,,,.,,:1t:;iii;i111t:.,tf: ..,::;1ii11ii11i1t1i1i11i1ti:...,,....................\n.,,,,,,,:,,,.......,,,,,it1t;ii1ti;1ii1,. :: ..,111i1;ii;;1tiiiiii;111,,;i;,,.,,:,..................\n::,,,,,,,::,,.,,,,:,,,;1ft1;,,::;11i,,....   ;f1,,,;t;ii;i;i;ii11i;111i.,,,,,.......................\n,,,:,,,,:,,,..,,,,,,,;tt111it;,:::;:..........;1i;,.::;;i1;;;11i:.;11it,,,,:,.....,. ...............\ni,,:,...,,....,,...,;11ii1i111:;i:. .........   :;.. .,;i:;ii;:,,,i1i;1,,,,,,.....,,................\n1i,,,.,.......,,,,.,t1i111i11tf1ii1;;:..........  .....,,,:;,,,:;11i;;;,,,,:,. ,, .... .............\n,;:,,.,..... ......,;t1t1tttttt1;;iii::.  ..... .....    .. ....,,,........,::,,,.  ................\n,,;::,,,...........,,ii1i11iiiii;i;:;1;;;::,................,:,,......,,,:,,,,,...,,.,,.............\n,,:::,..............,;i111ii111;iii;;;:;;:,................,::,:,,,:;;:,,,,...:,..,,................\n;:,:;,........... ..,iiiii1111i;;ii;;;;i;:. ..... . .. .. ......,,,::,:,..::.,::. .,,...............\n::,,::...........,.,,1iiii1tt111iiiiiiiiii;;,... .,i1,.,,,............,:. .,,..,,...................\n  ..,:,..... .,.....,;1111111i1ti;i111111i:1i;::;1111:.,it1;,..........,:...,,,.....................\n....,::,............,,,,:ii;;:::;;;;;ii;;;;;:,::;;i::::;ii11i::,,.,...,.............................\n';n[2] = '.........................,,:::;i111tttttttttt11ttttttttttttttttttttt1t1ii;:::::;11t111:1ttttttttttti\n.......................,,:::::;1tfffffffffffffffffffffffffffffffffffffftti::;;:;tttffi:;itfffffffft1\n........................,:::,::i1tffffffffffffffffffffffffffffffffffffftt1::::::1ttfi:,.:;itffffftti\n...................,,.:i1ttttftttttffffffffffffffffffffffffffffffffffffttt;::;::ittti:,;ftiitffftffi\n.......,,........,;.;tfftt1i;iii1t1ttffffftfffffffffffffffffffffffffffffft;:;;:::1tttti;1ftt1tttt11;\n.......,,,,,,,,.:ti;fti::,:i:i111tftfffffffffffffffffffffffffffffffffffft1;::::::;1tttf1;ittttt1i11:\n...,::::::::::::it;;i;iii1ttt1tt11tftffffffffffffffffffffffffffffffffffft1i:;::::::itttfti;1ff1;;11:\n,:::::::;;i;ii;1fi:ittt1ii;;;;;;;11ffffffffffffffffffffffffffffffffffffftti:;:::::::i1tttt11fi;1;;t1\n:::::i1tftffft11t;,;1;,..,:,,1ft11tftffffffffffffffffffffffffffffffffffffti:::::::::::ittttt;:::,;1i\n;;1tfffftttfttt1::,:. ...,:;tffttfffftfffffffffffffffffffffffffffffffffftt;:::::::::::::i11;::. ,:;:\ntffttttttffttttt;,,,,,,:iitfttfffffffffffffffffffffffffffffffffffffffffftti:::::::,::::::iiii;i:,,:,\ntttffffffffffftt;,,,:1ttffLffftftfffffttfffftttfffffttttttfffffffffffffttt1;:::::,..,:::::;i1tft:,.,\nttfffffffffffftti:,:::1tttfLLfttfffft1tffffffffffffftttfffffffffffffffffftt1::::,....,::::::;itf1:,.\ntttfffffffffftttti,,;;;ttttff11ttttttttffttttfttfftttttttttffffffffffffttftti::::,,..,,,,:::::it1:,.\nttffffffffffftttt1;,,:::;ittfftt111i1tfftttfffttt111i11t1itfffffffffffffffttt;:::,........,::::;i;,.\nttfffffffffttfftti;:,,;i::ittfft11111ttttttttttfttt1111titffffffffffffffffftt;:::,..........,::::,..\nfffffffffffftt1i;:::,,:::::iffftffffftt11ttttttttttttttttfffffffffffffffffffti::::,............,. ..\ntffffffftt1i;:::,,,,,,,,::::1ffffffffft1111ttttttfffttffffffffffffffffffffftt::::,,.................\ntfffft1i;::::;;i;:::::,,:::::1ftffffffftt11ttfffttffffffffffffffffffffffffttt;:::,..................\nt1i;:::::;i1tttft1;:::::,,:,;;ffttffttfft11tfffttt11ttfffffffffffffffffttffti::::,..................\n;,::;i1tffffftfftft;::,,..:;;;ittttfffffttttttttffffftttffffffffffffffft;it1:::::...................\n;i1tfffffffffff1i;:,,..,;1fft1itftttttffffffffttfffffftttfffffffffffftt1::;i;:::,...................\nfffffffffft1i:,,......:ifffffffftt1t1tffft1tfttttt1tttffffffffftfffffffi::::;::,....................\nffffft1i;:,.....,::,.,:tftffffffftffffftfi;ttiiiiii11ttttfffLffftffffft;::,:::,.....................\ntt1;:,......,.,::,:,,:;ffffffftffttttfftti::;:::::;;1ftttttffffttfffttti::,.,,:,....................\n,,....,,:::,,,.,,,,,,:it11ftffffff1tff1t1;:::::::::;tttfftttttttfLffftt11;:...,,,...................\n .....,,,,,.......,:::;;itfttffffffttttfti:,::,:;tt1tt1ttttt1ttfftttfft111::,,,,,...................\n,,..,.,,...,,,,..,:,:;i1tttf1ttfttft1ii1;::::,::;11i1t1tttt1tttfLftfttt11t1;,,...,,.................\n:::,,.......,.....,:,;1ttftffftttttt1::;,,,:,.,,::,:i1tttttttftt11ifttt111ti,.....,,................\ni::,..............,,;ttffffffttttffft:;i,,,,.,,,,,.,,::;ttttttti::;ffttt1ti::,......................\ni;,,..,,..........,,iftttt11tffttfffftti:::,..,,,,...,,:1iit1i;::;1t1ii11i:::..,,...................\n:i;,,...............iffttt11ttt111fffti;;;:,,:,,,,,,,,,,,,,::,:,,::,,...,..,::,:;,...,,.............\n:;;,,,.............,i1i1tftfLtiit1tffti11i;::::,..,,,,::::,,,......,:i;:::,:::.,.....,,.............\n.,::,...............:;1tfttttt1tt11tfftti:.........,,...........,:;itfti,,:,..,,.,,,,...............\n..,::..............,;i1ttf1111t111tttfff1:. .,..........,......,:;i11i;,..,,..,,....................\n....::...........,.,;111tttft1itt1ttfffff1;;,....,:;;,,,:,.  .....,,,,::..,,,...,,..................\n....::,............,:1t111t1ttttttttfffff11tti::ifft1i:;t1i:,.....  ....,...,.......................\n....,:,..............,:;;;ii;;iiiiii11111111iii1t1i;:;;i1ii1i;:,,,,,,,..,,..........................\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

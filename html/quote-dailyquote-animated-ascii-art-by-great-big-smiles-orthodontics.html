@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '   8000                                                                                             \n 8LtfLtfC                                                                                           \n f1C  8t10                                                                                          \n C1fGfftt8                                                                                          \n  GLffLff8                                                                                          \n';n[1] = '   8000  808  808                                                                                   \n 8LtfLtfGL1L  f1G                                                                                   \n f1C  8t1ttC  f1C                                                                                   \n C1fGfftfL1f0Gt1G                                                                                   \n  GLffLff8CLffLG                                                                                    \n';n[2] = '   8000  808  808 80008                                                                             \n 8LtfLtfGL1L  f1CCtfLftL8                                                                           \n f1C  8t1ttC  ftt1f   f1C                                                                           \n C1fGfftfL1f0GttLttG0GttG                                                                           \n  GLffLff8CLffLG 0CfffC0  8                                                                         \n';n[3] = '   8000  808  808 80008 0008000                                                                     \n 8LtfLtfGL1L  f1CCtfLftLffttffL                                                                     \n f1C  8t1ttC  ftt1f   f1C L1C                                                                       \n C1fGfftfL1f0GttLttG0GttG L1L                                                                       \n  GLffLff8CLffLG 0CfffC0  CfG                                                                       \n';n[4] = '   8000  808  808 80008 0008000880000                                                               \n 8LtfLtfGL1L  f1CCtfLftLffttfffttLLLL8                                                              \n f1C  8t1ttC  ftt1f   f1C L1L G1tLLLG                                                               \n C1fGfftfL1f0GttLttG0GttG L1L G1tCCCC                                                               \n  GLffLff8CLffLG 0CfffC0  CfG 0fLLLLL8                                                              \n';n[5] = '   8000  808  808 80008 0008000880000    80008                                                      \n 8LtfLtfGL1L  f1CCtfLftLffttfffttLLLL8 8LtffttG                                                     \n f1C  8t1ttC  ftt1f   f1C L1L G1tLLLG  f1C  8t1G                                                    \n C1fGfftfL1f0GttLttG0GttG L1L G1tCCCC  C1fG0Ctt0                                                    \n  GLffLff8CLffLG 0CfffC0  CfG 0fLLLLL8  0LfffC8                                                     \n';n[6] = '   80008 808  808 80008 8008000880000    80008 8000008                                              \n 8LtfLttGL1L  f1CCtfLftLfftttffttfLLL8 8LtfLttGLtfLLf0                                              \n f1L  8t1ttL  ftt1f   f1C LtL GttLLLG  f1L  8t1ttfLLC                                               \n C1fGLftfL1f00t1LttG0GttG L1L G1tCCCC8 C1fG0C1ff1f000                                               \n  0LffLff8GLffLG 0CfffL0  CfG 0fLLLLL8  0LfffC8GfG                                                  \n';n[7] = '   80008 808  808 80008 0008000880000    80008 8800008 0088000                8                     \n 8LtfLttGL1L  ftCCtfLftLffttfffttLLLL8 8LtfLttGLtfLLf0 LftttfL8               8                     \n f1C  8t1ttC  ftttf   f1C L1L G1tLLLG  f1L  8ttttfLLC    L1L                                        \n C1fGfftff1f0GttLttG0GttG L1L G1tCCCC  C1fG0C1ff1f000    L1L                                        \n  GLffLff8CLffLG 0CfffL0  CfG 0fLLLLL8  0LfffC8GfG       GfG                                        \n';n[8] = '@@@80008@808@@808@80008@8008800880000@@@@80008@8000008@000880008@@808@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@8LtfLftCC1L@@LtCCtfLftLfffttffttfLLL8@8LtfLttCCtfLLfG@Lffttfftt8@G1f@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@L1L@@8t1ttL@@Ltt1t8@@L1L@L1L@0ttLLLG@@L1L@@8t1tttLLL@@@@C1L@0ttffftf@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@GttGLfttL1f00t1LftC0GttG@L1L@G1tLCCC8@G1tG0Ctff1f000@@@@L1f@01tG0C1f@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@0LffLff8GLffLG@8CfffL0@@GfC@0LLLLLL8@@0LfffC8GfC@@@@@@@GfC@0LL8@0fC@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n';n[9] = '@@@80008@808@@808@80008@8008800880000@@@@80008@8080008@800880088@@8088800008@@@@@@@@@@@@@@@@@@@@@@@@\n@8LtfLftCC1f@@L1LCttLftLfffttffttfLLf8@8LtfLftCCttLLfG@Lffttfftt0@G1fftfLLfC@@@@@@@@@@@@@@@@@@@@@@@@\n@L1L@@8ftttf@@Ltt1t8@@L1L@C1f@0ttLLLC@@L1f@@@fttttLLL8@@@C1f@0ttffftfftfLLL8@@@@@@@@@@@@@@@@@@@@@@@@\n@GttGLfttL1t00f1Lf1C0Gf1C@C1f@01tLCCC8@GttG0Gttf1f000@@@@C1f@01tG0C1fftfCCCG@@@@@@@@@@@@@@@@@@@@@@@@\n@@0Lfffft0GLffLC@8CfffL0@@GfC@8LLLLLf0@@0LfffC80fC@@@@@@@GfC@8LL8@0fCCLLLLLC@@@@@@@@@@@@@@@@@@@@@@@@\n';n[10] = '@@@80008@808@@808@80008@0088000880000@@@@80008@8800008@008800088@@8088800008@@88008@@@@@@@@@@@@@@@@@\n@8LtfLtfGL1L@@ftCCtfLftLffttfffttLLLL8@8LtffttGLtfLLf0@Lftttfftt8@C1fftfLLfG@8ttfftfC@@@@@@@@@@@@@@@\n@f1C@@8t1ttC@@ftttf@@@f1C@L1L@G1tLLLG@@f1C@@8t1ttfLLC@@@@L1L@GttffftfftfLLL8@8t10@8t1G@@@@@@@@@@@@@@\n@C1fGfftfL1f0GttLttG0GttG@L1L@G1tCCCC@@C1fG0C1ff1f000@@@@L1L@G1t00L1ff1fCCC0@8t1C0Ctt0@@@@@@@@@@@@@@\n@@GLffLff8CLffLG@0CfffC0@@CfG@0fLLLLL8@@GLfffC8GfG@@@@@@@GfC@0fL@@GfCCLLLLfG@8LLLfLC8@@@@@@@@@@@@@@@\n';n[11] = '@@@80008@808@@808@80008@0088000880000@@@@80008@8800008@008800088@@8088800008@@88008@@@@808@@@@@@@@@@\n@8LtfLtfGL1L@@ftCCtfLftLffttfffttLLLL8@8LtffttGLtfLLf0@Lftttfftt8@C1fftfLLfG@8ttfftfC@8ftt0@@@@@@@@@\n@f1C@@8t1ttC@@ftttf@@@f1C@L1L@G1tLLLG@@f1C@@8t1ttfLLC@@@@L1L@GttffftfftfLLL8@8t10@8t1GL1ftt8@@@@@@@@\n@C1fGfftfL1f0GttLttG0GttG@L1L@G1tCCCC@@C1fG0C1ff1f000@@@@L1L@G1t00L1ff1fCCC0@8t1C0Cttf1fLf1t8@@@@@@@\n@@GLffLff8CLffLG@0CfffC0@@CfG@0fLLLLL8@@GLfffC8GfG@@@@@@@GfC@0fL@@GfCCLLLLfG@8LLLfLCGLL8@@CfG@@@@@@@\n';n[12] = '@@@80008@808@@808@80008@0088000880000@@@@80008@8800008@008800088@@8088800008@@88008@@@@808@808@@@808\n@8LtfLtfGL1L@@ftCCtfLftLffttfffttLLLL8@8LtffttGLtfLLf0@Lftttfftt8@C1fftfLLfG@8ttfftfC@8ftt08f1C8L1L8\n@f1C@@8t1ttC@@ftttf@@@f1C@L1L@G1tLLLG@@f1C@@8t1ttfLLC@@@@L1L@GttffftfftfLLL8@8t10@8t1GL1ftt8@LtttC@@\n@C1fGfftfL1f0GttLttG0GttG@L1L@G1tCCCC@@C1fG0C1ff1f000@@@@L1L@G1t00L1ff1fCCC0@8t1C0Cttf1fLf1t8@f1C@@@\n@@GLffLff8CLffLG@0CfffC0@@CfG@0fLLLLL8@@GLfffC8GfG@@@@@@@GfC@0fL@@GfCCLLLLfG@8LLLfLCGLL8@@CfG@CfG@@@\n';n[13] = '@@@80008@808@@808@80008@0088000880000@@@@80008@8800008@008800088@@8088800008@@88008@@@@808@@@@@@@@@@\n@8LtfLtfGL1L@@ftCCtfLftLffttfffttLLLL8@8LtffttGLtfLLf0@Lftttfftt8@C1fftfLLfG@8ttfftfC@8ftt0@@@@@@@@@\n@f1C@@8t1ttC@@ftttf@@@f1C@L1L@G1tLLLG@@f1C@@8t1ttfLLC@@@@L1L@GttffftfftfLLL8@8t10@8t1GL1ftt8@@@@@@@@\n@C1fGfftfL1f0GttLttG0GttG@L1L@G1tCCCC@@C1fG0C1ff1f000@@@@L1L@G1t00L1ff1fCCC0@8t1C0Cttf1fLf1t8@@@@@@@\n@@GLffLff8CLffLG@0CfffC0@@CfG@0fLLLLL8@@GLfffC8GfG@@@@@@@GfC@0fL@@GfCCLLLLfG@8LLLfLCGLL8@@CfG@@@@@@@\n';n[14] = '@@@80008@808@@808@80008@0088000880000@@@@80008@8800008@008800088@@8088800008@@88008@@@@@@@@@@@@@@@@@\n@8LtfLtfGL1L@@ftCCtfLftLffttfffttLLLL8@8LtffttGLtfLLf0@Lftttfftt8@C1fftfLLfG@8ttfftfC@@@@@@@@@@@@@@@\n@f1C@@8t1ttC@@ftttf@@@f1C@L1L@G1tLLLG@@f1C@@8t1ttfLLC@@@@L1L@GttffftfftfLLL8@8t10@8t1G@@@@@@@@@@@@@@\n@C1fGfftfL1f0GttLttG0GttG@L1L@G1tCCCC@@C1fG0C1ff1f000@@@@L1L@G1t00L1ff1fCCC0@8t1C0Ctt0@@@@@@@@@@@@@@\n@@GLffLff8CLffLG@0CfffC0@@CfG@0fLLLLL8@@GLfffC8GfG@@@@@@@GfC@0fL@@GfCCLLLLfG@8LLLfLC8@@@@@@@@@@@@@@@\n';n[15] = '@@@80008@808@@808@80008@8008800880000@@@@80008@8080008@800880088@@8088800008@@@@@@@@@@@@@@@@@@@@@@@@\n@8LtfLftCC1f@@L1LCttLftLfffttffttfLLf8@8LtfLftCCttLLfG@Lffttfftt0@G1fftfLLfC@@@@@@@@@@@@@@@@@@@@@@@@\n@L1L@@8ftttf@@Ltt1t8@@L1L@C1f@0ttLLLC@@L1f@@@fttttLLL8@@@C1f@8ttffftfftfLLL8@@@@@@@@@@@@@@@@@@@@@@@@\n@GttGLfttL1tG0f1LftC0Gf1C@C1f@01tLCCC8@GttG0Gttf1f000@@@@C1f@0ttG0C1fftfCCC0@@@@@@@@@@@@@@@@@@@@@@@@\n@@0Lfffft0GLffLC@8CfffL0@@GfC@8LLLLLf0@@0LfffC80fC@@@@@@@GfC@8LL8@0fCCLLLLLC@@@@@@@@@@@@@@@@@@@@@@@@\n';n[16] = '@@@80008@808@@808@80008@8008800880000@@@@80008@8000008@000880008@@808@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@8LtfLftCC1L@@LtCCtfLftLfffttffttfLLL8@8LtfLftCCtfLLfG@Lffttfftt8@G1f@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@L1L@@8t1ttL@@Ltt1t8@@L1L@L1L@0ttLLLG@@L1L@@8t1tttLLL@@@@C1L@0ttffftf@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@GttGLfttL1f00t1LftC0GttG@L1L@G1tLCCC8@G1tG0Ctff1f000@@@@L1f@01tG0L1f@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@0LffLff8GLffLG@8CfffL0@@GfC@0LLLLLL8@@0LfffC8GfC@@@@@@@GfC@0LL8@0fC@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n';n[17] = '   80008 808  808 80008 0088000880000    80008 8800008 0088000                8                     \n 8LtfLttGL1L  ftCCtfLftLffttfffttLLLL8 8LtfLttGLtfLLf0 LffttfL8               8                     \n f1C  8t1ttC  ftttf   f1C L1L G1tLLLG  f1L  8ttttfLLC    L1L                                        \n C1fGfftff1f0GttLttG0GttG L1L G1tCCCC  C1fG0C1ff1f000    L1L                                        \n  GLffLff8CLffLG 0CfffL0  CfG 0fLLLLL8  0LfffC8GfG       GfG                                        \n';n[18] = '   80008 808  808 80008 8008000880000    80008 8000008                                              \n 8LtfLttGL1L  ftCCtfLftLfftttffttfLLL8 8LtfLttGLtfLLf0                                              \n f1L  8t1ttL  ftt1f   L1C LtL GttLLLG  f1L  8t1ttfLLC                                               \n C1fGLftfL1f00t1LttG0GttG L1L G1tCCCC8 C1fG0Ctff1f000                                               \n  0LffLff8GLffLG 0CfffL0  CfG 0fLLLLL8  0LfffC8GfC                                                  \n';n[19] = '   80008 808  808 80008 0088000880000    80008                                                      \n 8LtfLttGL1L  ftCCtfLftLffttfffttLLLL8 8LtffttG                                                     \n f1C  8t1ttC  ftttf   f1C L1L G1tLLLG  f1C  8t1G                                                    \n C1fGfftff1f0GttLttG0GttG L1L G1tCCCC  C1fG0Ctt0                                                    \n  GLffLff8CLffLG 0CfffL0  CfG 0fLLLLL8  0LfffC8                                                     \n';n[20] = '   80008 808  808 80008 0088000880000                                                               \n 8LtfLttGL1L  ftCCtfLftLffttfffttLLLL8                                                              \n f1C  8t1ttC  ftttf   f1C L1L G1tLLLG                                                               \n C1fGfftff1f0GttLttG0GttG L1L G1tCCCC                                                               \n  GLffLff8CLffLG 0CfffL0  CfG 0fLLLLL8                                                              \n';n[21] = '   80008 808  808 80008 0088800                                                                     \n 8LtfLttGL1L  ftCCtfLftLffttffL                                                                     \n f1C  8t1ttC  ftttf   f1C L1C                                                                       \n C1fGfftff1f0GttLttG0GttG L1L                                                                       \n  GLffLff8CLffLG 0CfffL0  CfG                                                                       \n';n[22] = '   80008 808  808 80008                                                                             \n 8LtfLttGL1L  ftCCtfLftL8                                                                           \n f1C  8t1ttC  ftttf   f1C                                                                           \n C1fGfftff1f0GttLttG0GttG                                                                           \n  GLffLff8CLffLG 0CfffL0  8                                                                         \n';n[23] = '   80008 808  808                                                                                   \n 8LtfLttGL1L  f1G                                                                                   \n f1C  8t1ttC  f1C                                                                                   \n C1fGfftff1f0Gt1G                                                                                   \n  GLffLff8CLffLG                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

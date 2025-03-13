@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                LL                  \n                                                                        tttLCCCL L                  \n                                          t                         11t tt1iiii;;;ii1t              \n   t                                     LCLLC LL                   t11t1i;;;;i;;;;ii11111iit       \n   t                                 tt LCLt111i1tttt                    tiii;:;;;;iiiii1i1tt       \n                             t   ttttt11i;i;;;;;i1111ii;1                    tttttt  t              \n   t                            t111t1ii;;;;;;:;;;;;i11t                                            \n               t                    ttt111i;iiii11t                                                 \n                                                                                                    \n                                                                                                    \n  t        t                        tt                                                              \n                                                                    L                               \n  t                                                               ttt1ttt                           \n          t                                                       t1ii1tt                           \n                                    tt                                                              \n                                                                                                    \n                                          t                                                         \n   t   t                    t                                                                       \n ttt                                                                                                \n  t   tt  ttt t    tt               t                        LLLL L            t                    \n       LLCCL      LCCLLLL   tttt   t       t     Lt tt       LGCCt LL           t                tt \nGGCCGCGGG000GGG0CC00000000GGCLCGGGGCG0GGCCCGGGGGCCCCLCGGCCCGGGCCCCLCCLL  LLCCCCCL LLLL  tt tt t1 it1\n00000 t0G0000008Lt0tCGG00000000LCGG00 C000000000000000GC000000CttLC t11Ltt1LGG0C1itLCGGGCL CC i:iit \nLL L tLLLCCCCCGC L L  LGGGGG0Ltii1 GGLLCGGCGGGGGG0LC00GGG0GGCCC 11ti1ii    LCC i;i1tLGG L1;LGi.,,;LG\n   ttt         LtL  LLLCLLLCCL tttLCC  LCLLLCLLLLCLLCCLLLCC1.,;tt11i 111   t11i1tt tt  t;:1;1i::,:t \nttttttt       L t              tt CCLt         t  ttt    LLt;;1tt1 ::1t111111111111i1i;;t  iii;;:,,;\n ttttttt      ttt     tt t        tt t    ttt t           t LCC tt ;itt1tttttttt111ttti;it11t11i,,,;\n                tttt          1t       t1t              LLtLLCLLttt1tt1ttttt  ttttt;ittt1111t111it1t\nLL    LL  L  L    LLL  tiii11i:;;;t   Li;t             t tLG00Lttttt1ttt1tttt11t111:;tt111tt11i ;LL1\nLLLLLLLLLLL LLLLLCCCCCLi;;;;;;,,::;1tttLLLLLL     tt tt t1C0000tit i.:11111111111i111111111111;;.1 :\nCCCCCCCCCCGGCCGCCCCGGG1;;;;;:itiLL,;;1;tL  LLLLLLLL   LLLL 1tCCLt t1ii1t ttttttLLL t111tttt11ti,,,ii\nGGGGCGGGG0GGGCGGGGGGGG 11iii:,C1 L,;i;;;i1iLGGCCCCCCGCCCCGC1:ttCGGL  CCLtLLLLLLCCCCCCCLLLLLL Lt,,,:;\n           t    LLLLLLLLLLL ttCtL ::;:t1;; 00G0G0GGGGGGGGG0Li LGCGGGLCCC LCCCLCCLLLCCLCCCCLCCCC,,,::\nttttttttttttt tttttttttttttt 1   Ltt111Lt    L LLCCCCCCCGGG 1LCGGGG01;i1GGGGGCGGGCCCCCCLLCLLLCG ::i;\nttt1ttttttttttttttttttttttttt1t11t1111it1t1tttttttttttt1tt i1 tttttt1  1CCCCCCCGGGGGCCCCCCCCCCCC1iCL\ntttttttttttttttttt ttttttttttttttt11111111ttttttttttttttttt11t111111i11111ttttt  LLLLLLLLLLLCCCL  CC\n';n[1] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                              LLLLLLL               \n                                         t                               tttt LLL   tt              \n                                                                      11ttt11i;i;;;;;i1t            \n   t                                          LL                       t1t1i;;;;;;;;;;i111iiiit     \n   t                                     LCGGLL t   tt                      111;;i;;;1iii1t1tt      \n                             t        t11tt1i;;;;ii1tttt11t                                         \n   t                              t1ttt11;:;i;;;;;i;;;i;i1t                                         \n               t                   tttt1iii;::;::;iii1t                                             \n                                         t ttttttt                                                  \n                                     t                                                              \n  t        t                         t                                                              \n                                                                                                    \n  t                                                             L                                   \n          t                                                    tt11ttt                              \n                                    tt                       t t111tt                               \n                                                                                                    \n                                          t                                                         \n   t   t                    t                                                                       \n ttt                                                                                                \n  t   tt  ttt t    tt               t                        LLLL L            t                    \n       LLCCL      LCCLLLL   tttt   t       t     Lt tt       LGCCt LL           t                tt \nGGCCGCGGG000GGG0CC00000000GGCLCGGGGCG0GGCCCGGGGGCCCCLCGGCCCGGGCCCCLCCLL  LLCCCCCL LLLL  tt tt t1 it1\n00000 t0G0000008Lt0tCGG00000000LCGG00 C000000000000000GC000000CttLC t11Ltt1LGG0C1itLCGGGCL CC i:iit \nLL L tLLLCCCCCGC L L  LGGGGG0Ltii1 GGLLCGGCGGGGGG0LC00GGG0GGCCC 11ti1ii    LCC i;i1tLGG L1;LGi.,,;LG\n   ttt         LtL  LLLCLLLCCL tttLCC  LCLLLCLLLLCLLCCLLLCC1.,;tt11i 111   t11i1tt tt  t;:1;1i::,:t \nttttttt       L t              tt CCLt         t  ttt    LLt;;1tt1 ::1t111111111111i1i;;t  iii;;:,,;\n ttttttt      ttt     tt t        tt t    ttt t           t LCC tt ;itt1tttttttt111ttti;it11t11i,,,;\n                tttt          1t       t1t              LLtLLCLLttt1tt1ttttt  ttttt;ittt1111t111it1t\nLL    LL  L  L    LLL  tiii11i:;;;t   Li;t             t tLG00Lttttt1ttt1tttt11t111:;tt111tt11i ;LL1\nLLLLLLLLLLL LLLLLCCCCCLi;;;;;;,,::;1tttLLLLLL     tt tt t1C0000tit i.:11111111111i111111111111;;.1 :\nCCCCCCCCCCGGCCGCCCCGGG1;;;;;:itiLL,;;1;tL  LLLLLLLL   LLLL 1tCCLt t1ii1t ttttttLLL t111tttt11ti,,,ii\nGGGGCGGGG0GGGCGGGGGGGG 11iii:,C1 L,;i;;;i1iLGGCCCCCCGCCCCGC1:ttCGGL  CCLtLLLLLLCCCCCCCLLLLLL Lt,,,:;\n           t    LLLLLLLLLLL ttCtL ::;:t1;; 00G0G0GGGGGGGGG0Li LGCGGGLCCC LCCCLCCLLLCCLCCCCLCCCC,,,::\nttttttttttttt tttttttttttttt 1   Ltt111Lt    L LLCCCCCCCGGG 1LCGGGG01;i1GGGGGCGGGCCCCCCLLCLLLCG ::i;\nttt1ttttttttttttttttttttttttt1t11t1111it1t1tttttttttttt1tt i1 tttttt1  1CCCCCCCGGGGGCCCCCCCCCCCC1iCL\ntttttttttttttttttt ttttttttttttttt11111111ttttttttttttttttt11t111111i11111ttttt  LLLLLLLLLLLCCCL  CC\n';n[2] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                         LLLLLLLL                   \n                                         t                           tttt LL ttttt                  \n                                                                 t111tt11;;i;;;;;i1t                \n   t                                        tt                    tt1t1i;;;;;;;;;;iiiiiiiit         \n   t                                       LCGCLCL L                   t111;;i;;i11i1tttt           \n                             t          ttt L 1iiiii1tttt tt                        L               \n   t                                t1tttt1i;ii;;;;iiiiii;;i                                        \n               t                    t11tt1i;;;::;::;;;;11t                                          \n                                          ttt1i11i11tt                                              \n                                     t                                                              \n  t        t                        tt                                                              \n                                                                                                    \n  t                                                               L t                               \n          t                                                     t1iii1tt                            \n                                    tt                            t                                 \n                                                                                                    \n                                          t                                                         \n   t   t                    t                                                                       \n ttt                                                                                                \n  t   tt  ttt t    tt               t                        LLLL L            t                    \n       LLCCL      LCCLLLL   tttt   t       t     Lt tt       LGCCt LL           t                tt \nGGCCGCGGG000GGG0CC00000000GGCLCGGGGCG0GGCCCGGGGGCCCCLCGGCCCGGGCCCCLCCLL  LLCCCCCL LLLL  tt tt t1 it1\n00000 t0G0000008Lt0tCGG00000000LCGG00 C000000000000000GC000000CttLC t11Ltt1LGG0C1itLCGGGCL CC i:iit \nLL L tLLLCCCCCGC L L  LGGGGG0Ltii1 GGLLCGGCGGGGGG0LC00GGG0GGCCC 11ti1ii    LCC i;i1tLGG L1;LGi.,,;LG\n   ttt         LtL  LLLCLLLCCL tttLCC  LCLLLCLLLLCLLCCLLLCC1.,;tt11i 111   t11i1tt tt  t;:1;1i::,:t \nttttttt       L t              tt CCLt         t  ttt    LLt;;1tt1 ::1t111111111111i1i;;t  iii;;:,,;\n ttttttt      ttt     tt t        tt t    ttt t           t LCC tt ;itt1tttttttt111ttti;it11t11i,,,;\n                tttt          1t       t1t              LLtLLCLLttt1tt1ttttt  ttttt;ittt1111t111it1t\nLL    LL  L  L    LLL  tiii11i:;;;t   Li;t             t tLG00Lttttt1ttt1tttt11t111:;tt111tt11i ;LL1\nLLLLLLLLLLL LLLLLCCCCCLi;;;;;;,,::;1tttLLLLLL     tt tt t1C0000tit i.:11111111111i111111111111;;.1 :\nCCCCCCCCCCGGCCGCCCCGGG1;;;;;:itiLL,;;1;tL  LLLLLLLL   LLLL 1tCCLt t1ii1t ttttttLLL t111tttt11ti,,,ii\nGGGGCGGGG0GGGCGGGGGGGG 11iii:,C1 L,;i;;;i1iLGGCCCCCCGCCCCGC1:ttCGGL  CCLtLLLLLLCCCCCCCLLLLLL Lt,,,:;\n           t    LLLLLLLLLLL ttCtL ::;:t1;; 00G0G0GGGGGGGGG0Li LGCGGGLCCC LCCCLCCLLLCCLCCCCLCCCC,,,::\nttttttttttttt tttttttttttttt 1   Ltt111Lt    L LLCCCCCCCGGG 1LCGGGG01;i1GGGGGCGGGCCCCCCLLCLLLCG ::i;\nttt1ttttttttttttttttttttttttt1t11t1111it1t1tttttttttttt1tt i1 tttttt1  1CCCCCCCGGGGGCCCCCCCCCCCC1iCL\ntttttttttttttttttt ttttttttttttttt11111111ttttttttttttttttt11t111111i11111ttttt  LLLLLLLLLLLCCCL  CC\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                                           CfLL                                     \n        0 G0                                               0CC0                                     \n       01t1G                                                   00000000                             \n        CL0               000GGGGGGGGGG000               00000000000G0000000                        \n                       0GGCCCCCCCCCCLCCCCCCGG00      00000000GGGGGGGGGGGG0000000                    \n                    0GGGCCCCCCCCCCCCCGGCCCCCCCCCG0 0GGGGGGGGGGGGGGGGGG00GGGG00000         LfLtG     \n                  0CCCGCfLLCCGGCCCCGCGGGCGCCCCCCCCCGCGGGGGGGGGGGGGGGGGG00G0GG00000        CtLG      \n                 GCCCCCLCLCCCCGGCCCCCCGGGCGCCCCLCCCCCGGGCCCCGGGGGGGGGGGG0GGGGGG0 00                 \n                GCCCLLfLLLCCCCCCCCCCCCCCGGGGCCCLCCCCGGCCCCGGGCCCCGGGGGGG00GG00GG00G                 \n               0CCCLLffLLCCCCCCGGCCCCCGCCCCCGCCCCCGGGGCCCCCCCCCLCGGGGGGGG00G0000000                 \n               0CCLLLfLCCLCCCCGftCCCCCGCCCCCCCCCCCCCCCCCCCCCCCCCCGLtGGGG0GG0000G000                 \n               0CLfLLfLCCLCCCCCCCGGCCGGGCCCCCCCCCCCCCCCCCGGCCCCCCGCCGGGGGGGG0G00000                 \n               0CffLLLfLCCCCCCCCCCCCCCCCCCCCCCCCCCCCGCCCGGCLCCCCCCGGCGGGGGGG0000000                 \n                CffLCCtLCCCCCCCCCCCCCCCCCGCCCGGGGGCGGGCCGGCCCCCCCCCCCCGGGGGG0000G00                 \n                CffLCCLLCCCCCCCCCCCGGGCCCCCCGGCCCGGCCCCCCCGCCCLCCCCCGCCCGGGG000000                  \n                GfffLCCCCLCCCCLfLfffLLCCCCCCCCfLCCCGCfCCCGCCCCCLLLLCCCCCCGGGG00000                  \n                 CfLLCCCCCLCfftt111t1ttLCCCCCCCfLLCLfCCGGGCCCCLfttttfLCCCGGGG0000                   \n       0fLfC      LfLLLLLLLLftt11ttt1ttfLCCCCCCCLLLLCCCCCCCCLfttttt1ttfCGGGGG0000               0   \n        GLC0      0fffLffLLLt11t1tttttttfCCCCCCCCCCCCCCGCCLfttttfttttttCGGGG000              0ftL   \n                   GffLLffLf11ttt1ttttttLCCCCCCCCCCCCCGCCCftttttttttttfGGGGG00                00    \n                    0LfLfffft11ttttttttfCGGCCCGCCCCCCCGCCCLt11ttttttttLGGGGG0                       \n                      CffffLLft1111ttfCCGGGCCGCCCCGGCCCCCCCt1ttt1ttttfCGGGG0                        \n                       GLfffLLLfffffLCCGGCCGGGCCCGGCCCCCCCCCf111ttffCGGGGG                          \n                        0LfffLLLLLLCCCCCCCCGGCCCCGGCCGCCGCCCCCLLLLLCGGGGG                           \n                          CffffLLLLLCCLLLCCCCCCGGGGCCCCCCCCCCCGGGGGGCG0                             \n                           0CftffLLLLLLLLCCCCCCGGGCCGGCCCCCCCCCCGGGGG                               \n         00                  0CfffLLLLLffLLLCCCCCGCCCGCCGCCCCCCCGG0           GGGfC                 \n      0tf110                   0CfffLLLLLffLCCCLCCCCCCGCCCCCCCGG             0t11tC                 \n       CtL0                      GLLLLLLLLLffLLCCCCCGCCCCCCCCG                 CC                   \n                                  0LLLLLLLLLLLLLLLLCCCLCCCG0                                        \n                                    GLLLLLLLLLLLLLLLCCCCG0                                          \n                        fttG          GLLCLLLLLLCCCLLCG0                                            \n                        0C0             GCLLffLLLLCGGG                                              \n                                          GLtffffLGG00                                              \n                                            CfttLG0                                                 \n                                              00         00GC                                       \n                                                         0t1f                            CfLG       \n            GLG                                            G                             GLG        \n            0C0                                                                                     \n                                                                                                    \n';n[1] = '                                                                                                    \n                                                           0LLC                                     \n        0 0                                                 GC0                                     \n       0ttf                                                    00000000                             \n        0G                000GGGGGGGGGG000               00000000000G0000000                        \n                       0GGCCCCCCCCCCLCCCCCCGG00      00000000GGGGGGGGGGGG0000000                    \n                    0GGGCCCCCCCCCCCCCGGCCCCCCCCCG0 0GGGGGGGGGGGGGGGGGG00GGGG00000         0LGL0     \n                  0CCCGCfLLCCGGCCCCGCGGGCGCCCCCCCCCGCGGGGGGGGGGGGGGGGGG00G0GG00000         ffC      \n                 GCCCCCLCLCCCCGGCCCCCCGGGCGCCCCLCCCCCGGGCCCCGGGGGGGGGGGG0GGGGGG0 00                 \n                GCCCLLfLLLCCCCCCCCCCCCCCGGGGCCCLCCCCGGCCCCGGGCCCCGGGGGGG00GG00GG00G                 \n               0CCCLLffLLCCCCCCGGCCCCCGCCCCCGCCCCCGGGGCCCCCCCCCLCGGGGGGGG00G0000000                 \n               0CCLLLfLCCLCCCCGftCCCCCGCCCCCCCCCCCCCCCCCCCCCCCCCCGLtGGGG0GG0000G000                 \n               0CLfLLfLCCLCCCCCCCGGCCGGGCCCCCCCCCCCCCCCCCGGCCCCCCGCCGGGGGGGG0G00000                 \n               0CffLLLfLCCCCCCCCCCCCCCCCCCCCCCCCCCCCGCCCGGCLCCCCCCGGCGGGGGGG0000000                 \n                CffLCCtLCCCCCCCCCCCCCCCCCGCCCGGGGGCGGGCCGGCCCCCCCCCCCCGGGGGG0000G00                 \n                CffLCCLLCCCCCCCCCCCGGGCCCCCCGGCCCGGCCCCCCCGCCCLCCCCCGCCCGGGG000000                  \n                GfffLCCCCLCCCCLfLfffLLCCCCCCCCfLCCCGCfCCCGCCCCCLLLLCCCCCCGGGG00000                  \n                 CfLLCCCCCLCfftt111t1ttLCCCCCCCfLLCLfCCGGGCCCCLfttttfLCCCGGGG0000                   \n        CLLG      LfLLLLLLLLftt11ttt1ttfLCCCCCCCLLLLCCCCCCCCLfttttt1ttfCGGGGG0000                   \n        0CC       0fffLffLLLt11t1tttttttfCCCCCCCCCCCCCCGCCLfttttfttttttCGGGG000               CfC   \n                   GffLLffLf11ttt1ttttttLCCCCCCCCCCCCCGCCCftttttttttttfGGGGG00                0C    \n                    0LfLfffft11ttttttttfCGGCCCGCCCCCCCGCCCLt11ttttttttLGGGGG0                       \n                      CffffLLft1111ttfCCGGGCCGCCCCGGCCCCCCCt1ttt1ttttfCGGGG0                        \n                       GLfffLLLfffffLCCGGCCGGGCCCGGCCCCCCCCCf111ttffCGGGGG                          \n                        0LfffLLLLLLCCCCCCCCGGCCCCGGCCGCCGCCCCCLLLLLCGGGGG                           \n                          CffffLLLLLCCLLLCCCCCCGGGGCCCCCCCCCCCGGGGGGCG0                             \n                           0CftffLLLLLLLLCCCCCCGGGCCGGCCCCCCCCCCGGGGG                               \n                             0CfffLLLLLffLLLCCCCCGCCCGCCGCCCCCCCGG0           00 CC                 \n      Gtf1C                    0CfffLLLLLffLCCCLCCCCCCGCCCCCCCGG              GtftC                 \n       CtL                       GLLLLLLLLLffLLCCCCCGCCCCCCCCG                 GL0                  \n                                  0LLLLLLLLLLLLLLLLCCCLCCCG0                                        \n                                    GLLLLLLLLLLLLLLLCCCCG0                                          \n                        LffG          GLLCLLLLLLCCCLLCG0                                            \n                         G0             GCLLffLLLLCGGG                                              \n                                          GLtffffLGG00                                              \n                                            CfttLG0                                                 \n                                              00          00C                                       \n                                                          LtC                            0CC        \n            0G0                                            0                              CG        \n            0C0                                                                                     \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

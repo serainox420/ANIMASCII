@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                    8    0C888                      \n                               8      08                    808 8  CCGCG8LLLL8                      \n                       80 0GL0GG     LL0080 8         00 8GGfLLG0  G0CCCLLCLGC880C                  \n                     GCLLCLCGtG    8CLGG0LLCC G8  88G 800ffGG0CtLt1tfLCG00GCffCLL8                  \n                  0CGLLG8GtCftttttfLCLCGfCLCCff0 8f0CfLLL080Lt11iiiiiiii1L088GGLC08                 \n                00GL00 0f11i;1iiiii1LLLG00LGfCCf0 GCGfG88C1;iiiiiiiiiiiiii;1C  8G0                  \n                0CGG G1;;iiiiiiiiiLCGfi;1L08GLf0   0G 8Li;iiiiiiiiiiiiiiiiiii1G                     \n                  8 t;iiiiiiiiiiii1CLiiiiiif88G8     Liiiiiiiiiiiiiiiiiiiiiiii;L                    \n                   tiiiiiiiiiiiiiiLG1iiiiiiiiC     01iiiiiiiiiiiiiiiiiiiiiiiiii;C    8fi;;1L        \n                  L,..,:iiiiiiiiifGfiiiiiiiiii10  Ciiiiiiiiiiiiiiiiiiiiiiiiiiiii18   L ..   ;8      \n                 1      ,iiiii1fCL1iiiiiiiiiiiii0L;iiiiiiiiiiiiiiiiiiiiiitLf1iiii8   01Ltf1.,8      \n                L :tt:.  ;iii;1Ltiiiiiiiiiiiiiii;;iiiiiiiiiiiiiiiiiiiiiiiifGCiii1    0LLLLf,L       \n              81 :CLLt,   iii1i;iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiifLf1iC     GLLttG        \n              0:. :LL. .,;iii1iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii1ffft    8CLLCCLLLG      \n              0f1i:ftii1111iiiiiiiiiiiiiiiiit1iiiiiit1iiiiiiiiiiiiiiiiiiiiii1fffLG88ftftttffff8     \n             fii111ii1111iiiiiiiiiiiiiiiiiiit1ii11ii11iiiiiiiiiiiiiiiiiiiiiii1ftttfftttfff1tff8     \n           8fiiiiti11ii1iiiiiiiiiiiiiiiiiiiiiiiitL1iiiiiiiiiiiiiiiiiiiiiiiiiif8Cftfffffffttfff8     \n           0;iiiCCiiiii1iiiiiiiiiiiiiiiiiiiii11ii1i;ifiiiiiiiiiiiiiiiiiiiiiit   8Cftfttttfffff8     \n           0f11C Gi111iCt;iiiiiiiiiiiiiiiiiiiifLt11tLtiiiiiiiiiiiiiiiiiiiii18   0Lfttttffffftf      \n          8GG0  0i;iiiifGLiiiiiiiiiiiiiiiiiiiii1ttt1iiiiiiiiiiiiiiiiiiiiii18888LttLCfffffffffC      \n          GCG  G.  ..,,.,L8fiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii;LCCLLGG8  1:;iiii11G      \n         0CG  8,.,,:..:,:.f Gt;iiiii111iii11iitf1i1i1i;ti;11itttiiiiiii;;C8  88    0.        L      \n        8GC8  1 ;,,:, ii;; 0  G1iiiiCtCiL1LLLiCt1C0iLCtGiLL110Lf1iiiii:i8          L .... .. f      \n        0C0  0 :::.ii ;i,i L    Ciiitftit11tt;t1f1f1tiffitff1fft1iiii;1            ; .... .. G      \n       8CC0  f i i.1; ;i.: L     8f;iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii;1            0.   .  ...0      \n       GfG88 f,; ,.i, :;,.,8       G1iiiiiiiiiiiiiiiiiiiiiiiiiiiiii;i8            t . . : . .8      \n       GL0   L,, ,,i: i::.t         8f;iiiiiiiiiiiiiiiiiiiiiiiii;:iL8             : ...,C  ..0      \n       CC8   G:.,;,;: i::.G           Giiiiiiiiiiiiiii;:;,:iiii:;L               8, .. i0 .. f      \n             0: :,,1i ;;,.0            8fiiiiiiiiiiiii:ii .:i;:i0                0.. . L0  . i      \n             G,...,Cf :;::               G1iiiiiiii:i11i1: .:;L        8GL8      L .. .8G .  ;      \n             L.,:,;8G ,:,1                 C1iiiiii;iiitft:;iL000000GCCL1G8      f ...i G ...,8     \n             L,:;,; 8:,;;t                  8Liiiiiiiiii11t1111111111111f        C .. t 8....,8     \n             88LLG8  8CLG                     8fiiiiiiii;111111111111111f        8,.. L  1 . i      \n              GCGL    LGf8                      0fiiiii;LttftGCCLLCGt1f1G         GttC8  8ti10      \n            0LCfLL8  8ftGLC                       0L1;iGG18ft       tf0iC      8LtftL  Gftt18       \n            808008    00080                         8G8 00 G0       080G8       888    888888       \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n';n[1] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                    8    0C888                      \n                               8      08                    808 8  CCGCG8LLLL8                      \n                       80 0GL0GG     LL0080 8         00 8GGfLLG0  G0CCCLLCLGC880C                  \n                     GCLLCLCGtG    8CLGG0LLCC G8  88G 800ffGG0CtLt1tfLCG00GCffCLL8                  \n                  0CGLLG8GtCftt1tLCCGGCGfCLCCff0 8f0CfLLL080Lt11iiiiiiii1L088GGLC08                 \n                00GL00 0f11i;1iiifLti1LG00LGfCCf0 GCGfG88C1;iiiiiiiiiiiiii;1C  8G0                  \n                0CGG G1;;iiiiii1fCGtiii;1L08GLf0   0G 8Li;iiiiiiiiiiiiiiiiiii1G                     \n                  8 t;iiiiiiiiiiiLCtiiiiiiif88G8     Liiiiiiiiiiiiiiiiiiiiiiii;L                    \n                   tiiiiiiiiiiiiifGtiiiiiiiiiC     01iiiiiiiiiiiiiiiiiiiiiiiiii;C    8fi;;1L        \n                  L,..,:iiiiiiiiiCGiiiiiiiiiii10  Ciiiiiiiiiiiiiiiiiiiiiiiiiiiii18   L ..   ;8      \n                 1      ,iiiii1fGL1iiiiiiiiiiiii0L;iiiiiiiiiiiiiiiiiiiiiiiiiiiiii8   01Ltf1.,8      \n                L :tt:.  ;iii;1Ltiiiiiiiiiiiiiii;;iiiiiiiiiiiiiiiiiiiiitft1iiiii1    0LLLLf,L       \n              81 :CLLt,   iii1i;iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiitfGC1iii;C     GLLttG        \n              0:. :LL. .,;iii1iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii1Lff1;t    8CLLCCLLLG      \n              0f1i:ftii1111iiiiiiiiiiiiiiiiit1iiiiiit1iiiiiiiiiiiiiiiiiiiiiffftC08 8ftftttffff8     \n             fii111ii1111iiiiiiiiiiiiiiiiiiit1ii11ii11iiiiiiiiiiiiiiiiiiiiiitttttffftttfff1tff8     \n           8fiiiiti11ii1iiiiiiiiiiiiiiiiiiiiiiiitL1iiiiiiiiiiiiiiiiiiiiiiiiiifGfftfffffffttfff8     \n           0;iiiCCiiiii1iiiiiiiiiiiiiiiiiiiii11ii1i;ifiiiiiiiiiiiiiiiiiiiiiit8  8Gftfttttfffff8     \n           0f11C Gi111iCt;iiiiiiiiiiiiiiiiiiiifLt11tLtiiiiiiiiiiiiiiiiiiiii18   0Lfttttffffftf      \n          8GG0  0i;iiiifGLiiiiiiiiiiiiiiiiiiiii1ttt1iiiiiiiiiiiiiiiiiiiiii18888LttLCfffffffffC      \n          GCG  G.  ..,,.,L8fiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii;LCCLLGG8  1:;iiii11G      \n         0CG  8,.,,:..:,:.f Gt;iiiii111iii11iitf1i1i1i;ti;11itttiiiiiii;;C8  88    0.        L      \n        8GC8  1 ;,,:, ii;; 0  G1iiiiCtCiL1LLLiCt1C0iLCtGiLL110Lf1iiiii:i8          L .... .. f      \n        0C0  0 :::.ii ;i,i L    Ciiitftit11tt;t1f1f1tiffitff1fft1iiii;1            ; .... .. G      \n       8CC0  f i i.1; ;i.: L     8f;iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii;1            0.   .  ...0      \n       GfG88 f,; ,.i, :;,.,8       G1iiiiiiiiiiiiiiiiiiiiiiiiiiiiii;i8            t . . : . .8      \n       GL0   L,, ,,i: i::.t         8f;iiiiiiiiiiiiiiiiiiiiiiiii;:iL8             : ...,C  ..0      \n       CC8   G:.,;,;: i::.G           Giiiiiiiiiiiiiii;:;,:iiii:;L               8, .. i0 .. f      \n             0: :,,1i ;;,.0            8fiiiiiiiiiiiii:ii .:i;:i0                0.. . L0  . i      \n             G,...,Cf :;::               G1iiiiiiii:i11i1: .:;L         008      L .. .8G .  ;      \n             L.,:,;8G ,:,1                 C1iiiiii;iiitft:;iL000000GCCLfL8      f ...i G ...,8     \n             L,:;,; 8:,;;t                  8Liiiiiiiiii11t111111111111if        C .. t 8....,8     \n             88LLG8  8CLG                     8fiiiiiiii;111111111111111L        8,.. L  1 . i      \n              GCGL    LGf8                      0fiiiii;LttftGCCLLCGt1f1G         GttC8  8ti10      \n            0LCfLL8  8ftGLC                       0L1;iGG18ft       tf0iC      8LtftL  Gftt18       \n            808008    00080                         8G8 00 G0       080G8       888    888888       \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

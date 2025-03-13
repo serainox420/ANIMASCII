@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = ':::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,............,,,......,.iG08888\n:,,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::;;:::::::::::::::::::::::::::::::::::::::::::::::::::,,.;fC0888\n:,:;;::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::,,:tC0888\n,,,,,..,,,,,,,,,,,,,,,,:,,:::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,..,,..:tC0888\n,,,,,.,iiiiiiii11111iiiiiiiiiiiiiiiiiiiiiiiiiii11iiiiiiiiiiiiiiiii1iiiiiiiiiiiiiiiiiiii,,,,,.:tC0888\n,,,,,.:11tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt11:,,,,,:tC0888\n,,,,,.:11tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt1t:,,,,.:tC0888\n,,,,,.:tttttttttttttttttttttt1ttttt11tttt11ttttt1i1ttttttt11ttttttttttttttttttttttttttt:,,,,.:tC0888\n,,,,,.:ttttttttfftttttfffft1tttfffftffffftttfffftttffffffftttffffffffttfffffft1tffffftt:,:,,,:tC0888\n,,,,,.:tttfffLLLLtfffLLLLLLLLfLLLLLftCffCL1LLfLCttCffLLfLLfLLLLLLLLLLffLLLLCCLLLLLLLLff:,:,,.:tC0888\n,,,,,.:tttffLLLLLLCCffCCCCCCCtfCCCCCtfCfCC1LCtLC1fCfLCffCftLLfCLLCCfLCCCCLLti1CCCCCCCLf:,:,,,:tC0888\n,.,,,.:tttffLLLLLCLCLttLCCLLCL1fCLLLf1LffLtfLtfLtfLfLLfLL11111111tt1fLLLCf;..fCCCCCCCLf:::,,,:tC0888\n,.,,,.:tttffLLLLLLLLLLf1LLLLLLLLCLLLCCCCCCCCCCCCCCCCCCCCLCCLLLfffttt111tt1ttfGCCCCCCCLf:,:,,.:tC0888\n,,,,,.:tttfLLLLLLLLLLLCCCCCCCCCCCCCCfCftffLCfttLCffGLfffGLtCCCCCGCCCCCt1tLCCGCCCCCCGGCf,,:,,,:tC0888\n,,,,,.;tttfLLLLCCCCCCCCCCCCCCCCCCCCC;Li;1;ftiLL;f1,ttiLitifCCCCCCCGCf1tLCCGCGGGGGGGGGCf,::,,.:tC0888\n,,,,,.;ttffLLLLCCLti1CCCCCCCCCCCCCGC;Li1t;CtiLL;f11t:iGC:fGCCCCCGCf1tLGGCCGGGGGGGGGGGCf,::,,.:tC0888\n,,,,,.;ttfLLCCCCCCi:iCGCGCCCGCCCCCCCfCfCGfLGLttLGLLGffCCfCCCCCGCf1tLGGCCCGGGGGGGGGGGGCf,,:,,,:tC0888\n,,,,,,;ft11ttftfffLffffftffffLLCCCCCGCGGCGGCGGGGCGGCGGCCGGCCGCf1tLGGCCGCGGGGGGGGGGGGGCf,,:,,,:tC0888\n,,,,,,;ft1tffLfffffLfffLfLfLLLCGCCCCCGGGGGGGCCCGGGGGGGGCCGGGf1tLGGCGGGGGGGGGGGGGGGGGGCf,::,,,:tC0888\n,,,,,.;fffLCCCGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGf1tCGGGGGGGGGGGGGGGGGGGGGGGGf,::,,,:tC0888\n,,,,,.;fffLLCCCCCCCGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGCGGGL1tCGGGGGGGGGGGGGGGGGGGGGGG0GGf,::,,,:tC0888\n,,,,,.;ffLLCCCCCCCCCGGGGGGGGGGGGGCGGGGGGGGGGGGCGGGGGGGL1tCGGGGGGGGGGGGGGGGGGGGGGGG00GGf,::,,,:tC0888\n,,,,,.;LfLCCCCCGGGGGGGGGGGGGGGGGGGGGCGGCCftiiii;itfCf1tCGGGGGGGGGGGGGGGGGGGGGGGGG0000Gf,::,,,:tC0888\n,,,,,.;LfLLLLLLLLCLLCCCGGGGCCCCCCCCCLLLftii;;ii;;iii1fCCCCCCCCCCGGGGGCLCLCCCCCGGGGGGGGf,,:,,,:tC0888\n,,,,:;1ffffLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLf1;:,,.:tC0888\n,,,,,:::::::::;::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;i:,,,,:tC0888\n.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.,,..,...........................................,,,.:tC0888\n;::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::,::::::::::,,,,,:::,;fC0888\n0GLLfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffLfLfffLLLG08888\n8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888\n888@@@@@@888888888888888888@@@@88@@88888@@@@888888888888888888888888888888888@8888888888888888888888\n';n[1] = ':::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,..,,...,,....,,,......,.iG08888\n:,,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::::::::::::::::::::::::::::::::::::::::::::::::::,,.:fC0888\n,,:;;::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::,,:tC0888\n,,,,,..,,,,,,,,,,,,,,,,::,::::::::::::::,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,..,,,.:tC0888\n,,,,,.,iiiiiiii111111iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii1iiiiiiiiiiiiiiiiiii,,,,,,:tC0888\n,,,,,.:t1tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt11:,,,,,:tC0888\n,,,,,.:t1tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt1t:,,,..:tC0888\n,,,,,.:ttttttttttttttttttttt11ttttt11tttt11ttttt1i1tttttttt1ttttttttttttttttttttttttttt:,,,,.:tC0888\n,,,,,.:ttttttttfftttttfffft1ttffffftffffftttfffftttffffffftttffffffffttfffffft1tffffftt:,:,,,:tC0888\n,,,,,.:ttttffLLLLtfffLLLLLLLLfLLLLLftCffCL1LLfLCttCffLLtLLfLLLLLLLLLfffLLLLCCLLLLLLLLff:,:,,.:tC0888\n,,,,,.:tttffLLLLLLCCffCCCCCCCtfCCCCCtfCfCC1LCtLC1fCfLCffCftLLfCLLCCfLCCCCLLti1CCCCCCCLf:,:,,,:tC0888\n,,,,,.:tttffLLLLLLLCLttLCCCLCL1fCLLLf1LffLtfLffLtfLfLLfLL11111111t1tffLLCf;..fCCCCCCCLf:::,,,:tC0888\n,.,,,.:tttffLLLLLLLLLLf1LLLLLLLLCCCLCCCCCCCCCGCCCCCCCCCCLCCCLLfffttt111tt1ttfGCCCCCCCCf:,:,,.:tC0888\n,.,,,.:ttfffLLLLLLLLLLCCCCCCCCCCCCCCfCftffLCfttfCffGLffLGLtCCCCCGCCCCCt1tLCGGCCCCCCGCCf,,:,,.:tC0888\n,,,,,.:ftffLLLCCCCCCCCCCCCCCCCCCCCCC;Li;1;ftiLL;f1,ttiL1tifCCCCCCCGCf1tLCGCCGGGGCCGGGCf,,:,,.:tC0888\n,,,,,.;ftffLLLCCCCftfCCCCCCCCCCCCCGC;Li1t;CtiLL;f11t:iGC:fGCCCCCGCf1tLGGCCGGGGGGGGGGGCf,::,,,:tC0888\n,.,,,.;ttfLLLCCCCCtitCCCGCCCGCCCCCCCfCfLGfLGLttLGLLGffCCfCCCCCGCf1tLGGCCGGGGGGGGGGGGGCf,::,,,:tC0888\n,.,,,,;ft11ttftfffLffffftLfffLLCCCCCGCGGCGGCGGGGCGGCGGCCGGCCGCf1tLGGCGGCGGGGGGGGGGGGGCf,,:,,,:tC0888\n,,,,,,;ft1tffLfffffLLffLffLfLLCGCCCCCGGGGGGGCCCGGGGGGGCGCCGGf1tLGGGCGGGGGGGGGGGGGGGGGGf,::,,.:tC0888\n,,,,,.;fffLCCCCGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGf1tCGGGGGGGGGGGGGGGGGGGGGGGGf,::,,.:tC0888\n,,,,,.;fffLLCCCCCCGCGGGGGGGGGGGGGGGGGGGGGGCGGGGGGGGGGGGGf1tCGGGGGGGGGGGGGGGGGGGGGGG0GGf,::,,,:tC0888\n,,,,,.;ffLLCCCCCCCCCGGGGGGGGGGGGGGGGGGGGGGGGGCGGGGGGGGf1tCGGGGGGGGGGGGGGGGGGGGGGGG00GGf,::,,,:tC0888\n,,,,,.;LfLLCCCCCGGGGGGGGGGGGGGGGGGGGGGCCCftiiii;itfCf1tCGGGGGGGGGGGGGGGGGGGGGGGGG0000Gf,::,,,:tC0888\n.,,,,.;LfLLLLLLLLCLLCCCGGGGCCCCCCCCCLLLftii;iii;;iii1fCCCCCCCCCCGGGGGCLCLCCLCCGGGGGGGGf,,:,,.:tC0888\n,,,,:;1fffffLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLf1;:,,,:tC0888\n,,,,,,:::::::::::::::::::::;:;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:,,,,:tC0888\n.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,......,,...........................................,,,.:tC0888\n;:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::,,:::,::::,,:,:,,,,,,,::,;fC0888\n0GCLfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffLffffffLfLLG08888\n8888888888888888888888888888888888888888888888888888888888888888888888088888888888888888888888888888\n888@@8@@88888888888888@@@@8888888888888888888888888888888888888@@@88888@@@@88888888888888@88@@888888\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

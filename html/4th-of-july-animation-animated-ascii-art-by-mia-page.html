@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n              G                                G    G                                               \n           G   LL G GL                     G    G  G                             GG   G             \n           LfG CL   fC   GG                       G 8    G                 GC  G CC  CC             \n            GG         GLLC           G        G  G G                    G  CG G GG  CG             \n   G GLG               GG  GGG             G    G  G                  GCG    G            GGCCGG    \n      CLG     GfC         GLLC                 G @@ G    G            GGC        G GGG    GGG       \n  GCG       G Liif                  G G    GGGG @@@8GG                          G GffG          G   \nG GCLC GG     1iiif  GGGCLG CLLC       GGG    8@@@@@   GGGGG  G    GGGG          GfffC        GCC   \n     G     GCtiiiiit11iiifG GGGG        88@@@@@@@@@@@@@8888        GGGG  GCCCCCCCfffffGG      G     \n  GG   Cft1iiiiiiiiiiiitG                88@@@@@@@@@@@@@@88              GLfttffffffffffffLLC GGGG  \n CLLC  Cft1iiiiiiiiiii1  GGGCCCCG       GGG @@@@@@@@@@8  GGG GG   GCCG     GGLfffffffffffLLCG  GGG  \n           G1iiii1iiiiiL G  GGCGG GGG     G @@@@@@@@@@ G           GGG   GG  LffffffffC       GG    \n GGGGG   G  1ii1CGGCf1iiG  GG             G8@@@8 G8@@@ G   G         GGG  G CtffLGGLffC G    GGCCGG \nG CLLG     GiiL      GCfG  GLLG         G G88  G G 8@@       GGG   GCCCG  G fLCG    LtL     G       \n        G  GLC  G   G     G  GG    G  G      GG   G    G    8              GG        CC     CCG     \n    G CLG G   G      G GfG           G 8 G  G   G   GG     G           GCG    GG       G     GC     \n     GLG   GLG  GL    G LG           G        G  G    G  G  G         GCG   GGCG    GCG             \nG          Gf   GtG                        G  G 8G                           GL     GC              \n                 G                                                            G                     \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n';n[1] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                G GG                             G                                                  \n           G CL  GfC     G                             G                           GG               \n        CLG  GfG CC G  CfC                G G  G                              GC G CC G   GG        \n         CfG       G  GLG GG                     GG         G            GG    GG  GG   GCCG        \n   GG      G      G     GLLG                G G G  G  GG                 GCG            GG          \n   GLLG       Gt1G G  GGGG  GG     G  GG  G    G @@ G               GG  G        G  GG G  G  GGGG   \n     GG    GG tiit        LLLCG             GGG @@@@ G     GG GG    GCCG G      G  LfL G     GCGG   \n GG          CiiiitGCLLftCGG        G   GG     @@@@@8G GGGG           GG         GffffG             \nGCLLG G   GCL1iiiiiiiiiitG GGGG       G 88@@@@@@@@@@@@@@88 G       GGG  GCLLLLLLLfffffCG      GCCC  \n   GG  Gt1iiiiiiiiiiiiit   GLLC  GGG     8@@@@@@@@@@@@@@8    GGGG  GGG  CLftffffffffffffffLCG GGGGG \n       GCft1iiiiiiiiii1 GG              GG 8@@@@@@@@@@8 GG                GGLffffffffffLLCCGG GGG   \n CCCCG     G1iiiiiiiiiiL G  GGG G         G @@@@@@@@@@8G    G      GGCCG G  LfffffffffG       GGCCG \n GGGG    GG 1iii1CLtiiiiC G CLLC G        G @@@8  @@@@ G      GG   GGGGG   GffffLGCfffG           G \nG   GG     G1iif    CfttC      G          G 8  GGG 8@@ G                   GffLG   GffG      GCG    \n   CLC      LfC  GGG      CLGG           GG GG       8   GG GG      GGCCG   GG    G GLG     G GGG   \n   G  G G      G     GGGG  fC G         G     G    GGG  G  G   G     GGG           G    GG          \n    GG Cf   G      GL  G               G 8 G   G G  G   G                 GCG    GG GG  GC     G    \n     G GG    Gf     fG G                  G G 8G G  G  G                  GG     CC      G          \n             GL                                                                                     \n               G                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

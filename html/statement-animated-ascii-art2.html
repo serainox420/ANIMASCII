@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = ' ;i:..:;;,:;;::::::;:,::;1i::,:,,:,,,..,;;1i;ii;i:,::::;i;ii;:,,:,i;:::;::,:i,.,,:;:,.;,.,;;:::,,,. \n ,fLLLCCCC0880GCCGG0GGGCLG00GCCCCCCLLLLCGGGGCGGGGGGGGCCGGGGGGGGG0G00GGG000GGGffLCCGGGGGCLG00GCCLLLt:\n :fC088888@8@@@@@@@@88@@@8@@@88888888888888888888@@@@8GCCG0@@@@@@@@@@@@@8@@@@8088888@@@8@@@@8800CL; \n,fCG8@@@@@8@@80GGCf1iiitL088@@@@@@@@@@@@@@@@@@@@@@@@8@L:GG;CGCCG8GCL0GLL8CLC8@@@@@@@88@@@@@@@@880Li \n,fC08@@@@@@Cti;;;;;:i1fLC00GG00GGGGLfLLLLG8@8@@@@@@@@8;18Lit:Gti1;Ct1:t1f;;i8@@@@@@@@@@@@@@@@@@88G1 \n,LCG8@@@@@L:;;;;;:;tCG0Gff00f1Ct1tti:::;iii0@@@@@@@@@GLCCC88CCC80CC00CC0GCCG@8@@@@@@@@@@@@@@@@@0GL; \n.L008@@@@0;i;;;;,iLfiC800888880C1iti;:;:;;:1C8@@@@@@@@@@@@888@@@@@@808@@@@@@@@@@@@@@@@@@@@@@@@80GL; \n ;0008@@@C;;;;;,;LCCC08@0CLt1ft1iit1i;;;;::;it0@@@@@@@888811L;G0G08G:C8G00008000000@00088008@@880L: \n.L000888G;;;::,iLLG0GLt1i;;;;i,,:ii11;:;;i1itit08@@@@@@8@0;fCL11f:GtiC;L;tG:Lttf;ftitt;G1ii0@@@@8Gi \n 1008880t,;:::,;i1ti:,1fLLfi:t1:;tfttt1ttifi1tffG08@@@@@8f10@@ffL1GftL1L1L0tfL8ff@8tfftCfff8@@@@8Ci \n.1LG8880CCC1;:;;itfft1C1,:;f11f1it1;ifi1ttit;i1t1fG@@@@@88@8@8@@@8@@@@@@@@@@@@@@@8@@@@@@@@@@@@@80C: \n.tC0888880fi;;1iiffttitfi;t1;t1;ii1ffii1ii,::::;;G@@@@@@@@@@@@@@8Li0@88@88@8tG@8@8@@@@@@88@8@@80Cf: \n.tG8@@@0Lfiif1f;::;i;;iff11i1i:::i11111;;:::::::1G@8@@@@@@@@8@GtCi1Gtt10@@Gt;1@f1L1f1LGtCtfCit1GGL1 \n ;L08880GCtftt1:i;tffL1;:;tt;;ff1::;;;:,;:,:;;iiL8@@@@@@@@@@8@tiC;ff;ff08LtGt;0t1C;L;ffiG1LL;000Gf: \n :fG08888Gf11iii;f0GCCLGf;0GC1ffttiii11tLi::;;;f@@@@@@@@@@@@@@@0080@808@808@0000880@80@808@08@@8Gf;.\n ,tCG88@88800C0Ct8G1iiiL@t;tLii1i1111tff1;;iiitC@@@@@@@@@@@@@@@@@@@@@@@0@@@@@@@@88@@@@@@@@@@@@880Cf:\n :LG08@@@@@@GCfLLG0LffL01,;;tfCf;i1tt1tttttfCG08@@@@@@@@@@@@@@@@@@@@@8tfL800@888ftttG888CG88888@8G1 \n 1C0888@@@@880GG0GG0GGGL;ii1tLCf11ttfffCGGCG08@@@@@@@@@@@@@@@@@@@@@@@8LCGCLL1tt0LLCLLtLLfLLLfL88GL; \n.tLG888@@@@@@8@888088GLLGGGGGGGCLCCCCCG008888@@8@@@@@@@@@@@@@@@@@@@@@@@8@@@8L0@@@@@@@@@@@@@@8@@0GLt.\n.tG@@@@@@@@@@@@@@@@@@@@@@@88888888888888@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@888GLi \n.1L08@@@@@@GCG0G@8888C0888888@8@@888@8@8888CL88G88888@888888G088888888G8888@@@@@@@@@@@@@@@@@@888GLi.\n iLG888@@8@titi1@i11it;1tt1f;t;8Lifif;0Lt11iii1111fii8Li1tit11f1it11it1t11iG8888@8888@8@@888@@@@0Lt,\n iL0@88@@@@0G08G8C088888@88@888@8L8888@8@88@88@@888008080088888800888888888G@@@@@@@@@@@@8@@@@@@@Gf: \n iLG08@@@8@11L1fitLtff1L10GtLtL1C81ftftfffttttttCtt08i1f11ffftftfttf10GtLtftL1ttC1tLtftf1ff1L8880C1 \n.1LG08@@@@@G00LGCCG0G0CGL88fCGGC08CCCffGG0CCCCGCGLC08CGGGGGG0CGLGGCCL8Cf0CGCCCCC0CLGCCC0GGGCLG80GL1.\n iG8@@@@@@8LCLGGG0@CGGGC0GfCCC0CGCLtGGCGCC0C0CCG@@fCCGGGC0CC88C0G0@1LGCC0fLG8@fLC0@CGfGCGGC@@@880Ct.\n,tG8888@@@8CfffftL8tfff1C0tfC1LtftfLffLC1tL1CttfC@fffffftCt1G01LfC8fLtftLtLtG0tf1L81fft1tf1G0080Cf; \n ;LG088@@@@CCL0C8800888@08@0088808@8@8@@80088@88GL888@@8888@08@8@88GC8888888888@@@@@@@@@@@@@@880GL1,\n ;C0888@@8@tiif;1:1ttt;tiC8L1i1ftititiG8i1ti1;i1t1;t;GG;itit;GL;f1fi1i1tt111itiL0@@88888888@@8880Ct:\n 1G8@@@@@@@0G88@0C08@8@G0@@@88@G888888G@0G888CG888@88@@888888@0G@8@8888@@8@@880C8@@@@@@@@@@@@8880C1 \n.tG0888@@@8tLftL11C8it1fiftft8L;f18f1C11fiftfff1tt1@Ltf10CtftL11G0iftftL11LiG0it1CG1ft111fiC8@80Cf; \n,fG08@@@@@@00000GG0@G0G000G00@0GGG@0G0CG00008GGG0GG@000G@8G000GG8@GG08G0GGGG8@GGG8808GGGGGGC0@88GL; \n.1LG8@@@@8@t1CLLfLCfCCLGL0@GLLLCiCCLC@@GCGLGf80LGCCf@CLLLftLLGLGLLL0LL0@f0@CCfCfCfCLC@@@@@@@@@@80C1 \n :L0@@@@@@@fGGtLftCLLCtftf0GtLtLLCLtfL8CiLtLt0GtLfLt8LCfftLLtCffLCtCttC81C8fLtLLftfff000@88@@@88GL; \n.tC88@@@@@@@@@@@@@@@@@@@@88@@@@@@@@@@88@8@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8880i \n:LG08@@@@@@@@@88@@@8@@888@@@@88@@@@@@@@8@@8@8@@@@888@@88@88@@8@@8@8@@8@@8@@8@@@@@88@@@@@@@@@@@880C; \n iC8@8@@@@@GG8@@80@@@G8@@@@@@@@@8808@@@@@@@@@8@G8@@@@@@@@@@88@00@@@@@@88@0G@@8G0@@@88@@@@@@@@8880C: \n iG8888@@8@1ttiCGittt;111100ittt1f;Liif00;tit1ti1t1LiiG8iittt1t;f;G0if1ti1i1tf;1iftttif@8@@@@@80GL; \n 1C0888@@@@00800@88008800GG@L8G80@0800000fC000000808G08@000080800G80L88@00000@8008000G0@@@@@@@80Cf: \n.iLG88@@@@@@@8fLffLftLfLL@fLfLttLfLfLfCf@CLCfCt@GtfLLftfLLLLtGffL@fLfCfLLtiLLLLfLf@@@@@@@@@@@@880Ci \n ,fG88@@@@@@88CGCfL0CLLLC@1CLLCfCGCCGfCL@C1CLCL@0fLCLfCCCLLGfGLLC@CCLCLCCCCLLCCCLL@@@8@@@@@@@@888Gt.\n iL08@@@@@@@8@@@@@0f@800CfGG8fC00G@8fGG@00GG0G0Ct008@@LLG8@LLG0G0GG00@@8fGG@00G0LGGG0@@@@@@@@@8@8Gi.\n ;LG88@@@@@@@@@@@8fiGG;ftff1L1fiti8L1fi8t1f1ff1tiftfG01f1C01f1t1t11ftL8L1f18Lf1tt1ftC008@@@@@@@8GL, \n ;LG88@@@@@8G@8@888@80G@8@G0@@8@8@8@@8@800@@8C8@@8@808@@@@88@@@8880@@08@8@80@@@@@@@@@888@@@@@@@8GGf.\n,fG088@@@@8f;f;8Li1fitt;GC;t1tttii108;t1tt1111;tiL0if1t1t@1it1it1i@i1t111i1t1f0@@@@@@@@@@@@@@@@8GCt \n.tC088@@@@808088@8088888@8088888080G@080C0G888888@@GC8888@88G88888@80880800080G@@@@@@@@@@@@@@@@8GL: \n 108@@@@@@@@@@L;C18CtLtL1001tLtff1C8iLttL11tLftffttftf10C1tf1tLffftfffL0@@@@@@@8@8@@8@888@888@@8GL: \n.:C88@@@@@@@@8CCLL@0tCCGC88CCGCCGL08L0G0GGGCGGCCCCCC0GL80CCGGGGCG0CGGCG8@@8@@@@@@@@@@@@@@@@@@@@80Gt,\n.tG088@@@@@@@@@@@0t8CGGGGCtC0C88C0CGC08LGGGGGCC@8tCGGL@GCGGCGC8CffLfGCGGL0@0LCGCCCG8LGCLCGCCCL@0GL;.\n tC088@@@@@@@@888ftf1tfttff1f10Giftf1GG1ttftL110Gtfff18fttLtf10G1tLtffff1f001tftLtL81Lf1tfffCG0GLLi \n :fC088@@@@@@@@@@@@@88@@@@@@@@@@88@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@88@@@@@@@@@@@@@@@@@@@@8GCt,\n ,LG088@88@@@@@@@8@@@@@@@@@@@@@@@@@@@@@@@8@8@@8@888888@8888888@@888888@@@@@@@@@8Cff@@0ff088@8@@80G1 \n ;G88008CLCLCfffCLft00LfLLftttft88CLLLtt888888888888@@@@@@@@88888@@@888888888888fffLfCfCCLf1tC@80C1.\n :LCLLCCGGGCCCCC000LCCtfLffLLfLCGCCCGGGG80GGGCLCGGGGG00G088GGG0880GCGGCLLLGGGCCCCG8Lf8880Cf1LLCGCfi \n ,,:..,:ii;,:ii::;;,,,:;;,.::,::,.:1;11;iii;;:,::::;;;i:::ii;i111i::;:,..:;,:;i:,,::;:;;::,:,.:i::: \n';n[1] = ' ;i:..:;;::;;::::::;,,::;1i::,:,,:,,,..,;;1i;;i;1:,:::::i;ii;:,,:,i;,::;::,:i,.,,:;:,,:,.,;;:::,,,. \n ,fLLLCCCC0880GCCGGGGGCCCG000CCCCCLLLLLCGGGGCGGGGGGGGCCGGGGGGGGG000GGGG000GGGffLCCGGGGGCLG00GCCLLL1:\n :fC0@888888@@@@@@@@88@@@8@@@88888888888888888888@@@@8GCCG0@@@@@@@@@@@@@8@@@@8088888@@@8@@@@8800GL; \n,fCG8@@@@@8@@80GGCf1iiitL088@@@@@@@@@@@@@@@@@@@@@@8@8@L:GG;CGCCG8GCL0GLL0CLC8@@@@@@@88@@@@@@@@88GLi \n,fC08@@@@@@Cti;;;;;:i1fLC00GG00GGGGLfLLLLG8@8@@@@@@@@8;18Lit:Gti1;Cti:t1f;;i8@@@@@@@@@@@@@@@@@@88Gt \n,LCG8@@@@@L:;;;;;:;tCG0Gff00f1Ct1tti:::;iii0@@@@@@@@@GLCCC88CCC80CC00CC0GCCG@8@@@@@@@@@@@@@@@@@0GC; \n.L008@@@@0;i;;;;,iLfiC800888880C1iti;:;:;;;1C8@@@@@@@@@@@@888@@@@@@808@@@@@@@@@@@@@@@@@@@@@@@@80GL; \n ;00888@@G;;;;;,;LCCC08@0CLt1ft1iit1i;;;;::;it0@@@@@@@888811L;G0G08G:C8G00008000000@00088008@@@80L: \n.C000888G;;;::,iLLG0GLt1i;;;;i,,:ii11;:;;i1itit08@@@@@@8@0;fCL11f:GtiC;L;tG:Lttf;ttitt;G1ii0@8@@8Gi \n 1008880t,;:::,;i1ti:,1fLLfi:t1:;tfttt1ttifi1tffG08@@@@@8f10@@ffL1GftL1L1L0tfL8ff@8tfftCfff8@@@@8Ci \n.1LG8880CCC1;:;;itfft1C1,:;f11f1it1;ifi1ttit;i1t1fG@@@@@88@8@8@@@8@@@@@@@@@@@@@@@8@@@@@@@@@@@@@80C, \n.tCG888880fi;;1iiffttitfi;t1;t1;ii1ffii1ii,::::;;G@@@@@@@@@@@@@@8Li0@88@88@8tG@8@8@@@@@@88@8@@80Gf, \n.tG8@@@0Lfiif1f;::;i;;iff11i1i:::i11111;;:::::::1G@8@@@@@@@@8@GtCi1Gtt10@@Gt;1@f1L1f1LGtCtfCit1G0L1 \n ;L08880GCtftt1:i;tffL1;:;tt;;ff1::;;;:,;:,:;;iiL8@@@@@@@@@@8@tiC;ff;ff08LtGt;0t1C;C;ffiG1LL;000Gf: \n :fC08888Gf11iii;f0GCCLGf;0GC1ffttiii11tLi::;;;f@@@@@@@@@@@@@@@0080@808@808@0000880@80@808@08@@8GL;.\n ,fCG88@88800C0Ct8G1iiiL@t;tLii1i1111tff1;;iiitC@@@@@@@@@@@@@@@@@@@@@@@0@@@@@@@@88@@@@@@@@@@@@880Cf:\n :LG08@@@@@8GCfLLG0LffL01,;;tfCf;i1tt1tttftfCG08@@@@@@@@@@@@@@@@@@@@@8tfL800@888ftttG888CG88888@8G1 \n 1C0888@@@@880GG0GG0GGGL;ii1tLCf11ttfffCGGCG08@@@@@@@@@@@@@@@@@@@@@@@8LCGCLL1tt0LLCLLtLLfLLLfL88GL; \n.1LG888@@@@8@8@888080GLLGGGGGGGCLCCCCCG008888@@8@@@@@@@@@@@@@@@@@@@@@@@8@@@8L0@@@@@@@@@@@@@@8@@0GLt.\n.tG8@@@@@@@@@@@@@@@@@@@@@@88888888888888@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@888GLi \n.1C08@@@@@@GCG0G@8888C0888888@8@@888@8@8888CL88G88888@888888G088888888G8888@@@@@@@@@@@@@@@@@@888GLi.\n iL0888@@8@titi1@i11it;1tt1f;t;8Lifif;0Lt11iii1111fii8Li1tit11f1it11it1t11iG8888@8888@8@@888@@@@0Lt,\n iL0@88@@@@0G08G8C088888@88@888@8L8888@8@88@88@@888008080088888800888888888G@@@@@@@@@@@@8@@@@@@@Gf: \n iLG08@@@8@11L1fitLtff1L10GtLtL1C81ftftfffttttttCtt08i1f11ffftftfttf10GtLtftL1ttC1tLtftf1ff1L8880C1 \n.1LG08@@@@@G00LGCCG0G0CGL88fCGGC08CCCffGGGCCCCGCGLC08CGGGGGG0CGLGGCCL8Cf0CGCCCCC0CLGCCC0GGGCLG80GLi.\n iG8@8@@@@8LCLGGG0@CGGGC0GfCCC0CGCLtGGCGCC0C0CCG@@fGCGGGC0CC88C0G0@1LGCC0fLG8@fLC0@CGfGCGGC@@@88GCt.\n.tG8888@@@8CfffftL8tfff1C0ffC1LtftfLffLC1tL1CttfC@fffffftCt1G01LfC8fLtftLtLtG0tf1L81fft1tf1G0080Cf; \n ;LG088@@@@CCL0C8800888@08@0088808@8@8@@80088@88GL888@@8888@08@8@88GC8888888888@@@@@@@@@@@@@@888GL1,\n ;C088@@@@@tiif;1:1ttt;tiC8L1i1ftititiG8i1ti1;i1t1;t;GG;itit;GL;f1fi1i1tt111itiL0@@88888888@@8880Ct:\n iG8@@@@@@@0G88@0C08@8@G0@@@88@G888888G@0G888CG888@88@@888888@0G@8@8888@@8@@880C8@@@@@@@@@@@@@880C1 \n.tG0888@@@8tLftL11C8it1fiftft8L;f18f1C11fiftfff1tt1@Ltf18CtftL11G0iftftL11LiG0it1C01ft111fiC8@80Cf; \n:LG08@@@@@@00000GG0@G0G000G00@0GGG@0G0CG00008GGG0GG@008G@8G000GG8@GG08G0GGGG8@GGG8808GGGGGGC0@88GL; \n.1LG8@@@@8@t1CLLfLCfCCLGL0@GLLLCiCCLC@@GCGLGf80LGCCf@CLLLftLLGLGLLL0LL0@f0@CCfCfCfCLC@@@@@@@@@@80C1 \n :L0@@@@@@@fGGtLftCLLCtftf0GtLtLLCLtfL8CiLtLt0GtLfLt8LCfftLLtCffLCtCttC81C8fLtLLftfff000@88@@@88GL: \n.tC88@@@@@@@@@@@@@@@@@@@@88@@@@@@@@@@88@8@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8880i \n:LG08@@@@@@@@@88@@@8@@888@@@888@@@@@@@@8@@8@8@@@@888@@88@88@@8@@8@8@@8@@8@@8@@@@@88@@@@@@@@@@@880C; \n iC8@8@@@@@GG8@@80@@@G8@@@@@@@@@8808@@@@@@@@@8@G8@@@@@@@@@@88@00@@@@@@88@0G@@8G0@@@88@@@@@@@@8880C: \n iG8888@@8@1ttiCGittt;111100ittt1f;Liif00;tit1ti1t1LiiG8iittt1t;f;G0if1ti1i1tf;1iftttif@8@@@@@80GL: \n 1C0888@@@@00800@88008800GG@L8G80@0800000fC000000808G08@000080800G80L88@00000@8008000G0@@@@@@@80Cf: \n.iLG888@@@@@@8fLffLftLfLL@fLfLttLfLfLfCf@CLCfCt@GtfLLftfLLLLtGffL@fLfCfLLtiLLLLfLf@@@@@@@@@@@@880Ci \n ,fG88@@@@@@8@CGCfL0CLLLC@1CLLCLCGCCGfCL@C1CLCL@0fLCLfCCCLLGfGLLC@CCLCLCCCCLLCCCLL@@@8@@@@@@@@888Gt.\n iLG8@@@@@@@8@@@@@0f@800CfGG8fC00G@8fGG@00GG0G0Ct008@@LLG8@LLG0G0GG00@@8fGG@00G0LGGG0@@@@@@@@@8@8Gi \n ;LG88@@@@@@@@@@@8fiGG;ftff1L1fiti8L1fi8t1f1ff1tiftfG01f1C01f1t1t11ftL8L1f18Lf1tt1ftC008@@@@@@@8Gf, \n ;LG08@@@@@8G@8@888@80G@@@G0@@8@8@8@@8@808@@8C8@@8@808@@@@88@@@8880@@08@8@80@@@@@@@@@888@@@@@@@8GCf.\n,fG088@@@@8f;f;8Li1fitt;GC;t1tttii108;t1tt1111;tiL0if1t1t@1it1it1i@i1t11111t1f0@@@@@@@@@@@@@@@@80Ct.\n.1C088@@@@808088@8088888@8088888080G@080C0G888888@@GC8888@88G88888@80880888080G@@@@@@@@@@@@@@@@8GL; \n 108@@@@@@@@@@L;C18CtLtL1001tLtff1C8iLttL1ttLftffttftf10C1tf1tLffftfffL0@@@@@@@8@8@@8@888@888@@8GL: \n.:C88@@@@@@@@8CCLL@0tCCGC88CCGCCGL08L0G0GGGCGGCCCCCC0GL80CCGGGGCG0CGGCG8@@8@@@@@@@@@@@@@@@@@@@@80Gf,\n.fG088@@@@@@@@@@@0t8CGGGGCtC0C88C0CGC08LGGGGGCC@8tCGGL@GCGGCGC8CffLfGCGGL0@0LCGCCCG8LGCLCGCCCL@0GL;.\n tC088@@@@@@@@888ftf1tfttff1f10Giftf1GG1ttffL110Gtfff18fttLtf10G1tLtffff1f001tftLtL81Lf1tfffCG0GLLi \n :tC088@@@@@@@@@@@@@88@@@@@@@@@@88@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@88@@@@@@@@@@@@@@@@@@@88GCt,\n ,LG088@88@@@@@@@8@@@@@@@@@@@@@@@@@@@@@@@888@@8@888888@8888888@@8888888@8@@@@@@8Cff@@0ff088@8@@80G1 \n iG88088CLCLCfffCLft0GLfLLfttfft88CLLLtt888888888888@@@@@@@@88888@@@@88888888888fffLfCfCCLf1tC@80Ct.\n :LCLLCCCGGCCCCC000LCCtfLffLLfLCGCCGGGGC80GGCCLCGGCGG00G088GGG0880GCGGCLLLGGGCCCCG8Lf8880Cf1LLCGCLi \n ,,,..,,ii;,:ii::;;,,::;;,.::,:::.,1;11iiii;;:,::::;;;i:::ii:i111i::i:,..:;,:;i:,,::;:;;:,,,,.:i::: \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

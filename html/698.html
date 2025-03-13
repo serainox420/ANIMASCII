@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                           8@@@                                         8           \n                                           8@@8            GCLLLLLCGGGGCCCGGG                       \n                   8                                     LLLLLLLffffffftttffftC   @@@8           8  \n                                                       G1tfGGCCCCCCCG CCLfLLff1G  @@@@8             \n         888                                           L1Gftffffftttfftfffft1ftt                    \n        @@@@8                                           1LCCCLLLLLCLffffffffLLt1                    \n         888                             88             CtCGGCCCCCCCCCCLfffffLtt                    \n                              88                        GiCGGCCCCCLLLCLffffffL1f                    \n                                                        GiCCCCCCCCCCCCLLLffffLtf                    \n                                                         1LCCCCCCCfLLLLft1ttt1if              88    \n   8                                                888  f1LffffLifGLftfLLftftiL                    \n   8                                                @@@  Cf@    LtGGL1i:fC;;iiif                    \n             8         88                                LL8LLL@fLGCtiLftC1;f1;G                    \n         8@8                                             Lffi1iLfLGCLfi1iGtitiC          888        \n         88                                              Gt1i;t1fCCCCCCLffL;ftL         @@@@8       \n                                                          1;t1i1LCCCCCGLCt1it1iG        @@@@8       \n                                                          i1t111LCCLf1Ci;t11i,1                     \n                            8@@8          88             C1GLLLCCCLCGCCf1ii1i;      8               \n                   8          8           8@ CLLLLffttLfttf GCCCCCftttLCCtff1C                      \n                                          CfffLCCLffiCL1LCCLLCCCCCCL1LLffLLLG                       \n                                        LffCLLttCLfiCG1CGCCLffCCCCCft8                              \n                 8@@8                 CtLGCLffi1ffiL ffG GCCCCCCCCGft8                              \n                @@@@@                ftGGCLLftLCt1L  1CGGfLCCCCCCCCLiLCG       8                    \n                8@@8               GtfGGCLf1ifftfGG G1CCtfCCCCCCLLt1fLftf                           \n                             8    GtLLCCL1tfCCCGGGG  LtfLCCCCLfft1fLCLLf11G                         \n                                  1ftttt1LCGGGGGGGGGCGCffftttttffLCLttttft1G                        \n   8                             G1GfL1itttfLLLCCG CfGGGGGCLLLCCCCf1tf1tfLt1G                       \n                                  1CL1tCCCCLLCfffffLGGGGGGCCCLLLCttLLLCCCCC1f                       \n                                  f;1fCCCCCC GCCffCfffLCGGLLLLLCt1LffCCCCCCf1                       \n                              CLfft1ffffLCCGGCLt1CCCCCLttfCCLLLCifLf1CGGCCCf1                  8    \n                           GfffLCGG  GCCfffff11fCCCCCCLLfttfCCLCfttifG CCCGft                       \n                          LtLGGGGCGGGGGGGCLCLfffLCCCLfffLLfttLLLfLCtLG CCCGtL              888      \n                         ffGGCff1t1fCGGGGCCGGGGLttLLfffffLLL11LCLCCiLGCCCCGtL              @@@      \n                        ff  Gtitt111LLffLCGGGGGGGLt1fLfLft1ifLCLLLt1tGCCCCGff                       \n                8@@@   G1GGLtttLfi:1t;t1;f1LGGGGGCCL1tLttLGCLffffLG 1CCLtfCft                       \n                8@@8   GtCt11ttt1fLLCGCLtt;ffLGGGGLCC1iCG 88       G1CCf1tLtf                       \n                        1ifttLCCGGGGCfLGCfiftfGGGGCLCC1C 8@@8   8  tLGCCLfLiG    8                  \n                      G11it1LGCCCCCCtfLCCLt;LCGGGCLCLLLtfG88      G1G CCCfiC                        \n                      C11tttt;tCCCCCCCCGCL;CtfGGGGCGGCCCLi1C      ff GCCf1C                         \n                      GCf1i11ftLGCCCLtCGC1tLfGGGGGGGGGGCG11ttL   CtCGCGft                           \n8@@8                Gtii1ttLLLtfCGCCCCLGt1GGGGGGGGGGGGGGC1LLftttt1LGCCft                            \n@@@8                t;i11LttttCftCCCGGCt1fifGG GGGGGGGGG1LGCLLft11tfCtf                             \n                    Ci;;1ttCCf1tCttLLLfL  CffLG  GGGGGCtLCCCCCCLft1tf18                             \n                   @L;i11ft1ttftttff1G  G    CLfLLCGCffCGGGCCCCCLLtt11C   8                         \n                   8 Ciii;;;iii1fLCLtCLfCCC     GCLf1tLLLCCG GCCCCLL1it                    8        \n                      GLLCGtfiLG88@Gf @ G8Lf         GCLLLff1CCCCCCCfiiG                   8        \n         88                  f@GC @@@@@@ GLL  8            G;LGGCCCCLiiG       888                  \n                            Ct   8 CCLLLCCG                L1CGGCCCCLiL       @@@@@8                \n                             GLCCLLCG                      ftGGGCCCGff8       88@@8                 \n                                                 88        GifCGCCCC1L                              \n  88                                     8     8@@@@        ftLfLLLC1C                              \n                                                8@@8         tLCCCCG1C        88                    \n                     8@                                      C1CCCCC1G                              \n                      8                                       tG@@@ t   GGG                         \n           8@@                                         88     tC@@@CtCLCCLfL                        \n                                                             Cf88G 8888@8C8 t                       \n                8                                            t @@  @@@@@@8CCL              8        \n                                                             LL  8 CCCLCCLCG          @@8           \n     8                                         8              GLLLCG                  88            \n                                                                                                    \n';n[1] = '                                           8@@@                                         8           \n                                           8@@8            GCLLLLLCGGGGCCCGGG                       \n                   8                                     LLLLLLLffffffftttffftC   @@@8           8  \n                                                       G1tfGGCCCCCCCG CCLfLLff1G  @@@@8             \n         888                                           L1Gftffffftttfftfffft1ftt                    \n        @@@@8                                           1LCCCLLLLLCLffffffffLLt1                    \n         888                             88             CtCGGCCCCCCCCCCLfffffLtt                    \n                              88                        GiCGGCCCCCLLLCLffffffL1f                    \n                                                        GiCCCCCCCCCCCCLLLffffLtf                    \n                                                         1LCCCCCCCfLLLLft1ttt1if              88    \n   8                                                888  f1LffffLifGLftfLLftftiL                    \n   8                                                @@@  Cf@    LtGGL1i:fC;;iiif                    \n             8         88                                LL8LLL@fLGCtiLftC1;f1;G                    \n         8@8                                             Lffi1iLfLGCLfi1iGtitiC          888        \n         88                                              Gt1i;t1fCCCCCCLffL;ftL         @@@@8       \n                                                          1;t1i1LCCCCCGLCt1it1iG        @@@@8       \n                                                          i1t111LCCLf1Ci;t11i,1                     \n                            8@@8          88             C1GLLLCCCLCGCCf1ii1i;      8               \n                   8          8           8@ CLLLLffftLfttf GCCCCCftttLCCtff1C                      \n                                          CffLLLCLff1CL1LCCLLCCCCCCL1LLffLLLG                       \n                                        LffCLL1LGLf1CG1CGCCLffCCCCCft8                              \n                 8@@8                 CtLGCLL11GLf1L ffG GCCCCCCCCGft8                              \n                @@@@@                ftGGCfLf1GLttC  1CGGfLCCCCCCCCLiLCG       8                    \n                8@@8               GtfGGCLLtifftLGG G1CCtfCCCCCCLLt1fLftf                           \n                             8    GtLLCCLLt1CCCGGGG  LtfLCCCCLfft1fLCLLf11G                         \n                                  1ftttLf1tGGGGGGGGGCGCffftttttffLCLttttft1G                        \n   8                             G1GfLLti1ffLLLCCG CfGGGGGCLLLCCCCf1tf1tfLt1G                       \n          CLL    GCG              1LLf11LCCLLCfffffLGGGGGGCCCLLLCttLLLCCCCC1f                       \n      CCG 1LL1C  1ifffCGG     GGGGtit1fCCCCC GCCffCfffLCGGLLLLLCt1LffCCCCCCf1                       \n     C;ftLLtCL1fCCfffLLt1tLLLLLLLt1LCCCCCCCGGCLt1CCCCCLttfCCLLLCifLf1CGGCCCf1                  8    \n     GLfLftf11LLtfft1tCGGL11C GCGGLtLCCCGCCCLttfCCCCCCLLfttfCCLCfttifG CCCGft                       \n       ittfLLt1fffLfftCCCGGLtt1iLGGGLtfCGLLCCLCGCCCCLfffLLfttLLLfLCtLG CCCGtL              888      \n       ffLttftfLLtCf1LCCftLCCf1iffCCG LfffLCCCCCCCLLfffffLLL11LCLCCiLGCCCCGtL              @@@      \n        CfttttftfGCfLCCLLftfGff1t1C1GGGGCLLLLLLLLffLLLLLft1ifLCLLLt1tGCCCCGff                       \n        ttf1tittLGLCGCGCffGGLft1ttCCGGCLtfLLLLftttttttfttLGCLffffLG 1CCLtfCft                       \n        GCLLLfLffLCCLLfLLLffiif1ftCGfLitifiiifLLLCCLLfiLG 88       G1CCf1tLtf                       \n               GGGCCfiLLLfiitLt1tCGL11itCLfCCfft1tfLCCtC 8@@8   8  tLGCCLfLiG    8                  \n                     CtCGGLG GGtLGft11 ftCtfGGGCtft11fLtfG88      G1G CCCfiC                        \n                      GLfLLLLLt1 GGfi1G 1tGLLLLL1;tfttiLt;fC      ff GCCf1C                         \n                         GGLiff1f8GCt11GCfftffLLtL11fLLCLifttL   CtCGCGft                           \n8@@8                       Giftf1tCGGGf1CCfGGCfLtftfLttfttCLftttt1LGCCft                            \n@@@8                        tLCfLtffLCCf1CCftLftffLf1tLfiLGCLLft11tfCtf                             \n                            LtCCCCGfiCLLftfLtttfftfftt1;LCCCCCCLft1tf18                             \n                   88        tGGGGGCt8 G  GLff1;ttti1ff1CGGCCCCCLLtt11C   8                         \n                   88        f 8@@@GtCLfCCC GLLifCLti1fLLCCGGGCCCCLL1it                    8        \n                             tG8@@@Gf @ G8Lf         GCLLLLf1CCCCCCCfiiG                   8        \n         88                 Gt8GC @@@@@@ GLL  8            G;LGGCCCCLiiG       888                  \n                            Ct   8 CCLLLCCG                L1CGGCCCCLiL       @@@@@8                \n                             GLCCLLCG                      ftGGGCCCGff8       88@@8                 \n                                                 88        GiLCGCCCC1L                              \n  88                                     8     8@@@@        ftLLLLLC1C                              \n                                                8@@8         tLCCCCG1C        88                    \n                     8@                                      C1CCCCC1G                              \n                      8                                       tG@@@ t   GGG                         \n           8@@                                         88     tC@@@CtCLCCLfL                        \n                                                             Cf88G 8888@8C8 t                       \n                8                                            t @@  @@@@@@8CCL              8        \n                                                             LL  8 CCCLCCLCG          @@8           \n     8                                         8              GLLLCG                  88            \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

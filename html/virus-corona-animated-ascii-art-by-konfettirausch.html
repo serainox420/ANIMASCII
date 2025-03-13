@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = ':,;i1ii1ii1i1iiiiiiiiiiii11tt11tttttt11iiiiiiiii1111iiiiiiii;i;iiiiiiiiiiiiii1iiiii;;::;;;;;iiiii;,:\n,iCCCCCCCCCCCCCCCf1111CCCCCCCCCLfLLffftttfGCCCCCCCfLCCCLCfLCL1LLfftLCCLLCCCCCCCCCLfLCCCLCCCCLLfffC1:\n,fCLCftCCC;fCLLCC:iLLLCitCCL1fC1i:;1;:1t1tttLifCCf,f1;;iL:1Gt:f:i11LC;;;tLtCCCLC1:1;1LfCCfiL;it1tCL:\n,fCCG1:Lft:;iifCC;it1LC:1CCt,;CCC:tGt:Cf;i1ff,:LCt:LL:iCL:1fi;f:fGCC1:CLL1:LCf:L:1G;it:LC;;L:itLCCL:\n,tCft;:i1t:1LLCCC;;ttLC:1CC;::LCC:1C1:Cf,LGCt::1Gi;CC;iCL:it;;f:i1LC;1CCC1;CCi;C:;;iCL,fL,fL:itLCCL:\n,tLiti;CLf:;i1LCC;iGCCL:tCf:f:tCC;iG1:CL:iiLt:1:Ci;CC;iCf,fG1;L:tLCL:tCLCi;CL:tC:;:fCC:11:CL,fGCCCt,\n,fCCLi:ii1:iCCCCCi;CCCL:tGi;L:iCC;iG1:CL:1LCt:L:1;iCC;iCf,fC1;L:fCCL:fCLC;;C1:Cf,f;iCCi;:1Cf,fCCCCi,\n,tf;i;;LCG;iCCCCC1:CCCL:fC:;1;;CC;iGt:LC:1CC1,Ct::tCC;iCf:fC1:L:fCCL:fCCC;iC:1Cf,Lt:LCt,:LCf,fCCCCi,\n,1CLG1:CCCi;CCCCCt:LCCL,ff:LCf,LC;;Ct,LC;iCCfiCL:,fCC;;Cf,fC1:L,1LfL:iC;11:i:LCt,LL,tCL,;CCf,fCCCCi,\n,;CCCf1CCC1:LCCCCf:fCCf,fLfCCL:tCi;Cf:fCi:t1tCCC1:LCC11Cf;LCf1L1i11Lf;;iLL11LCCt;LC;1CCtfCCL;iitCC;,\n::fCCCCCCCLfCCCCCCLCCCLii11LCCLLCLLCCLLCLtttfCLLLLLLLCCCCCCCCCCCCCCCCCLCCCCCLLCCCCCCCCCCCCCCCLLCCt::\n::,;;;;;ii1tttt111t11111ii;iii11i11iii;;;iii;;;::;:::;;;;iiiiiiiiiiiiiiii;;;::;;iii11iiiiiii1iii;,::\n';n[1] = ':::iiiiiiiiiiiii;iiiii;;ii11111111111iiiii;;;;;iiiiii;;;;ii;;;;;iiii;;ii;;;;ii;;;i;;::::;;;;iiiii;,:\n,;fLLLLLLLLLLLLLLt1ii1LLLLLLLLLftfftttt11tLLLLLLLftfLLffLtfLfifftt1fLLtfLLLLLLLLLftfffffffLLfttttL1,\n,tLfft1fLf;tLffff:;ffff;1Lffitfii:;1;,111111fitLLt,ti;;if:1C1,t:;11ff;;;1f1ffffLi:1;iftfLt;f;;1i1Lf:\n,tLLLi:ft1:;i;tLf:it1fL:iLL1,;fLL:1C1:Lt:iitt,:fL1:ff:iLf:it;:f:tLLLi:fff1:fLt:f:iL:;1:fL;;f:itfLLf:\n,1ft1;:ii1:iffffL;:11ff:1Lf;::fff:iLi:Lt,fLLt::1Li:fL:iLf:i1;;t:;ifL:iLfLi:fL;;L:;;iff,tf,tf:i1ffLf:\n,1fit;;Lft:;iiffL;;LLLf:1Lt:t:tLf:iLi:Lf:;if1:i:f;;LL:iLt,tCi:f:1fff:1LfLi;Lf:1f:;:tLf:11:Lf,tLffL1,\n,tLLf;:i;i:ifLffLi;Lfff:1Li:f:iLL;iLi:ff:ifL1:f:i;iLL;iLt,tLi:f,tLff:tLfL;;L1:ft,t;iLL;;:iLt:tLffLi,\n,1t;i;:ffL;;LfffL1:ffLf:tL:;i;:fL;;L1:fL:iLL1,L1::1LL;;Lt:tL1:f:tLLf:tLfL;;L:iLt,f1:fL1,:tLt:tLffLi,\n,iffLi:LfLi;LfffL1:ffLt,tt,fLt,tL;;Lt:fL;;LLtiff:,tLL;;Lt,tL1:f,1ftf:iL;1i:;:fL1,ff,1Lf,;LLt,tLffLi,\n,;LfLtiffLi,ffffLt,tLLt,tftfff:1L;;Lt:tLi:11tLfL1:fLL1iLt;fLtif1iiift;;;ffiifLL1:fL;iLf1tfff;;i1LL;,\n::tffLLfLLftLLLLLLfLLLfiiiifLLffLffLfffLf111tfffffffffLffLLLLLLLLLLLLLfLLfLLfffffLLffLLLLLLLLffff1::\n:::;;;;;;ii1111111111iii;;;;;iiiiiii;i;;;;;;;;;:::::::;;;;;;;;;;;;;;;;i;;;;;::;;;;iiiiiiiiiiii;;:,::\n';n[2] = ':::;;;;i;;;;;;;i;;;;;;;;;iiiiiiiiiiiiii;;;;;;;;;i;ii;;;;;;;;;;;;;;;;;;;;;;;;;i;;;;;;::::;;:;;;;;;:::\n:;ttttftttttttttt1iiiittttttfftt1t11111ii1fttftttt1tttttt1tt1;tt111ttt1tttfttttttt1tttttttttt1111ti:\n,1ftt1ittt;1ttttt:;t1tt;ittti1ti;:;i;:iiiiiit;1tt1,1i;;;t:ifi,1:;iitt;;:1tittttti:i;it1tt1;t:;ii1tt:\n:1ttfi:t1i:;;;1tt:;1itt:itti,;ttt:ifi:f1:;i11,:tti:tt:;tt:i1;:1:1ftti:ttti:tt1:t:if:;i:tt;:t:i1tttt:\n,it1i;:;ii:ittttt;:i1tt:itt:::ttt:ifi:t1,tff1::ifi:tt:;ft:;i;:1:;itt:iftfi:tt;:t:;:;tt,1t,1t:;ittt1:\n,it;1;:tt1:;;ittt;;fttt:if1:1:1tt:;fi:tt:;;ti:i:t;;tt:;f1:1fi:1:ittt:ittt;;tt:1t:;:1tt:ii:t1:1fttti,\n:1ttt;:;;i:;ttttt;:tttt:if;:t:;tt;;fi:tt:itti:t:i;;tt:;f1:1fi:1:1ttt:1ttt;;fi:t1,1:;tt;;:if1:1tttt;,\n,i1;;;:ttf;;ttttti:tttt:1t::i::tt;;fi:tt:itti,ti::itt;;f1:1fi:1:1ftt:1ttt;;t:if1,ti:tti,:1t1:1tttt;,\n,ittfi:ttt;:ttttt1:ttt1:11:tf1:1f;;f1:tf;;ff1;tt:,1tt;;f1,1fi:t:i11t:;t;ii:;:tti:tt:1f1,;tt1,1tttt;,\n,;ftt1ittti:ttttt1:1tt1,1t1ttt:if;;t1:1f;:1i1ttti:tttiit1:1t1iti;;it1;;;tti;ttt1:tt:;tti1ttt;;;itt;:\n::1tttttttt1ttttttttttt;;iittttttttttttt1ii11ttttttttttttttttftttffttttttttttttttttttttfttttttttti::\n::::;;:;;;iii1iiiiiiiiii;;;;;;ii;;i;;;;:;;;;;;::::::::;;:;;;;;;;;;;;;;;;;;;::::;;;;ii;;;;;;;;;;;::::\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

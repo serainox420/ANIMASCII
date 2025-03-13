@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '.........................,,,,,...,,.....,:::::::,,.........,.................,:,,,,,,...............\n........................,,,,,,,.,,......,,,,,,,...........,,,,,......,.,,.,,,:ii;:;;;,,,,,,,,,,,,,,,\n.,,.,,,..............................,,,,...,,,........,,::;::,,,,,,,::::::;;;iiiiii;;:::;::::::::::\n.....................................,:;;:;;;;;::,,.,::;;ii1i;:,,,,,:::::;;;;ii11iiii;;;;;;;::::::::\n.................................,,,,:;iii111iii;;;;;iiii111ii;;;;;;i;;;;iiiii111111ii;;;;;;;;;;;:::\n...............................,,,,::;ii111111iiii;;iiiii111iiiiiiiiiiiiiiiiiiiiiiiiiiii;i;;;;;;;;;:\n............................,,,,,:::;;ii1111111iiiiiiiiii1i11iiiiiiiiiiiiiiiiiiiiiiiiiiii;i;;;;;;;;;\n.......................,,,,,,,,,::::;;i11111111iiiiiiiiii111iiiiiiiiiiiiiiiiiiiiiiiiiiiiii;;;;;;;;;;\n,..................,,,,,,,,,::::::;;;ii111111111iiiiiii1111iiiiiiiiiiiiiiiiiiiiiiii;ii;ii;;;;;;;;;;:\n,..................,,,,,,,:::::::::;;iii111111iiiiiiiiii1111iiiiiiiiiiiiiiiiiiiiiiiii;;ii;;;;;;;;;:;\n,,.................,,,,,,,::::::::;;;ii111111ii1iiiiiiii11111iiiiiiiii;;11iiiiiiiiiiiiiii;;i;;;;;;;;\n,,,,,............,,,,,:::::::::::;;;iii11111111iiiiiiiii1111iiiiiiiiiiitt;t1iiiiiiiiiiii;;;;;;;;;;;;\n,,,,,,,,,.,..,,,,,,,,::::::::::::;;;;iiiiii1i1iiiiiiiiiii11iiiiiiiiii;:;:ifiiiiiiiiiiiiiii;;;i;;;;;:\n:,,,,,,,,,....,,,,,,,,:::::::::::;;;;iiiiiiiiiiiiiiiiiiiiiiiiiiiiii1tiitCGCti1ii1iiiiiiiii;;;;;:::::\n,,,,,,,,,,,,,,,,,,,,,::::::::::::;;;;iiiii1iiiiiiiiiiiiiiiiiiii11iiGCtLCCGCttii11ii;;;;:::::::,,,,,,\n,,,,,,,,,,,.,,,,,,,::::::::;;:::;;;;;;iiiiiiiiiiii;iiiiiiiiii11itLCG:,:;:;i:it1i;iii;;;;:;;;::::::::\n:,,::,,,,,,,,,,,,,::::::::::::::::;;;;;iiiiiiiii;;;iiiiii1111ii;1ti;::;;;;;;:ii1ii11111i111iii11ii;i\n::,,,,,,,,,,,,,::::::::::::::::::;;;;;;;iiiiiiiiiii1iiiiiii;;iiiii;::;;;i;;;;;;i1tfftt11ttfftt1111fL\n:,,:,,,,,,,,,,,,::::::::;;::;;::::::;;;iiiiiiiiiii;;;;i;;;;;;;;;;::;;:;;i1iii1i11tfLfffftfCLfttfCCCL\n:,,,,,,,,,,,,,::::::::::::::;;;;;;;iiiiiiii;;;;;;;;;ii11;;ii;;;;i::::1f111i1ttf1ttttt1ffLLffLCLLfftf\n,,,,,,,,,,,,,,,,,,,:::::;;;;;;;;;;;;;;;;;;;;;;;;;;;ifCt:,;i1;;;;i;;:1ft1ftt1titt11tfLftfftfLLL1ii1tt\n:::::::,,,,,,::::;;;;;;;;;:::::::::;;;;;;;;;;;;;;;:tiLti::;;;:;;;;:tt111111iit1tfffttt11tt11iiiiiiii\n,,,::::::;;;;;;;;::::::::::::::::;:;;;;;;;;;;;;;;;:t1it;,,:;;;;;;;if1111iii111fLtt1i1i1i;;;;;;;i;;;i\n::;;;;;;::::::::,::::::::::::::::::;;;;;;;;;;;;;;;;;;iLtii;;iiiii1Lfiii111tttt1t1iiiii;;;;;iiiiiii;;\n::::::,,,::,,:::::,,::::::::::::::::::::;;;iiifLi:,:tfC00Cffttf11Lff;;1tffLft1ttt111iii1iiiii11i11it\n,,,,,,::::,,,::::::,::::::::::::::::::;i;i111t0CffLCCCGC0GCCCfttLttL1tfffttfffLfftttttttt11ttt1i1tfC\n,,,:,,,:,:,,,,,,::::::::::::::::::::;i1tttttfGGi1GGGtC0GGCt;fLfGtiLLLLfLLLLLffLtLLttfftLCLffLLLffCCG\n,,,,,,,,,,,,,:,,::,::::::::::::::;i11;iiitLC00LtL00GG0088G1f;tC0CGGGCLfLLCCLLLfftfLfffLCGCLffLGGGGCC\n,,,,:,,::,:::::,:::,,::::::::::;ii;::;tCLGGGLffL111ttttLCGG0Li1CGGGGCCLLfLCLLLLCLfCCLCLLCCLCCGGCCLft\n,,,,,,:::::,,,:::::::::::::::iii;:,:::;t1i;;;;iiiitftttLCCLGGC11CGGCfLLfffttffLCCCLCLLLCCLLGGGCftt1i\n,,,,,,,,:,,,:::::::::::,::;ii;:,::::::;i,::::;:ifCGGCGG0G1;i1tf1itLCCftft1i11fLLfttftfLffLCCCLLft1ti\n,,,,,,,,,,,,:::,,,,:::;1ii1i;;;;;;;;;;iti;::;;L0000888880i11111111;i1ff1i1ii111i;ii1tftfLCfftt11ttft\n,,,,,,,,,,,,,,:::;;i1i;;:,,,,,,:,::::::::::::1CCLCCG00888LLfLLttttt1;;1ttftit1;iii1i1fLLffi1i1tii1ft\n,,,,,,,,,:;;;i;;;::,,,,,,,,,,,,,,,,,::::::::;LCfffLLCG000t1i1ff1tf1iii;i1i111iit1111fLLf11t1;ii;;1ii\n,,,::;;;;;;::,,,,,,,,,,,,,,,,,,,,,,,,:::::::iCCLLLCCG0G0G1i1ii1i;:;i;;;i;::;1iitft1tfft1i:;;;:;;::::\n;;;;::,,,,,,,,,,,,,,,,,,,,,,,,,,,,::,,::,::::1ti;1fC0GCGt;ti;;;;;;:;;::;i1t1it11111t111i;:::::::::::\n,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,::::::::,,:::::it1;1tLft11ii;iii;;;;;:::;11tt11tiiiii;;;;;::::,,,,,,,,\n,,,,,,,,,,,,,,,,,,,,,,::,::,::::::::,::::::::i1;1tfti;::;i;;;;:::,::;i1ii;;;;i;;;;::::::::,,,,,,,,,,\n,,,,,,,,,,,,,,,,,,,::::::::::::::::::::::::::i;1tt1;;:;;;;;:,,,,;ii11111ti;::;::::::::::,,,,,,,,,,,,\n,,,,,,,,,,,,,,,,:::::::::::::::::::::::::::;,,it1i::;;;;::,,::;i1tt11iitti::::::::::::,,,,,,,,,,,,,,\n,,,,,,,,,,,,,:::::::::::::::::::::::::::::::,;11;::;;;,,,,,,::i1iitt1;;i;::::::::::,,,,,,,,,,,,,,,,,\n,,,,,:::::,,,:::::::::::::::::::,,,,,,,,::::;1t1;:::,,,,,,::i1iii;;;;:;;:;::::::,,:,,,,,,,,,,,,,,,,,\n,,,,,,:,,::::::::::::::::::::::,,,,,,,,,:::;tLLi::,,,,,,:;i;1fti;;:;;;;;::::::,,:,,,,,,,,,,,,,,,,,,,\n,,,,,,,,:,::::::::::::::::::::,,,:::::;;;;;1Lf1;,,,,,::;i11111i:;;;;i;:::::::,,,,,,,,,,,,,,,,,,,,,,,\n,,,,,::::::::::::::::::::::::,,::::,,,,:,:1fti1:,,,,:;ii111i;;;;i;;:::::::::,,,,,,,,,,,,,,,,,,,,,...\n,,,::::::::::::::::::::::::::::::::,,:;;:1L1;1i,,,,:;i1i;;;iiiii;;:::::::,::,,,,,,,,,,,,,,,,,,..,...\n::::::::::::::::::::::::::::::::::::;iiifLi,it:,,:;111i;;iiii;;:::::::::,,,,,,,,,,,,,,,,,,,,........\n::;;::;;;;;;;:;;::;;::::::::::::::::;:iLC;.,tf;;1tt1i1iii;;;;;:::::::::,,,,,,,,,,,,,,,,,,...........\n::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;i;1i;LL;,:i1111tti;i1;;;;::;:::::::::,,,,,,,,,,,,,,,,,,............\n;;;;;;;i;;;iiii;;iiiiiiiiiiii;;ii;ii1fff;i1111111i;;;;:;;::::::::::::::,,,,,,,,,,,,,,,,.............\n;:;;;;ii;;;ii1iiii1111111111ttLLffLftffLfft1ttt1i;:;:::::::::::::::::,,,,,,,,,,,,,,,................\n;;;iiiiiiiiii1iii11111tftt1tfCGGGGGCLfLLfft111ii;:::::;;;:::::::::,,,,,,,,,,,,,,,,,.................\n:;;;iii11ii111ttfttfftttffLCCGCCCCLLCG0GGCLft1;;;;;;;;;;;::::::::,,,,,,,,,,,,,,,,,,.................\n;;;iiii1111tttffLfttffLLLCCCLLffttfCGGCCGCft1i;;;i;;;;:::::::::::,,,,,,,,,,,,,,,.,,.................\n;;;ii111111ttfLftt1i;;;:;;1ttffLLLLLLLfttfft1iiiii;;;:::::::::,,,,,,,,,,,,.,,,,,...,,...............\n::;;;iii1ttffLft1i:;ii;1f11fLLLLCCLffLftftt111i;;;;::::,,,::::,,,,,,...,,..,........................\n::::::;i1fLLLLti;;;;111LCCLLCLfLLLLft11111i;;;;:::::::,,,,,,,,,,,,,..,..............................\n.,,::;1ffLLLf1iiiii;ii1tttLLLft1i1ii;;i;:::,,:::::::::::,,,,,,,,.,..................................\n';n[1] = '...........................,,::,...,,.....,:::::;::,,.........,,................:;:,,,,,............\n..........................,,,,,,,.,,......,,,,,,,...........,,:,,,...,,,,,,,,,,:;1i;;ii;:,,,::::::::\n...,..,,,..............................,,,,,,,,,:,.......,,:;;;;:,,,,,:::::;;;;;iiiiiii;;;;;;;;;;;;:\n.......................................,:;;;;iiii;::,,,:;;ii111i;:::::::::;;iiii111111ii;;;;;;;;;;;:\n...................................,,,::;i1i11111iii;;;iii11111iii;;;iiiiiiiiiii1111111iiiiiii;;;;;;\n................................,,,,,::;i111111111iiiiiii1111111iiiiiiiiiiiiiiii1111ii1iiiiiii;iii;;\n..............................,,,,,,::;;i111111111iiiiiii1111111iiiiiiiiiiiii11i1i11iiiiiiiiiiiiii;;\n,.......................,,,,,,,,,::::;;;i111111111iiiiiii111111iiiiiiiiiiiiiiiiiiii1iiiiiiiiiiii;;;;\n,,...................,,,,,,,::::::::;;;ii1111111111iiiiii111111iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii;;;\n,,...................,,,,,,,:::::::::;;ii1111111111iiiiiii111111iiiiiiiiiii11iiii11iiiiiiiiiiiiii;;;\n,,,..................,,,,,,,::::::::;;;ii1111111111iiiiiii11111iiiiiiiiii11i11iii11iiiiiiii;;iiiii;;\n,,,...............,,,,,,:::::::::::;;;;ii1111111111iiii1ii111111iiiii1iitt;tti111111iiiiiiii;;i;ii;;\n,,,,,,,,,........,,,,,,,::::::::::;;;;;iiiii1111iiiiiiiiii111ii1iiiiiii:;;if1iiiiiiiiiiiiiiiiiiiii;;\n,,,,,,,,,,......,,,,,,,,::::::::::;;;;;iiiiiiiiiiiiiiiiiiiiiiiiii1ii1f11fG0GL111111i1iiiiiiiii;;;;::\n,,,,,,,,,,,,,,.,,,,,,,,::::::::::;:;;;;iiii11i1iiiiiiiiiiii111i111iiGCtLCLCCtf1i111iii;;;;::::::::::\n,,,,,,,,,,,..,,,,,,,,::::::;;;;::;;;;;;iiiiiiiiiiiiiiiiiiiii1111itLCG;,;;:;i;ittiiiiiiiii;;;;;;;;;;;\n::,,,,,,,,,,,,,,,,,,::::::::::::::;;;;;;iiiiiiiiiiiiiiiiii1t11iii1ti;::;;;;;;;;i1111tttt11tt1111t111\n,,,,,,,,,,,,,,,,,::::::::::::::::;;;;;;;;;iiiiiiiii111i1ii1iiiiiiii;;:;;;ii;;ii;i1tfffftttffLLfttttf\n,:,,,,,,,,,,,,,,,,::::::::;;::;;;;;;;;;;iiiiiiiiiii;;ii;i;;;;;;;;;;:;;;;ii111it111tfLLtLfffCCLfffCGG\n::,,,,,,,,,,,,,,,,:::::::::::;;;;;;iiiiiiiii;i;;;;;;iit1;ii1;;;i;i;:::1f11t1ittffttffftfLLLLLLCCCLff\n,,,,,,,,,,,,,,,,,,,,::::;;;;;i;;;;;;;;;;;;;;;;iiii;1LGt::;i1i;;;;i;;:1ft1ftttt11t1ttfLLffLfLLLLf111t\n,::,,,,:,,,,,,::::;;;;;;;;;;:;::::::;;;;;;iiii;;i;;tiLt1;:ii;;;;;;;:tt1t11111itttffffttt1ttt111ii111\n,,,,,::::::;;;;;;;;:::::::::;;;;::;;;;;;;;;;;;;;;i;t11t;,:;;;;;;;iiif11111ii1t1fLftt1111ii;;;;iiiiii\n:::;;;;;;:::::,:::::::::::::::::::::;;;;;;;;;;;;;;;;;iLtiiiiiiii111LL1i11tttfffttt1iiiiiii;iii111iii\n::::::,,,,:,,,,::::,,:::::::::::::::::;;;;;iiifLi:,;tfG00Cft11tft1LfLi;1tLfLftttttt11ii111ii111t11t1\n,,,,,,,,,::,,,::::::::::::::::::::::::;;;ii11t0CfLLCCCGG00CGCffftLf1L1tfLftffffLffffttffffttffft11tf\n,,,,,,,,,,,,,,,,,::::::::::::::::::;i1t1111tfG0i1GGGtC0GGCtifCLfGfifCLLfLCLLLfLLfLfttLffLCCLLLCCLLCG\n,,,,,,,,,,,,,,,,,::,:::::::::::::;i11;1;;1fC88LtC000G0088Gi1itLC8CGGGCLfLLGCCLLLftfCffLLGGGCLLC000GG\n,,,,,,,,,,,,:::,,::,,::::::::::iiii::;LLLG0GCffL11tttftCGGCCCitGG0GGGCCLLfLCLCLLCLfCCLCCLCCLCCGGGCCf\n,,,,,,,,,:,,:,,:::::::::::::;iii;:::::if1i;;;;ii;itffttLGLfCGG11CGGCLLLLfffftffLCCGCGCLCCCCCGGGCLft1\n,,,,,,,,,,,,,,,,::,:::,,::;ii;,,:::::,ii,::::::ifCGCCC00G1iiitf11tLGCfffft111tfLLLftffLLLLCGCCCLLftt\n,,,,,,,,,,,,,,,,,,,:::;1;11i;;;;;;;;i;1ti::::;f00088888801i111i111iitfLtii11i111iiii1tftfCCffttttttL\n,,,,,,,,,,,,,,:::;i11i;i:::::::::::::::::::::1GCCCGG00888tLLfCf1ttt1i;1ttft1tti;ii1iitLLLLfi1itt11tf\n,,,,,,,,,::;;;;;;:::,,,,,,,,,,,,,,:,::::::::;LCffLLLCG008t111tftttt1iii;1111t1i1t1t11fLLf11t1i1iii1i\n,,,:::;;;;:::,,,,,,,,,,,,,,,:::,,:,,:::::::,iCCLCLLCG000Gtii1i11i;:iii;ii::;i1i1ft11tfft1i:;i;;;;;::\n;;;;::,,,,,,,,,,,,,,,,,,,,,,,::::::::::::::::1fi;tLC00C0f;11i;;i;i;;;;:;i1tti1t1t11tt111i;::::::::::\n,,,,.,,,,,,,,,,,,,,,,,,,,,,,:::::::::::::::::it1;1tLftt11i;iii;;;;i;::;i1ttt1t1ii11ii;;;;::::::,::::\n,,,,,,,,,,,,,,,,,,,,,,,:,::::::::::::::::::::i1i1tft1i;:;ii;;;;::::::i1ii;;;iii;i;::::::;:::,:,,,,,,\n,,,,,,,,,,,,,,,,,,,,:::::::::::::::::::::::::ii1ffti;;;;;;;:::,,:ii11111t1i;:;;::::::::::,,,,,,,,,,,\n,,,,,,,,,,,,,,,,::::::::::::::::::::::::::;;,:it1i;:;i;;;::::::i1ttt1iitf1;:::::::::::::,,,,,,,,,,,,\n,,,,,,,,,,,,,,:::::::::::::::::::::::::::::::;t1i::;;;:,,,,,::i11i1f1i;ii;:;;:;:::::::,,,,,,,,,,,,,,\n,,,,,,,,,,,,,::::::::::::::::::::::::,::,:::;1t1i;:::,,,,,::;1iii;ii;;;;;;;::::::::::,,,,,,,,,,,,,,,\n,,,,,,:,::::,:::::::::::::::::::,,,,,,,,,::;tLL1::,,,,,,,;i;1ft1i;;;;;i;::::::,:::,,,,,,,,,,,,,,,,,,\n,,,,,,,,,,::::::::::::::::::::,,,::::::;;;:1LLti,,,,,,::i1111t1;:;;iii;::::::,:,:,,,,,,,,,,,,,,,,,,,\n,,,,,,,,:::::::::::::::::::::,,::::,,:::::1ffi1;,,,,::;i111i;;;;ii;;;;:::::::,,,,,,,,,,,,,,,,,,,,,..\n,,,,::::::::::::::::::::::::::::::::,,:;:1Lt;11,,,,,;i11;;;;iiii;;;:::::::::,,,,,,,,,,,,,,,,,,,,....\n,::::::::::::::::::::::::::::::::::::iiitC1,;f;,,,:1t11;;iiii;;;::::::::,,,::,,,,,,,,,,,,,,,........\n:::::::::;;::;;;:;;;:::::::;:::::::;i;;LGi.,1f;:i1t111iiii;;;;:::::::::,,,,,,,,,,,,,,,,,,,..........\n:::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;i;i1;fC1,,itt11ff1ii1i;;;;:;;::::::::,,,,,,,,,,,,,,,,,,,...........\n:;;;;;;;;;;iii;;;;iiiii;;ii;;;;ii;i11tff;;1t111t1i;;ii;;;;;;;::::::::::,,,,,,,,,,,,,,,,,............\n::;;;;ii;;;ii1iiii11111111111ttfftfttLfLftt1ttt1i;;;;::;:::;;:::::::::,,,,,,,,,,,,,,,...............\n;;;;;;iiiiii11iii1111ttfft1tfCGGGGGCLffLLft1tt1i;;;;;;;;;;::::::::::,,,,,,,,,,,,,,,,................\n:;;;iiii1ii1111ttttffttttffLCGGGGCCLCG0GGCLft1i;;;;;;;i;;:::::::::,,,,,,,,,,,,,,,,,,................\n:;;iiii1111tttffLttfLLLCCCCGCLLLfffGGGGG0GLf1ii;;ii;i;;;:::::::::,,,,,,,,,,,,,,,.,,.................\n:;iiii11111ttfftttt1iiiiiiftfffLLLLCCCLffLfft1iiiii;;;:::::::::::,,,,,,,,...,,,,...,,...............\n:;;ii11111tttLft1i;;i;;i1itfLCLCGCLLLLffffttt1iiii;;:::::::::::,,,,,...,,...........................\n:::::;;i1fLLLfti;;:;1itCGCLCCLLCCCCLftttft1ii1;::;;;:::,,,:,,,,,,,,,.,..............................\n.,,::;11fLLLftiiiiii111ffLCCCLftttt1ii1i;;:::::::;;;:::::,,,,,,,,,..................................\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

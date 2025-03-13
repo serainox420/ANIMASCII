@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = 'f0GGGGGGGGGGGGGGGGGGGGGGGGGGGGCCCCCLLLfffffffffftLGCffffLLfffLGCfLCCCCLCCCGGGGGGGGGGGGGGGGGGGGGGGG0f\nL@88888888888888888888@888800CCCCLLLLLLLLL8GfLLLLLCCfffLfLLfLC8GLCCCCC0GGG088888888888888888888888@L\nL@88888888888888888000GCCCCLLLCGfffffffftL8GftfftfLLttt1i1t1ffLLLLLLfC8GLCGG0888888888888888888888@L\nL@8888888888880G00GCLf1fLfffLL08Ltt1fttfffLLt111ifGC1i1i1ttt1LCf1fLLfCGCLLffffLCG00088888888888888@L\nL@88888888800GCLCLLftttttt1tftLCft1iti;1ttLLtt11iLGft11:1ft11LCt111tttLfffttf11tttLLC0088888888888@L\nL@8888880GGCCCLLLfttttfttt1t11fftfft11i11t8011ii1G0tit;1i:i:tCLii1iifG0Ct11111t1tfLffLLCG0888888888L\nL@88880GCCCLLLLLfttff0Cft1itiiGGLi1;;;ii:t@G;i;;tGC;:;i1;,;itCfi;:ii10801ii1ii1ffG@CffttffL88888888L\nL@880CCffLffffLttf1tL80ft1i1:1CCL1;;i1ii;L@C1ti:f0L1ttf1;iiiLCt1;;;:;C@Giii111ttfG0CffftfffLG888888L\nL8GCLLLLLffftt111111fLLfft1;ifGG;i1tLLLL1C@CfLt1LCLLfLfffftii1:i11f11G@C;iiii1tttfLfttffffft1fG8888L\nfGLLLLtfL11111;;;1ttfLftt1;:it0GtfLLffLLLCGLfLfLffffffffffff11tfffftL88L1ii1ttf1fLLt11ttftitt1tLG8@L\niLLLff11i:i;ti;itii:L8G11tffffLCCfffLfffLfffffffffffffffffLLLfffffLLLCLftfffLffCLLCf1i1111;tLffttL0f\n1ffffftfii1;tii::i;:L@0fffLffffftt1fffLLtfffLfLffftftfftffffffffLLLLLLffLfffffL80LLtt11111;1LLfftttt\n1ffffttt11iii;;ii1ftC80LfffffffffttLtLf1fttLfLttftttff1tfLtfftfffLLLfLLLLffLLfLGGLLfftiit1iitftfftti\n1fttt1::;;ii1ti11tt1CGCLLfLfffffffffLf1Lt1C1tf1LttLtL1Lftftf1fttfffffffffffffffLLCL1111i111i;:ifffti\n1fttt:;i;i1iiii1i1tfL0CfLfffffffffffffLLffLfLfLtfLff1LffLff1fft1tfft1ffffffftifGCL1i;;:i1ii;;ifLttf1\n1ftfiii111111i;1t1tfL80fffLffffffffffffffffffLttLLf1LLtLLftLffffttff1ttfffffftLGCtt11iiii1;;i1ffftf1\n1fti;;::;1iii111LLffLGCffLffffffLLfttLfffffffffLttLfffLftLffffffftft1tfLGCffffL08Lffff1i:;i;;;1itft1\ntCf1i;;i1111;:1LLffffLLLLLfLL1LLL1fftLfffffLftLt1fLffLf1Lffffffffftt1LfL80fLffLG0LfLff1:iiii;i;1fLLi\n1Ct11t;tt11;i;t1LLffLGCCLffLffLL1fCiLttL1Ltf1LttftL1LttLtLttL1LtfffffffLGCffffCCLftti;i;;i;i;1ii11t1\n1f1;;1;ii1iii;;tGCLLLGLfLLLLf0GfffLfLtCtfLCtLLtCtLLtLtCfLCtCffttfffLfffffffffLCLLt1tiiiiiii1i;;iiiti\n1ff1it1i1i;iii;tLLLLCCtfLLffC00LfffffLfffffLffLfLffLfLfC8ffLLttftfLffftCCLfftiiCC1;;;i;;ii:;ii;:ifL1\n1ftttftttt1ifiiittfLLLfLLfLLLLLLffffffLffffffC8LfftttttfLLfftt11ffCCftfG0LfLt11CCiii;:i1i::i;1ii1ff1\n1f1tf1;ii;i1;;;:::tfttffffLfCCLfffLffL8GfffffG8CtttfLLLCCLfffffft111LfL0GfftfCLCGi1i,;;;;11i;it1ffL1\nif11t1i:;ii1;;;i1tCCLfffftftG800LffffC0GfftttfCLffLfLfC88GfLLfLLffttCLC0LitifLfLt;;;;1ii;ii1;iftLffi\niff1ftt111;11it1tLt1i1fLLLLL080LffffLfLLfffffCCCfffffff88GffffffffLCGCG0ffttft;1ti1;1tfii:;:;tfLLf1i\n1LfttfffLf;:;;1t1ii11tttLf11C8880ffffLLCLfLLfCGCffffffL080LLLLLLLLttL1ii;1t1ttiitt1ttittti11ffLLf1ii\nifttttffffti::;;:;11i1iifff1i000CfffLCGGffCLtLGCfffLLLC8801;tLLCLttti;::;;ii11t1;;iii;;itffLLLLft1i;\nifftttttttff1;;iti11i1fttLLi:ifLfffffLGGLff11LGCfLffLff0GL;ii:i111ft;;;;;1ii1ii;;iii;:::tLLLLfff1i11\n1ft1ttfft1itL1;1i11i;11fCf;t1:itfLCLCG0C;ittLLGCtLi;it11ttfLt;i1i:::;1i:11;:;1f1ti1tti;ifLLffffii1fi\n1t1tfLfLLt1tff1i;iii;iti1t;i11iiii1Lff11itffft1t;1itfLLttLt;iftLtifii;;1iiii:1t;tf11LLLLft1tt1itff1;\n1fftfffLLCL11fffffffft;ii;iii1iii1ii,::;1i1t;iif1ifL1LCCt1i;i;tGf1CLi;1fft1i;;:;;11fLfff1it111Lf1i1i\n1tfLtfCf1LfLtttffLLLLLt11ii;11i11ti11i11i;11ifLffCL;;ftiii;:;i1ti1LLfLLt1tiiii;iffLLfftiittttffitt1i\n1LffLffLfttLLLftttfffffffff1;ii1Lii11ii111ffttt1t1f1tff1:;iii1;;ti;itLt:1LfttttLLLftft1ttfLttt;111ti\n1LLfLffLffLffLCCL1fLfiiffLLfftt1ft;i;1tf1;;i;:;:11;1t:1f111ti;;:1it1t1;tLLLLLCCffffiitftft1ii1ttt1ti\n1LLLfLLLffffffffLffLLftfLLLf1ttttfftffLLL1tt1111iiiiftf1iii1i111ttLfffLLLLCGGLLfttfi1ft11t11tft1tt1i\ntCLCLffLLfffftttftttfLLfLLLffftfLLftttttttfffftfft1ttt1i1ttftftffttLfLCGCCLf1i1fft1tft1t1t11ttttfff1\ntLfLfffttttfftttt1t11tttffttttt11ftttttttft1ii11t1tttttt1tt11fffffffffffi1tii1ttt1;iiii1i11t1fftttL1\n';n[1] = 'f0GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGCLLLfffftffffftfGGfffffLffffCGLLLCCCCCCCGGGGGGGGGGGGGGGGGGGGGGGG0f\nL@888888888888888888@8@888800GCCCCLLLLLLLfG8LLLLLLCCLffLfLLfLC80LLCCCCG0GG008888888888888888888888@L\nL@88888888888888888000GCCCCCLLfGCffffffftL00LtfftfLLttt1i1t1ffLLfLLLfL08LLCGG088888888888888888888@L\nL@8888888888888G00GCLf1fLfffLfG@GtttfttfffLLt111;fGG1i1i1ttt1LCf1fLLLCGCLLffffLCG08888888888888888@L\nL@8888888880GGCLCLLft11ttt1tftLCftt1ti;it1CLtt11iLGft11:1ft1iLGti11tttfffftff111ttLLG0088888888888@L\nL@8888880GGCCLLLLfttttfttt1t11fftfft11i1i1@011ii1C0tit;1i:i;tCLi1iiifG0G111111t1tfLLfLLCG0888888888L\nL@88880GCCCLLfLLfttftL0Lt11tiiGGLi1i;;ii:t@G;i;;tGC;:;i1;,;itCfi;:ii10@01ii1ii1tfL80ffttffL88888888L\nL@880CCffLffffLttf1ff08Ltt11:1CCL1;;i1ii;L@C1ti:f0L1ttf1;iiiLCt1;;;:;C@Giii111tttC0CfffffffLG080808L\nL8GCLLLLLLfft1111t11fLLffftiifGG;i1tLLLL1C@CfLt1LCLffffffftii1:111f11G@C;iiiiittttffttffffft1fG8888L\nfGLLLLtfL111i1;;;111fLftt1;;it0GtfLLffLLLCGLfLfLfffffffffffft1tfffftL88C1ii1ttt1fCLt11tfftitt1tLG8@L\niLLLff11;:i;ti;itii:L@G11tffffLCCfffLfffLfffffffffffffffffLLLLffffLLLCLftfffLfffCCCf1i1111;tLffttL0f\n1ffffftfii1;tii::i;:L@0ffffffffftt1ftfLLtfffLfLffftftfftffffffffLLLLLLfLLfffffL0@CLft11111;1LLfftttt\n1ffftttt11iii;;ii1ftC80LfffffffffttLtLf1fttLfLttftttff1tfLtfftfffLLLfLLLLffLLfLGGLLfftiit1iitf1fftti\n1fttt1::;;ii1ti11t1iC0CLLfLfffffffftLf1Lt1C1tf1LttLtL1Lftftf1fttfffffffffffffffLLCL111ii111i;:ifffti\ntfttt:;i;iiiiii1i1tfLG0LffffffffffffLfLLffLfLfLtfLff1LffLff1fft1tfft1fftfffft;f0GL1i;;:i1ii;;ifLttf1\n1fffii1111i11i;1t1tfL08LffLffffffffffffffffffLttLLL1fLtLLftLffffttff1tttLtffftCGCft11iiii1;;i1ffftf1\n1fti;;::;1iii111LLffLCCffLLfffffLLfttLfffffffffLttLfffLftLfffffffttt1tfLLGLfffLC80ffff1i:;i;;;1itft1\ntCf1i;;i1111;:1LLfffLLLLLfLLL1fLL1fftLfffffLftLt1fLffLt1fffffffffftt1LLf08LfffLG8CfLfft:i1ii;i;1fLLi\n1Ct11t;1t11;i;t1LLffLGCCLffLftLL1fCiLttL1Ltf1LttftL1LttL1LttL1L1fffffffLGCLfffCCLtttiii;;i;i;1i;11t1\n1f1;;1;i;11ii;;tGCLLCGLfLLLLfG0LffLfLtCtfLLtLLtCtLLtLtCfLGtCffttfffLfffffffffLCLLtit1iiii;i1;;;iiiti\n1ff1it1i1i;iii;tLLLLCCtfLfffL00CfffffLfffffLffLfLfLLfLfC8ffLLttftfLffftCGLfftiiCG1:;;i;;ii:;ii;:ifL1\n1ffttftttt1ifiiittfLLLfLffLLLLLLfffffffLfffffL0GfftftttfLLffft1iffCCftf00LfLt11CCiii;:i1i::i;1ii1ff1\n1f1tf1;ii;i1;;;:::tfttffffLfCCCLffLfffG8LffffC8GftfffLLCGCLffffft111LfL0GfftfCLCCi1i,;;;;1ti;it1ffL1\nif11t1i:;i11;;;i1tCCLffffftt0@80LffLfL00fftttfCLffLfLfC880fLLfLLffttCLC0LitifLfLt;;;;1ii;ii1;iftLffi\niff1ftt111;11it1tLt111fLLLLL080LffffLffLfffffCCCfffffff88GfffffffLLCGCG0ffttft;1ti1;1tfii:;:;tfLLf1i\n1LfttfffLL;:;;1t1ii11tttLf11C8880ffffLLCLfLLfCGCffffffL080LLLLLLLLttL1i;;1t1ttiitt11tittti11ffLLf1;i\n1fttttffffti::;;:;11i1iifff1i000CfffLGGGffCL1LGCfffLLLC8801;tLLCLtt1i:::;;ii11t1;;iii;;itffLLLLft1i;\nifftttttftff1;;iti11i1fttLLi:ifLfffffLGGLff1iLGCfLffLff0GL;ii:i111ft;;;;;1ii1ii;;iii;:::tLLLLfff1i1i\n1ft1tffft1itL1;1i11i;11fCf;t1:itfLCLCG0CiittLLGCtLi;it11ttfLt;i1i:::;1i:11i:;1f1tittti;ifLLffffii1f;\n1t1tfLfLLt1tff1i;ii;;iti1t;i11iiii1Lff11itffft1t;1itfLLttLt;iftLtif1i;;11iii:it;tf11LLLLft1tt1itff1;\n1ffttffLLCLt1fffffffft;i1;iii1iii1ii,::;ii1t;i;f1ifL1LCLt1i;i;tGf1LLi;1fft1i;;:;;11fLfff1it111Lf1i1i\n1tfLtfCf1fLLtttffLfLLLt11ii;11i11ti11i11i;11ifLffCL;;ftiii;:;i1ti1LLfLLt1tiiii:iffLLfftiittttffitt11\n1LfffffLfttLLLftttfffffffff1;ii1Lii1tii111ffttt1t1f1tff1:;ii;1;;ti;itLt:1LftttfLLLftft1ttffttt;111ti\n1LLfLffLffLffLCCf1fLfiiffLLfftt1ft;i;itf1;;i;:;:11;1t:1f111ti;;:1it1t1;tLLLLLGCffffiifftft11i1ttt1ti\n1LLLfLLLfffffffLLffLLftfLLLf1ttttfftffLLf1tt1111iiiiftt1iii1i111ttLfffLLLLCGGLLfttfi1tt11t11tft1tt1i\ntCLLLffLLffLftttftttfLLfLLLfLftfLLftt1ttttfffftfft1ttt1i1ttftftffttLfLCGCCLf1i1fft1tft1t1t11ttttfff1\ntLfLfffftttfftttttt11tttffttttt11ftttttttft1ii11t1tttttt1tt11ffftfffffffi11ii1ttt1;iiii1i11t1fftttL1\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

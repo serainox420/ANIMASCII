@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                                                                                    \n                                                      ..   .,:;i;.      ,::,.                       \n                                            .,, .:;1ffLC; .1tLCCf.    .1tLCLL: :ift1:               \n                                    .,,;;11ffLt.1tLCCCLCf, ;tfLLL;    ,t1fLLL: :ttCCC;     ,,       \n                          ..,,:iii:tfLLCCCCCCGt:ttLLLLLLCi :ttLLC;    .t1fLCL:  :ttLCL;  :1LLf:     \n      .,:;::::::::;i;,ittfffLLCCGf:CCCLLLLLLf1:1tfCLLitCCf..ttCLCt    .t1fLLL:   :ttLCC11CCCL1.     \n     ;1tCCCCCCCCCCCGf;CCCCCCLLLLCi1Lf1tLLLCi  ;ttCLCftfLLCi.1tLLCf.   ,ttLLLL:    :ttLLCCCLi.       \n    ,ttfLCLLLLLLLCLLiiCLLft11fCLL:,,:11LLLL, .ttfCLCCCCLLLf.;tfLLC; . .itLLLL:     itfLLCi.         \n    ,1i::iitLLLC1;;iifLLC1.:tLLCt.  itfCLCf. ;ttLLLL11ifLLCi;tfCLCffff1i:LLCC;,.. .1tCLC1           \n       .:11fLLCL, ,ttLCLL: ;tLLCi  .1tfCLC1 .ttfLLC;.:ttLCCL;ttCLLLLCCGL,LCCLCCfL;,tfLLL,           \n        ;ftLLLCt. ;ttLLCf .1fCLL:  ,t1fLfL; ;ftCCCf.  1ttftt:i;;::,:iiii;11i11tLG1;fCCC1            \n       .1ttCLLC;  1ttLLCt1fLLCLt. .;111ttt1;;;i1ii:   ,,... ..    ...  .,..1fft::,ii1fL:            \n       ,ttfCLCL,  1tLCCCCCLLfft1tfLLLLLLLLLCLf;.                         ,1LfLf,  ...,.             \n       ;ftLCLCt. :ttft11111tfLLCCCLCCffttfLLLCCi,                       ,1LLCL:.                    \n      .1i:;;;;,  :;,;1ttfLLCCCLLLCCfi:,.,,iLLLGf:                  ..,,,;LCCCi:.     .,.            \n       ..   .      .iffCCCCLfLCLCLi,.  .,:tLLCG1,           ,:, .;itfLfffCLCt;. ..:;tfi.            \n                     .,;11i;;ffLC;.   .:;tffLCt,..,;i11i;,;tLf:,1ffLLLLfffLL;. ,i1LLL;.             \n                       ...;itftC1. .,:i1ffLLfi,.:1fffLfffffLC;:fffff1;ifffL1:;1fLLf;.               \n                         ,;tftLf::;1tfffLLfi,.:1fffft1tffffL1,tftLt, .1ftLf1tLLLf;.                 \n                        .:ifffLftfLLLLft1:,. :fLfffi..iLffLt,iffLt. :tLffLfLLLt;.                   \n                       .:ifGCCCGCCCf1;,     ,fGCCf;..;CCCC1:,t0GGfitG0GtG00Gfi,.. ...:::i:..        \n                      .,;tGCGL1LGGCfi:.    .;CCCCi..1CGCCC1;1G0G0000Ct;:ittiii11ttt1i1i;;,.         \n                      .;1CGCC1;:1LGGGL1:.   :fGCGLtfGGGftG0GGLi;tt1;;;;1tttfftt1;:,.                \n                     .,;fCCGLi:..:1LCCCL1:..,;fCCCCCCfi,,;iii;ii11ttfft1i;:,....                    \n                     .:1ftfLi:.   .,itffCL1,.,,:;1ii;::;i1ttfffftti;:,,..                           \n                     ,;fftCt;,      .:itffCL1:,:;i11ttfffft1i;,,..                                  \n                    .;tftfCi:.        .:itffCL1it11tLft1i:,..                                       \n                   .:tLffG1:.           .:itfLCLi:,,::,.                                            \n                  .:tCCC0C:.              .:fCLC01,,                                                \n                 .:1GCCGGi,                .,1CGf:,.                                                \n                 .,;i;::,,.                  .;;,.                                                  \n                                                                                                    \n                                                                                                    \n';n[1] = '                                                                                                    \n                                                                                                    \n                                                      .,  .,,:;i;.      ,::,.                       \n                                           ..,, .:;1tffLi .1tLLLf.    .1tLLfL: :itt1:               \n                                   ..,,;;11tfLt.1tfLLLfff, ittffL;    ,ttfffL: ;ttLLL:     ,,       \n                          ..,,:iii:tffLLLLLLLL1;ttffffffLi ;ttLfL;    ,ttfLfL:  :ttffL; .:1fLt:     \n      .,:::::::::::i;,i1ttfffLLLLt;LLLffffffti;1tfLffitLff,.ttLfLt.   ,ttfLfL:   :ttffL11LLLfi,     \n     ittLLLLLLLLLLLLf;LLLLLLffffLi1ft1tfffLi  ;ttLffftfffLi.ttffLf.   ,ttfLfL:    :ttffLLLfi.       \n    ,ttffffffffffLLfi1Lffft11fLff::,:1tLfff: .ttfLffLLLffLf,;tfffL;....1tfLff:     itffffi.         \n    :ti::iitLffL1;;i1fffL1,:tffLt.  itfLfLf. ;ttLfff111tffL;;tfLfLffft1i;ffLL;,.. .1tLfLi           \n      ..:ttfffLf: ,ttfffL: ;tffLi  .ttfLfL1 .ttfffL;.:ttLLLf;ttLffffLLLf:LLLfLLff;:tffff,           \n        ittfffLt. ;ttLfLt..1ffff:  ,ttfftf; itfLLLf.  1ttf11;1i;::::;i;ii11;ii1fC1itLLL1            \n       .1ttLffL; .1ttffLt1tfLfft. .;1111t11:;;i1i;,   ,:,,. ..    .... .,.,1ff1:::ii1tf:            \n       ,ttfLfLf, .ttLLLLLLfffftttffffLLLLLLLLt;.                         :tLfLt:  ..,,.             \n       ittLLfLt. :ttfttt111ffLLCCCCCLffttfLLLCCi,                       :tCLCf;.                    \n      .1i;;;;i,  ;;,;1tffLLCCCLLLCLfi::,::1LLLCf;                 ..,,,,iLLCL1:.    .,:,            \n       ..  ..      .1ffCCCCLfLCLCfi:.  .:;fLLCC1:    ...    ::, ,i1tfLLfLCCCt;...,:;ff1,            \n                     .:;tt1iiffLL;.   .:itffLL1:..,;111ii,;tLf;:1fffLLLfffLfi. :i1fLf;.             \n                       ..,iitftLi. .,;i1fffLfi,.;tffffffffffL;:fffftiiiffff1;i1fLLt;..              \n                         :itftLt::i1tffffLfi:.;tfffft1tftfffi:tftf1,.,1ftft1tLLft;..                \n                        ,;tfffLftfffLLft1:,. ;fffffi.,1fffft:1ffft, :tfffffLLft;.                   \n                       .;1fLLLLLLLLti;,..   :fCLLf;.,iCLLL1::tGGGfitG0CtCGGCfi,.....,::;i;..        \n                      .:ifCLLftfCLLf1;,    .iLLLLi,,1CLLLL1itGGG000GCf;;1tt1iittfttt1t1;;,.         \n                      ,itLCLLti;tfCLCLt;,   ;fCLCftLCLCttCGGGLiitt1ii;i1ttttttt1;:,.                \n                     .:1fLLLf1:..;1LLfLL1;..,;fLLLLLLfi,:i11iii1111tttt11;:,....                    \n                     .:ttttL1;.   .:itttLL1:.,:;iiiii;;i11tttttttti;::,,.                           \n                     ,ifttLti,      ,:itttLL1:,:;1111ttttft1i;:,,.                                  \n                    ,itt1tL1;.        .:itttfL11t11tftt1i;,...                                      \n                   .;tfffC1:,           ,:itffLL1;::::,..                                           \n                  ,:tCCL0C:.              .;fCLC01:,                                                \n                 ,:1CCCCGi,                .,1CGf;,                                                 \n                 .:iii;;:,.                 .,;i,.                                                  \n                                                                                                    \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

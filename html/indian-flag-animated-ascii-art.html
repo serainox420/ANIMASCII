@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '@@@80;,.C@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8@@@@@@@@@@@@@@@@@@@@@@@@@@888@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@i..G@8@88@8LLLLLLCCG088@@@@@@@@@880GGCLLLLLLLLCGG088@@@@@@@@8800GCCLLLLLLLLCG0088@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@CtfffffffffffLLLCCCLLLffffffffffffffffffffLLLCCCLLffftttfffffffffffffffC@@@@@@@@@@@@@\n@@@@@i..G@@@@@8fffffffffffffffffftffffffffffffffffffffffffffffffffffffffffffffffffffff0@@@@@@@@@@@@@\n@@@@@i..0@@@@@GffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffL@@@@@@@@@@@@@@\n@@@@@i..0@@@@@LffffffffffffffffffffffffffffffffffffffffffffffffffffffftffffffffffffffC@@@@@@@@@@@@@@\n@@@@@i..0@@@@@LfffffffffffffffffffffffffffffffffffffffffffffffffffffttfffffffffffffffC@@@@@@@@@@@@@@\n@@@@@i..0@@@@@GffffffffffffffffftffttfffffffffffffffffffffffffffffftttfffffffffffffffL@@@@@@@@@@@@@@\n@@@@@i..0@@@@@8fffffffffffffffffffffttfttttfffffffffffffffffffffffftttttttffffffffffff0@@@@@@@@@@@@@\n@@@@@i..0@@@@@@0000000GCLLffftttttttttfffLCGG000000GCLLLfftttttttttfffLLCG00000GCCLfffL8@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@@80GGCCCLLCCCG00888@@@@@GCLLCCCG00GCCCCGGGGG00008@@@@@@@@@88008@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@@@@888800000000000888@8tfLGLGLGtCC8@@8888000GG008@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@@@8888000GGGGG0000888@LfGCCLfLLCGLfL8888000GGG008@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@@@@88880000GGG00008888fCCLftLfffLCCff888000GGG008@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@@@@88880000GGG00008888tCGCftCtGttLCGt888000GGG008@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@@@@8888000GGGG0000888@CtGCCfffffLCGtC888000GGG0088@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@@@@8888000GGGGG000888@@GfLLGCGLGCLfG8888000GGG008@@@@@@@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@888888@@@@@@@@888800000000000000088GCCLCLCLG8@8888000000GG008888@@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@C1t111tttfLCG08888800GGCCLLfttt1111ttffLCG08@@88880GGCLfftt11111ttfLCG08@@@@@@@@@@@@@@\n@@@@@i..0@@@@@f11111111111111ttttttt1111111111111111111111ttttttt1111111111111111111iL@@@@@@@@@@@@@@\n@@@@@i..0@@@@@f1111111111111111111111111111111111111111111111111111111111111111111111L@@@@@@@@@@@@@@\n@@@@@i..0@@@@@L1111111111111111111111111111111111111111111111111111111111111111111111f@@@@@@@@@@@@@@\n@@@@@i..0@@@@@0111111111111111111111111111111111111111111111111111111111111111111111110@@@@@@@@@@@@@\n@@@@@i..0@@@@@@L1111111111111111111111111111111111111111111111111111111111111111111111f@@@@@@@@@@@@@\n@@@@@i..0@@@@@@811111111111111111111111111111111111111111111111111111111111111111111111G@@@@@@@@@@@@\n@@@@@i..0@@@@@@@L1111111111111111111111111111111111111111111111111111111111111111111111f@@@@@@@@@@@@\n';n[1] = '@@@80;,.C@@@@8888880GCLCCCCGG08@88888888@@@8888888@@@@@@@880GGCLCLfCLffCG088888@@@@@@@@@@@@@@@@@@@@@\n@@@@@i.,C00GGG0CLfffttttttttttffLLfffffLCCCLLLLLLfLCCGGCLttt1t1t1ttCLLCCCCLCLLLLCGG088@@@@@@@@@@@@@@\n@@@@@i..0@@@@@8LfffffffffffffttttLLLLCCCLffLLLLLLLffffttfttttttttLLLLGCLLfffLLLLLLffffL8@@@@@@@@@@@@\n@@@@@i..G@@@@@CfffffffffffffttttCCCG0LLLLfffLC0GLfffffffffffftttfCCGGCfffffffLfLCLLfffC8@@@@@@@@@@@@\n@@@@@i..0@@@@8LfffffffffffftttfLLCCCfffffLLfLLLCGLffffffffffttttCCGGffLCLL000GCffLLffL8@@@@@@@@@@@@@\n@@@@@i..0@@@@CffffffffffffttttLCGLffLGCfL000GGLfL0Cffffffffftt1fCCLfLC00LLGGG00CLLLffC@@@@@@@@@@@@@@\n@@@@@i..0@@@0tffffffffffftttfCCCCfLG00CtfLCG00GLfLCLfffffffttttLCLLfC00GftfttL0GLCLffL@@@@@@@@@@@@@@\n@@@@@i..0@@8ftffffffffffftttfCCLffC00LttffttfG0CffLLffffffftttfCLffLG00Ltffftf0GLLfLff8@@@@@@@@@@@@@\n@@@@@i..0@@0ttttffffffffffffLCCLfLG80ttfCGLffG0CffLCfffffffffLLLCLCCG0GffGGLtf0LLffLft0@@@@@@@@@@@@@\n@@@@@i..0@@GfLCG000GGCCLffffLLLLLLGGLfttfffttC8GffCCLLffLfffffLLLtC00GCLCCGLtL0Lftffttf8@@@@@@@@@@@@\n@@@@@i..0@@08@@@@@@@@@@GLtffLLLfC0CGLLCLffCLffG0CCLLLLffLfffftLLL1C000GG0GCCCCGCLttCCCC8@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@GGLtfLLLtC800GGGGGCGGGGCLLLLLCLLfffffffLLLtfG00GG00GGGCG0000@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@CtffLLff08GGGGGGGGGGLffLCCLLLLLLLffffLLLtL880GGGGGG0C08@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@CtffLLLtC000GCGGGGCfffLLfLLLLLLLLLffffLLfL000GGGGGG0G08@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@CfffLLLtL000GC00GGGffLfLLLffLLLffLffffLLfLGG0GGGGGG0G08@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@GtftfLLfL0G0GCG0GGGCfLLfLLLLLCLLLLffffLLff000GCGGGG0GG0@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@0ffffLLfL0G00G0GGGGGGLffLLLfLLLLLfffffCCLL000GCGGGG0GG0@@@@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@800GCLLLfffffffLLLLG800GGGGGGG0GLLLfLffCLLLffftfLLfLLCGGC00GG0GC0888@@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@Ctf1111111111111tfffCGG0CGGGGGG0GGGCCCCLfftt1111ttttttttLfLCCGG0C0CfLCG8@@@@@@@@@@@@@@\n@@@@@i..0@@@@8ftf1111111111111tttttffLCGGGGGGGGCGCLftt11111111tfttffffft11tttLCCCffftLGG8@@@@@@@@@@@\n@@@@@i..0@@@@8fff1111111111111ttttffffftttttttffffftt111111111tfttffffft111111ffffttt1110@@@@@@@@@@@\n@@@@@i..0@@@@@Lft1111111111111tftttttfff111111ffffffft11111111tfttffffft11111ffffftt111t8@@@@@@@@@@@\n@@@@@i..0@@@@@Cf111111111111111ftttfffft11111tffffffft11111111tffttfft111tfffffffftttt1C@@@@@@@@@@@@\n@@@@@i..0@@@@@0t111111111111111tftttfft11ttffLfffffttt111111111ttfffft11tfffffffffftftf@@@@@@@@@@@@@\n@@@@@i..0@@@@8fi1111111t11111111tfftfft11tfffffffffftt11111111111t11t1111tffftffttttttfG@@@@@@@@@@@@\n@@@@@i..0@@@@L11ttttfffftftttt1111tttttt1ttttfffttffttttttttttfffffttt111tttttfttttttffL8@@@@@@@@@@@\n';n[2] = '@@@80;,.C@@@@8888@88@888888888@@88888808@@88888888@@@@@@@@@8880080GGCCLC088@@@88@@@@@@@@@@@@@@@@@@@@\n@@@@@i.,C000G00GCCLLLLfffffffLCCCCLfLLLCGGGCCLLfLfCGCCG0CLffffffffLCCG0000GGGCLLCCCCLLLC8@@@@@@@@@@@\n@@@@@i..G@@@8@0GLfffffffffffftttfLCC00000GGGGGGCCCLLLLCGLffttttt1LLCG08000GCCCCLLLfffftL8@@@@@@@@@@@\n@@@@@i..0@@@@@0LffffffffffffttttCLC088888880000GCffLLCLCCfffftttfCG088888GGCCLffLLCCCLG@@@@@@@@@@@@@\n@@@@@i..0@@@@8CfffffffffffftttfLC0888888888888888CfCCCLLCCffttttCG888880GGCLLCLLLLLCLC@@@@@@@@@@@@@@\n@@@@@i..0@@@@GffffffffffffttttLC0888888888888888GCCCCCCLLLfftt1fC0888888GGCCCCG0GGCLfC@@@@@@@@@@@@@@\n@@@@@i..0@@@@LtfffffffffftttfCC08888888888888880LffffLCCGCfttttLG888888GGCLLCG0CfLCLLL@@@@@@@@@@@@@@\n@@@@@i..0@@@8ftfffffffffttt1fLG8888888888888880Lttt1tfCCCLftt1fC0888888GGCLCCCGLffLCLf@@@@@@@@@@@@@@\n@@@@@i..0@@@8ttfLCLLCCCCCLLLGG088888888888888GLLt1t11fCCLCGCCCGGG0008880GCLCCCCfttfLft0@@@@@@@@@@@@@\n@@@@@i..0@@88LLCCGGGGCCCLffLLCGGCGGG00088800CLCLtffffLCLLCCLffCGGCCGCCCCLLLLGGC11tLCftf8@@@@@@@@@@@@\n@@@@@i..0@@8@8@@@@@@@@@GftftG88800GGGGGGGCCffLCGCLLLCCLfLfffttLG8@@@@@88GLttfLCCCCCCCCC8@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@GGLtfC8@@@@@@@@@@@8CtfLCGCLCCCLLLffffffLG8888@@@@@GfttLG008C0@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@CtffG@8888888@8@0ftLLLCCLLCCLLLLLffftL0@@@@@@@@8@0L1fC000L0@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@CtffLC@@@@@@@8@8LttLfCCCLCCCLLLLCLfftC@8@@@@@@@@8@0ftL000LG@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@CfffLL8@@@@@@8@0ttLLLGCLCCLCLLLLCLfftL@@@@@@@@@@@8@CttC00LC@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@GtftfL0@8@@@@8@Ct1fLfLCCLCCLLLLCLLfftL088888@@@@@8@0ftG00LL@@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@@@@@@@@@@@0fftfLG@8888888Lt1fLLLLCCLCCCLLLfLfffLC8@@@@@@@@@8@8ftC00CL8@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@@88@88080G000GG008@@@@@@@@Gt1fLCGCLLLCCCLLCCCGGGGGG08888888@@@8L1L00Gf8@@@@@@@@@@@@@@@\n@@@@@i..0@@@@@Cffftttt111ttttfLLLCGG0000LttfLCGGLLLCCCfffftttttt11tttffLLCCGGffLG0GLG8@@@@@@@@@@@@@@\n@@@@@i..0@@@@8ff11111111111111111111ttttfLLLLLLffttfLLff1111111t1ttttt111ttttfLLLCCLffL8@@@@@@@@@@@@\n@@@@@i..0@@@@8ff111111111111111tttttttt11fLLfLLt1111fffLt11111tttttttttttttttLLLLfLfLft8@@@@@@@@@@@@\n@@@@@i..0@@@@@Lt11111111111111ttttttttttttfLLLLft111fLffLt1111tttttttttttttttLLCLfLfLff@@@@@@@@@@@@@\n@@@@@i..0@@@@@Gt111111111111111ft1tttttttt1tfLffLLLLLLffLt1111tt1ttttttttttttLLCLfffffC@@@@@@@@@@@@@\n@@@@@i..0@@@@@G1111111111111111tt1tttttttttt1tfffffffLLLft111111tttttttttttttLLfLfLfttG@@@@@@@@@@@@@\n@@@@@i..0@@@@@fi1111111111111111tttttttttttttt1tfffffLLfLt111111111ttttttttttLfffffftLLG@@@@@@@@@@@@\n@@@@@i..0@@@@011tttttttftftt111111ttttttttttttt1fffffftfLftttttttttttt11tttttttttttttffL@@@@@@@@@@@@\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

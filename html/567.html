@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '...  ............,..,,,.,,.,...........,,...............,,,,,,,,,,,:::::::::;;::::,,,,,:,........,..\n...,......1:....,,,...,,.,... ,,...,.......   .........,::,,:,,,:;::;;;;;::::;;::::::::,,,.......,, \n.,,:. .....,....,,:,..,,,......,.....................,,::::::,,,,:;:;;;;;;;::;::,:;::,,,,,,,......  \n,:,.,,.......,,,,,,,.,,,,,...,...,..........,,.,,,;::::;:;::::;;1t;;f1ii;iiiii::::;::,,,,,,,,......,\n...,,.....,,,,,,,,.,,:,,,,,....,,,,,:,,,,,,....,:i11iii::;;::;:;;i10GLLf1i;it11i;::::,,,,........ ..\n,,,... ....,:....,,,..,,,,,,,,,,,,,::,.,,:,,,,,:;1tfff1i;;ii;::;;:f@LLLLLLt;:;i1i::::,,,.,,.........\n.,,,,...,,..,,..,,.;ii1,,,,::,:,,::;:.,,:,:;:1ftt1tft1iii;;ii;;;i;G00008800f11;,:::::,,,,,,.........\n,,,.,.,,,,,,.....,.t@@@:.,,,:,,:::::,,,,,:;;;C@@8i11i;;;i;;i1iiii108@@@@8800GGCt:,.,,.,.,........ ..\n,........,,,iff11f:.0@8tfLf;,;fCGGCt:,;fLffG1i8@0tLCCfiiii11iiiiif@@80CLfttffLLCL1:,,,,,,.......::..\n... ...... i@@0L00i.8@@CG@@0:;GGG0@@0118@@@0ti8@0G@8GCt1111iiiitt00ft;ii;;;;;:i1fLfi:,..::,...,.....\n...,...,...,LGCG0C:.0@@.:@@8:t08GG@@8tiG@@t;i18@8C@8LfCCLft11tttfC;1t11f,1i:::i;i1LLt;;:.,,.,:......\n...,,..... f@0C8@@i1@@@Gt@@@tt@@00@@@Cf@@@01iC@@8L8@@8GGGL11ftttf;1iit::,,:,:::;;:ifLfi;:,,.,,...  .\n ........,.,;:;ii: :iiii;1iii:itfttLLf1t111;;1ttffLCfCLfffffftt1f1f;;:::,:;iii;;;i;ifLf;;,..........\n...........     .......,,,,.i1,:::;;;;;;:::1Lffi;i11ittffffttfftLft;;i;;:iiiii;;;iii1fLL;:,.........\n,............    .  .,...,:....,,,:;:;;::;;f@@@itf1i1ttLLfttfLLLCCt;;i;;;iiii;;;;;;;;tLCf;::,  .....\n,,...........LLLL:tLL:tCCC:ifCGCt::ifGGGL1ii0@0t0GGC1ttffttttffLCGCi:ii;;;ii::;;;;;::;ffLtii;:.   ..\n,,,,,,.......t@@81@@@Gf@@ft@@0L8@818@@L0@@t;8@8C@8Cf1t1tftttttfLLLCf1ii1C1LLi1i;;;;;;1fffLLLti;:....\n,,,,,:,..,,,,.f@80@0@@0@C,C@@0LCGL1@@0LLCGi:8@8L8@C111ii11tttfLCLtfCGGGGGCttt1tLLLCLLCCLLLLLCfii;,,.\n,,::::;:,,,,,,,0@@G:G@@8ii1G88000f;L880G0C,f@@@C8@@@t;;;1ii1fffft11GCft1iiii1tfffffffffLLLLLLLffi;::\n::;;;i1ii;;;;::;ii:,:;t1iifLfCCLt1ii;;ii;:,;1LGL11ii;::;;iii1ii1ii1C1;iiiiii11111tttffffffffffffti;;\n::::::;i1ittttt1;;;;;itfLtCCLCLCLttt1;,,:;::;i1ii;;;:::::;i11:,,,,:i1i;;;;;;iiii1tttttttttttttfff1i;\n;;ii;;;;ii1tffLCCLf1i1tLCLCft1fLCfi11i;i11i;;;;;;;;;;:;;;iii1;,...,,;1;;iii11111111111tttttttfffLft1\n;;iii;i;i11i11tLG00GCLLLffft1tfLfLfi::ittt1iii;;;iiii;;:;;;i;:::,,:::i1ii111ttttttt111ttttttffffffLf\n:;;;;::;;;;:::;itLG0000GLfftLLtffLLiifff1iii11111ttff1;;::;;;::;::;;::;i111111ttttffffffffffffffffff\n;;:;;;;;::::iiiitfLCGGGGCCCCGCCCfLC1tt1ii1;111ii;i1111tt1i;,,,,,,:;;;:,:iff1111ttttttttffftttttttttt\n:::;;;;;;;i;iiiitfffLCCCCCG00GGGGGCfLt1i1ii;,,,,::;ii11ttti,,,...,:::::,.;Lf1i111ttttttttttttttttttt\n::::::;;;ii1t1fLfLCLLCCCLLCLCCCCCGCLCt1tt11i;:,,:::;i11ii1i;i;:,...,,.,,. :Cf1iii1111tt11ttttttttttt\n:::::::::;;11tfLCG00GCCCCCCLCCCLLLfLfi;i1ffti;::;iiii1i;i1i;;;:,,...,.,,,,.tLf1iiii11111ttt1iiiiiii;\n';n[1] = '... ......,..,,,,,,,,,,,:,.,.......... ,,... ..  ...........,.,,::;;;;ii111111111ii;;;;;:,,...,,,,..\n..........1;....,,,,,,:,,.... ,,...........   .. .......,,,,,,,,:ii;;i11111ii111i111i;;:,,,,,,,,.,,.\n.,,:. .. .......,.:,..,..... ..,........ ..............,::,,,,,,:;;iii11111i;i1iii11;::,,,,,,,,.... \n.,,..,.. ....,.,..,,..,,,........,..........,,..,,;:,,:::::,,::;1tii;t11tiii1tii;;1i;,:::::,:,.,,.,,\n..........,,,.,,....,,,,,,,........,,,.........,,i11ii;::;:::;::;1t1iif0Lff1iii1ii;;:,,,,,,,,,,.....\n.,,... .....,.....,,,.,,....,,,.,,,,,,..,,,,,,,:;1ffff1;:;;;;::::;1t1iG0LCLfft;:;;;;:,,,,,,,,,,..,..\n..,......,..,,,....,:::,..,,,,,,,,:::,,,:,,::;iiiitffiii;;;ii;;;ii11it8GGGG00GC;;;:::,,,,,,,,,......\n..........,,.....,,:111,.,,::::::::::::::;ii;i11i1t1i;;;;;;i1i;;ii1t1L88@@@@880GCCt:,,..,,.......   \n,...........:;;::;,.i1i:;;;::;;i1ii;::;ii111ii11111iiiiiii11i;;ii1fftG@@@80GLLLCCCCL1,,,,,,,,...::..\n... ...... ,11i;ii:.i11;i11i:;iiii11it111111iii11i1iitt111i;;iittLCLf80Lt1i;;;;;iitfCfi:,:,,,,,,,,,.\n...... .....;i;ii;,.i11.,11i:;iiii111ff1111iii111i111LGCLf1i11tffLCL0Li11;fi;t:i:;;i1LLt;::,:;,..,,.\n.......  . ;1i;i11,,111i:111::1111111tf1111i11111iii11GGGL11ft1tfLCGC;tiLi;:,;,,:;:i:ifLL1i:,,.    .\n ...... ....,,,::,.,,,:::::,:,:;iitfff1ii;iiii1i1tff1fLffffLffttLCCGL11:;::,,:;;;;;;;;itLLi;,      .\n...........     .........,,.i1,:;:;iii;;:;;;iiii;i111ttfffLttfffCCCGCf1:i;;::iiii;;;iiiifLLi:, .... \n,............... ........,,....,.,:::;;,,:;i111itf1;1ttLLfttfLLCGG0Ct11;ii;;;iii;;;;;;;;1LLL;:,.....\n.............:;;;,:;;,:;;;,:;;;;:,:;;iiii;iii1i;11ii1ttLfttttfLLGG0fti1;;ii;;i;;;;;;;;;;:tfLfi;;:. .\n,,..,........:11i:111i;11::11i;i11;11i;i11;:i1ii1iii1t1tftttttLLLCCGCit1;;i11iCi;i;:::;::1ffLLfti;:,\n.,,,,,........;1ii1i11i1;:i11iiii;;11i;;ii::i1ii11iiii;ii11ttfLCLtffL;tCCCCGGCftt1tfffLfLCLLLLCCL1i;\n,,,,,::,,,,,,,,i11i,i11i;iii1iiiii;111iiii,;11111111i;;;ii;1fffffttff1t0GCft1ii11tffLLLfLLLLLLLLLft1\n,:::;iiii;;;::::::,,,:iiiifLfffft1i1;,,,:,,:;LGfi;;;:::::iii11i111ttiitCiiiiiii11ttttttfffffffffffff\n:::::::i1ittttt1;;;::itLLtCGCCGGCttt1;,,:::,:i1i;;;:,,:::;i11:,,,:;;:.,tiiii;;;iiii11ttttttttfttffff\n;;;i;:;;;i1tffCGCLf1i1fLCCGf11fCGfi11i;ii1;:::;::;;::::::;ii1;,...,,,,.:1i;;iiiiii11111ttttttttttfff\n:;;i;;;;;i1ii1tL080GCLCLffLf1tfLfCfi:,;ttti;;;;::;;ii;:::;;;;:,:,,,::;;;:iiii1111tt11111111tttttffff\n:::;;:::;;;:::;itC088800CfftLLtffLCiifffii;i11i111tff1;;::::::,::,::::::,,ii11111tttttftfttttfffffff\n::::;;::::::iiiiffLGGG00GGGG0GGCfCG1tt1iii;i1iii;i1i1ttt1;:,,,,..:::;,,....;tft111ttttttffffffffffff\n,::::;;;;;;;;;;itLfLCCCGCC00000000GfL1iiii;;,,,,,,;;i11ttfi,,.....,:,,,,.  .:LL11111tttttttttttttttt\n,,,:::;;;;i111LCfCCLCCCCCCGGGGCCGGCCCt1tt11i::.,,,,:i1i;itiii;:,. ....... ...,LL1iii1111tttttttttttt\n,,,,,:::::;i11fGG08800GGGGGGGGCCLCfLfi;;1ffti;::;ii111;:i1;:;;:,.......,..,,,.;Cf1iiii111111iiiiiii;\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

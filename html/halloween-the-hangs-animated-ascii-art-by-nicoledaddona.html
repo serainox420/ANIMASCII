@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                               1                                                    \n          1                                                                                         \n               1                                                                                    \n                                            1                                                       \n                                           1ii                                                      \n        1     1                            111                                                      \n        1     1                   11       11                      1               111              \n              11                          11                                         111            \n              11                                111 1                                               \n              11           1               1                 1                                      \n       1      1             1                               1                                       \n       1      1              1             11  111         1       1                                \n             1                                          1           1                               \n                              11        1                  1         1      1                       \n                              11         1      1        i1   1       1       1                     \n                                      1   1              1                                          \n                                 1     1                        ff               1                  \n                              1   1                              ff                f                \n                              1         1       1ff     ff        ff     f  f                       \n                                         1      f1 f      f       1ff                               \n                                          1                 f       ff                              \n                                    f                                ff                             \n                              f      f                                ff                            \n                              f      ff                                                             \n                              f       L                                                             \n                              ff     f f      f                   1       1                         \n                              ff               f                   1              1                 \n                               f                f          1                       1                \n                               L1                   f       11                                      \n                               L                    f         1                                     \n                             f L                               1                                    \n                             f1f    1     1                     1                                   \n                             f             11        1           11                                 \n                                     f      1                     11                                \n                                      f      1                                                      \n                                       f                                                            \n                                       f                                                            \n                              1         f                                                           \n                              1                                                                     \n                                         11                                                         \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n';n[1] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                          t                                                         \n                                         t     ttt                                                  \n          t    t                        t     tttttttt                                              \n         t     tttttt                 tt     tt    tttttt                                           \n         t     ttttttttttt            t     ttt        ttttt                                        \n        t     tt       tttttt        t     ti1ttt         ttttt                                     \n        t     tt           tttttt   t      t1t  ttt          ttttt                                  \n        t     tttt            ttttttt     ttt     tt            ttttt   tttttttttttt1t              \n        t     ttttttt         ttttttttttt ttt      tt              ttttttttttttttttttt1t            \n        t     tt   ttttt    ttt ttttttttttttttttt1tttt       ttttttttttttttttttttttt tt             \n       t      tt      ttt tttttttttttttttttt         ttt    tttttt tttttt                           \n       t      1         ttttt    tttttttttttttt        tt  tt                                       \n       t     tt           tttt        ttttt11tt11t      tttt       t                                \n             t             tttt            ttt          tttt        t     t                         \n                             t1t        t               tttt  t      tt     tt            tt        \n                              t1     tt  tt     tt       11   tt      tt     ttt           t        \n                                      1   tt      t      t     t       tt       tt                  \n                                 tt    t   tt      t                     t       ttt                \n                              t   t    tt    t   t  t              t      tt         tt             \n                              t   tt    tt    t t                t  t   t  t                        \n                              t    t     t       t                t        t t      tt              \n                              t           t                        t                    tt          \n                                           t                                 tt         tt          \n                                           tt                              t  t           tt        \n                                    t       tt         t       tt             t                     \n                                      L      t         tt       tt       t     t                    \n                                        t                t        t      tt     tt                  \n                                      t t           t     t        tt     t      tt                 \n                                t      t          t        tt       t              t                \n                               Lt       t        t          tt                                      \n                            t tLt       tt                   tt                                     \n                               Lt        tt         t         tt                                    \n                              t     t     tt        tt          t                                   \n                                t   tt     tt        t           tt                                 \n                                            tt       t            tt                                \n                                       t     tt                                                     \n                              t               t                                                     \n                              t                                                                     \n                              t                                                                     \n                              tt         t                                                          \n                                         tt                                                         \n                                          t                                                         \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

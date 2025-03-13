@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                                                                                    \n                                      CC                        0Li::::;if                          \n                                   Lft1iitL                    Ci, .::.  .,i1f                      \n                                CttfC  Ct;:t                   : .:fCLti,.. .:fC                    \n                                Ltt1tffft1;:C                 ;. ;Lt11LC1i...:L                     \n                                fttff1ti;;,:C                t iitLCLLCLfC: :L                      \n                               Cttft11ft1i;C                 t..ittfttffLL. t0                      \n      CCCCCCCCCCC  CLLLCCCLLCLf1tf1ttt11i;1LLLLCC  CCCC     C, .:itf1fLff: ;                        \n    ftffftttffffffL1.,,,,,,,,,. :i;;;;;i,  ......,tttt1tL   C1,.,i1i1fL1:i.1CLLLCCCCCCCCC           \n    f1ttfff1i1tfffLL:.,,.,,,,,...:;;;ii:...,.,;i1tffffLLCCLCCCCf1t1ttff:;111ttfLLfLfttfftfttfC      \n     titffftiiiiiiii; ....,,,,.....,,,......:LC   CLLLCC     CCL1ii1tf1;ii1fLLLffff1i1t1i;itffC     \n      1itfftL   CCLffi. .....,,.....:. ......11tC   Cffffft1LC ti11i;;iiii;ifLLffLffffffffti11f     \n       titfftC        C; .....,,,,............;11LCCCLLt;::.ifCf11111iii;ii;;C             fi1t     \n        fi1fffC         : .....,,,,.......... 1Ci1ttLLLf1,;ii1t1ii111iiiiiii;1C            0t1fC    \n         C11fLL         C........,,,..........t  CLftffLLt;:;::;ii111i;iiiii1;L           CLf1ff    \n           fi11ttfftfLfC0i ..................,C      LfftLLti:;i111111iiiiiiif         CLfft1it     \n            Cfi:::::;fC  f ................. f         C11ffff::iiiiiiiiii;i;f        CLCLtt11C     \n               CLtt1iit  L................. :           t,,:;;,,::;;;iiii;;:;C           1i11C      \n                         L ................ ;0        Cf11L;,,,,,,:;;i;;ii;iC           1;1f        \n                         1 ................ ,              L,,,,,,::;iiii1if            Lf          \n                        0; ................ ,C            01,:::::,;iiiii111                        \n                        C,::,.............,:;t            f:;;;;;;:;iiiiii11L                       \n                        1;iii;;;::,,,,,::;i;;;1          C:::;;ii;;;;iiiiiiif                       \n                       L;iiiiiiiiii;;iiiiii;;;i          t,:::;;;::;;;;i;;;;1                       \n                       f;iiiiii;;;iii;iii;;;;;t          :::::;;;;:::;;;;;i;;C                      \n                       f:;iiiiiiii;;;;;::;;;;:t         t,::::;;;::;;;;;;;i;;L                      \n                       L:;;;;;;;;;;:::::;;;;;;f         ;,::::::::::::;;;;;::L                      \n';n[1] = '                                                                                                    \n                                                                                                    \n                                      CC                        0L;::::;itC                         \n                                   LfttiitL                    Ci, .;:.  .,:itC                     \n                                CttfC  Ct;:1                  0: .:fCLfi:.. .,tC                    \n                                Lttttffft1;:L                 ;..:Lf11LCt1,.,:L                     \n                                fttff1ti;;,:C                f ii1LCLLLCfC; :L                      \n                              0Cttft11ftti;L0                L..ittfttfffL, 10                      \n      CCCCCCCCCCCC LLfLCCCLfCLfitf1tt111;;1fLLLLC CCCCC      :  :itf1fLff: :                        \n    ftffftttffffffL1...,,,..,.. :i;;;;;i,  ,,....,ttt11tL C C1,.,i1i1tLt;:.;CLLLLCLLCCCCCC          \n    f1fffft11ttfffLL:..,,,,,,,...:;;;ii:...,..:;i1ffffLCCCLLCCCf1t1ttff;;111ttfLLfLftttftfttfC      \n     t1tffftiiiiiiii; ....,.,,.,...,,,..... ;LC   CLLLCC     CCL11iitf1;ii1fLLLffff1i111i;itfL      \n      1iffftL  CCCLff1. .....,,,....:. .....,t1f    Lffffft1LC fi11i;;ii;i;ifLLLLLffffffffi1ttC     \n       tifLft         C: .....,,,,............;i1LC CLLCi::,ifCf11111iii;;i;;C            Li11C     \n        fitLff          , .....,,,,,......... t t11tLLLLf,;1i1t1ii111iiiiiii;1C      CC   0t1f      \n         L1tLfL    CCCC L........,,,..........L   LfttfLLt;;i;:;ii111iiiiiii1;f   LLLLCfLfft1tC     \n          C1ittt111iiffC ; ................. ,     CftfttLLffff1i1111iiiiiiiit    Lffff111;;1fC     \n            ft11111fC    t ................. f    LC   L1i1ttft:;iiiiiiiii;i:t0       CLCCC         \n                         L ................ ,            t;,:;;,::;;;iiii;;:;C                      \n                         f ................ :             0;.,.,,,:;;i;;;;;;C                       \n                         i ................ ,              L,,:,,,::;iiiiiif                        \n                         ; .................,C            01:;;;;:,;iiiii111                        \n                        C,::,... .........,:;t            f:;;;;;;:;iiiiii1iL                       \n                        1;iii;;;::,,,,,::;ii;:1          C:::;;ii;;;;iiiiiiit                       \n                       L;iiiiiiiiii;;iiiiiii;;;          1,:::;;;::;;;;iiii;1                       \n                       f;iiiiii;;;;ii;iii;;;;;t         C:::::;;;;::;;;;;;i;;C                      \n                       f:;iiiiiiii;;;;;:;;;;;:t         t,:::::;;::;;;;;;;i;;L                      \n                       L:;;;;;;;;;;;::::;;;;;;f         ;,::::::::::::;;;;;::L                      \n';n[2] = '                                                                                                    \n                                                                                                    \n                                      CC                         Li::;;;ifC                         \n                                   Lff1iitL                    Ci, .:,. ..,i1tC                     \n                                CttfC  L1;:1                   : .,tCLt;,.. .:tC                    \n                                Lttttffff1;:L                 ;. :Lf11LC1i...:L                     \n                                fttft1ti;;,:C                L ii1LCLLLCfC: :L                      \n                              0Cttft11f11i:L                 f..ittfftffLL. i0                      \n      CCCCCCCCCCCC LLfLCCCLfCLfitt1tt111;;1LLLLC   CCCC      ,  :itf1fLff; ,C                       \n    ftffftttffffffL1...,,,,.,,. :i;;;;;i, ......,:ttttttL    t,.,i1i1fC1;1.;CLLCCCCCC               \n    f1tffftiittfffLL:.,.,,,,,,...:;;;ii:..,...,;iifLffLLCLLCCCCf111ttff:;1i1ttfLffLtttfffLffL       \n    C1ttfff1iiiiiiii; .......,.....,,,..... ;fC   CLLCCC     CCf1ii1ff1;ii1LLLLffff1i1t11;itffC     \n     fitfftf    CCCLLi  ....,,,,....:, .....,ttLC  CLfLffft1LC ti11i;ii;ii;ifLLttfftffftttt11tt     \n      titfft          C; ....,,,,,...........,iitLCCCLCCt::.ifCt11111iii;ii;iC             Li11L    \n       tifLfL           : .....,,,,,........,.tCt1tLCLLC ;;i;1f1ii111iiiiiii;1              C11L    \n        tifLfC          C........,,,..........L  CftffLLL;,;i;:;iit11i;iiiii1:L            CCtttf   \n         titffC          i ................. :      LfftfLfi,.;i11111iiiiii1if           Lffff1fC   \n          ti1tfLL        t ................. L        fitfLLt;,:;iiiiii;ii;i;f         CfCCfLff     \n           ii1ttt1C      L................. ,        C1Ct1ftfLt,::;;;ii;i;;:;C            f11f      \n           1iiiiittC     f ................ :           Li1ttff1,,:;;i;;i;;iC           fii1L       \n           L;iiiiCCC     i .................,C          Cttfffft;,::;iiiiiif            ffC         \n            1;;i;f       ; .................,C          f Cttf1fi:,;;iiii111                        \n            Ct;iiL      C,,,,.............,::t         CL ft;1tit;::;iiiii11L                       \n              LfC       1:;;;;;:::,,,,,,:;;;;:1          C:i;:ti;;:;;iiiiiiit                       \n                       L;;;;;;iiiii;;;i;ii;;;;;          1::::;;;:::;;;;;;;i1                       \n                       f:;;;;;;;;;;;;;;;;;;:;;t         C:::::;;;:::::;;;;;;;C                      \n                       f:;;;;;;i;;;;;;:::::;;:t         t,:::::;;::::::;;;;;;L                      \n                       L:;;;;;;;;;:::::::;;;;:f         :,::::::::::::;;;;;::L                      \n';n[3] = '                                                                                                    \n                                                                                                    \n                                      CC                        0L;::::;if                          \n                                   Lfftii1f                    C;, .::. ..:i1L                      \n                                CttfC  Ct;:1                   , .:fCLfi,.. .:fC                    \n                                Lttttffff1;,f                 ;. :Lf11LCti,..;fC                    \n                                fttff1ti;;,,C                f ii1LCLLLCfC; :L                      \n                              0Cttft11f11i:L0                t..ittftttffL, t                       \n      CCCCCCCCCCC  CLfLCCCLfCLf1tf1tt111i;1LLLLCC  CCCC     C.  ;itf1fLff: i                        \n    ftffftttffffffLt...,,,,.,,. :i;;;;;i, .,.....,1ttt1tf   C1,.,i1i1tLt:i.fCLLCCCCCCCCCC           \n    f1ttfff1i1tfffLL;....,,,,,.,.:;;;;i:.....,;1ttfLLLLCCCLCCCCf111ttff;;11tttfLLfLfttffffftLC      \n     11tfff1iiiiiiii; ....,....,...,,,......:LC   CCLLCC     CCf1ii1ff1;ii1fLLLffff1i1tt1;itffC     \n     Ci1ffft    CCLffi. ....,,,,....:, ......i1tC   Cffftft1LC t111i;iiiii;ifLLffLffffffffti11f     \n      Li1ffff         C; ....,,,,,............;t1LCCCLLL;::.ifCt11111iii;ii;iC            0fi1t     \n       C11fLfL          : .....,,,,...........i f11tLLLLt:;i;1t1i1111iiiiiii;1              t1fC    \n         tifLfC         C........,,,........,.t CCLftffLCfi;;::;iit11iiiiiii1;L           CCttft    \n          fi1ttffLLfLC   i ...................C      Cff1fLL1,;i11111iiiiii1if         CLfft1it     \n           Ct;,:;;;1LfC  f ................. f         Cf1tfft::iii1iiiiii;i;f        LL Ltf11C     \n              fi::,,;f   L................. ,          0L;:;i1,,::;;;iiii;;:;C           ti11C      \n                 CLfLf   f ................ ;          L1,,:i:,,,,:;;i;;i;;iC           f;itC       \n                         i .................,         CCfi1f,,:,,,::;iiiiiiL0           CtC         \n                         ; ..................C            01:;;;;:,;iiiii111                        \n                        C,,,...............::t            f:;;;;;::;iiiii11iL                       \n                        1;iii;;:::,,,,,,:;i;;;t          C:::;;i;;;;;iiiiiiif                       \n                       L;iiiiiiiiii;;iiiiiii;;i          1::::;;;:;;;;ii;;i;1                       \n                       f;iiiiii;;iiii;iiii;;;;t         C:::::;;;:::;;;;;;i;iC                      \n                       f;;iiiiiii;;;;;;;;;;;;:t         t,::::;;;::;;;;;;;;;;L                      \n                       L:;;;;;;;;;;:::::;;;;;:t         ;,::::::::::::;;;;;:;L                      \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

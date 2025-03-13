@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                    1tt1         11                                                 \n     ;t1  1t   t;  tt1; 11; 1  11  tf11Lf 1f  Cf;LG           tft1 1;1fttffLt 1;tt;ft;              \n     ;Ct   C ;fGf;Cf1LLL1tL1Lf;Ct    ; tC; G  fG11t;     ;,,  C1fC C;fCfC 1G 101Cf GtL1;t      L;f  \n      fCtftG1;Gt0 tCtftCttC1;fLG      1C1  C1  t        :. . 1LtCt C 1GC   G 1G10 tL;Ctf0tffLtLffL  \n      tC   Ct G1CttC   G11    fC    1fL    C1        ;:.   , 1G11Cff tt1f  f;tf C;CffffLLf;CG;L f;  \n      1L;  11 1        1      ft    CLttf  t1       :.     : ; tt1;               1t1;1;ft f 11 1   \n       t                              1    ;:::::::.      .;    :; ;;                               \n                                        ;::::;;;;:.       ,    : @@0:;;;;                           \n                                  ;:::;,:;         ;:,,.  ,   ;:tC@8;1ttt1t11;;                     \n                                 :1C0Ctf,;;;;;          ;;::; :tG @81@@@@@@@80;;                    \n                                ;:8@@@@@Gf11t;:;   ;;;   ;:;: ; 8;@@:fLLLffLCC :                    \n                                 ;;1C@@@@@@f8@L1  1tf1  1tG@f:;;8;@@;8@8 ;; tGf:                    \n                                   :;@@@@@@GtL8@@@@@@@@@@@@@8:;;@ 0@ G@8:;;1;11:                    \n                                    ;@@@08@@@L1 1LCC@0tCG0GCG:;:@1C@tL@@@88@@@1:                    \n                              ;  ;:,.f0tLLLLLLGGffCGCG8GCCCGG, ,81L@Lt@@@@@@@@f:                    \n                               ;,.    ;0@@8CLLLLf GGGL1@@@@8:;;,0ff@Lt@@@@@@@@t:      ;      ;;     \n                              :.       ,tttftttfft1@@C1@@8L,f@0.fft@C1@@@@@@@@1:    : 1:;   : 1:;   \n                            :.          ,GL ffLLLL,fCL1  1L0@@C;:1fC;L@@@@@@@@;;    ,G@;:   ,0@;;   \n                           ,            0@C0tfLLLLC0000;L@@@@C 8@@8L;@@@@@@@@G,     ,0@;;   ,8@;;   \n                          ::;:,.       ,@@@f LLCLLLCCC;CfGCf0 tLLLLL8@@@@@@@@L:    : @@ :  : @@ :   \n                         ;,:    ;      :@@@tL@@@@@@@@0 @.811Lt@@@@@@@@00080GL;;   :18@@@:;:18@@8:;  \n                    ;;;::::,:    ,LGG1,t@8@f.f0@@@@@@8;8:G1fff@@@@@@0 :;;;;:;;   ;:@@@@@1,;@@@@@ :  \n                ;::::::;;   ,:   :1@@@@@@@8::;; 111C@@Gffftff8@@@@@@ :           :1@@@@@f.t@@@@@t:  \n             ;:::;;;         ::;; ;;LG080L;;;,;    ,L@@@@@@@@@@@@@@@;;           ,f@@@@@L L@@@@@L,  \n            :::;              ;:::;;;:;,,;  ;,; ;;:;G@@@@@@@@@@@@@@@G;;          ,C@@@@@L C@@@@@L,  \n           :,         ;;::::;    ;:;    :,;:,; :tLG8@@@@@@@@@@@@@@88@8 :         ,t008881.f008881:  \n;;;::;;     ::;;;;;:::::;;;;:::;;      ;,,;;  ;;11 ;      1       ;   ;;         ;::;;;;:;;:;;;;:   \n8800GL1;::;;;::::::;;        ;;::::::::::                                                           \n@@@@@@@800GGGf,                  ;;;;;;                                                             \n88000GCt11ttt :                                                                                     \n;;;:;:;;;;;;;                                                                                       \n                                                                                                    \n';n[1] = '                                                                                                    \n                                    tttt         11                                                 \n      t1  1f;  f; 1ttt  11   ;    ;tt 1fL;tf; Lf LG           1tt1    t11fLft t  t;1t            ;  \n     ;Ct; ;G  CCf;Lf LfLt1C fL C1       G;1G; tC 1f      ;,,; G1fC;C11GLL tG 1G1fL GtC ;f   ;  f C  \n      LCtffG11G 0 tCtffG1tC  tCG       Cf 1C;  f    ;   :. . 1GLCf C110C1  G;tC1GttL;C1C8t1fLtffLf; \n      ff   LftC1Lf1f  1G11    LL     tL1;  G          :.   ,  G  Ctf11ttt  f fC;C1LLftCfCf f0;f1f;  \n      tC;  1t11  1            t     CCttf  t        :.     :  ftt1              1 1t  t    t11t11   \n       t                              1    ;;;:::::.      .;    ;: :;                               \n                                        ;::::;;;;:.       .    : 880 : ;                            \n                                  ;:;::,,;;        ;::,.  ,    : G@@f;t1111  :;                     \n                                 ;;C80fG:;;             ;;::; ; C @@tf@88@@@@0:;                    \n                                 :f@@@@@0f1 1 ,;;;;;::;;;;; :;; 0 @@t1LLCftfLC;:                    \n                                  :1G@@@@@@LL@0ft1tLGGtttL0@L, :0 @@ G@8;;;; Cf:                    \n                                   ;.0@@@@@@CfC08@@@@@@@@@@@8,;:0 8@ 0@8;; 1:tf:                    \n                                    ,G@@@@GLCGGCt11f@0tLCGCCC:;,0 0@;8@@@8@@8@L,                    \n                                  ;:. 8LCtL00LLLLG0tf@@0GCG0L, ,C 0@ 0@@@@@@@@C,                    \n                                :.    1G8@8GCLftft88 LG@@@@G.;;:ftC@1C@@@@@@@@C,      ;      ;;     \n                              :.       ,1ftttfffLt;8@01f@8t.f@0::1C@ff@@@@@@@@C,    : 1:;   : 1:;   \n                            ;,          ;0CtLLffLC;tLC111tL0@@C;: LC L@@@@@@@@t:    ,G@;:   ,0@;;   \n                           ;.          :@@G8L1LLLLLCG00 L@@@@C;0080L;@@@@@@@@@;;    ,0@;;   ,8@;;   \n                          ;,:;:,.      t@@@G;fLCCLCLLC;LfGCf0 fLLLCC8@@@@@@@@t:    : @@ :  : @@ :   \n                        ;;;,    ;      1@@@1t@@@@@@@@0 @.811Lt@@@@@@@@@@@@@8f,    :18@@@:;:18@@8:;  \n                    ;;:::::,,;   .1ft:,L@@@::1C8@@@@@8;8:G1fff@@@@@@81     ;;    ;:@@@@@1,;@@@@@ :  \n                ;;::::;;    :,;  :t@@@@@@@f.:;:; 11t8@Gffftff8@@@@@@f,           :1@@@@@f.t@@@@@t:  \n              ::::;;       ; :,:; : fG00Gt: :,     ,t@@@@@@@@@@@@@@@1:           ,f@@@@@L L@@@@@L,  \n            ;,:;              ;:::;;;:;:,;  ;,; ;;:;C@@@@@@@@@@@@@@@0:;          ,C@@@@@L C@@@@@L,  \n          ; ,:        ;;::::;    ;::    ::;:,: :1CG8@@@@@@@@@@@@@888801:         ,t008881.f008881:  \n;;;::;;     ;,:;;;;:::::;;;;:::;;       :,;;;  : t1 ;    111     ;;;;;;;         ;::;;;;:;;:;;;;:   \n8800GL1;::;;;;:::::;;        ;;:::::;;;::;                                                          \n@@@@@@@800GGCf,                   ;;::;;                                                            \n88000GCt11ttt :                                                                                     \n;;;:;:;;;;;;;                                                                                       \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                          ii           i                     i    ii                                \n                                                  :                                                 \n                   GGG0000GL1 i fGG0000000t     :L00f       ifG000GLt iG000GGG000Gi                 \n                i i@@8LLLC8@@t  L@@GCCCCCC1    :L@@@@t     18@8LLC0@L iLCCC@@@CCCL                  \n                  i8@G  iiC@81  L@@fi         :t@@fC@@1    t@@Gti  i       8@0                      \n                  i8@@@@@@@@Li :L@@@@@@@@C    1@@C  G@8i    fG8@@@8Ct     i8@8                      \n                   8@0iiii10@8i L@@fi1iii   :i8@@8888@@0       i1f0@@t    i8@8                      \n                  i8@8ffffL8@8i L@@CfLfffLt i0@8fffffL@@G  f@8CftfG@@t i   8@8i                     \n                  i00088888GLi  f008888888f L001     :f00f ifC88@80Ct      G0Gi                     \n                    iii                    ii  :       i i                iiiiii                    \n                   i8880i    10880     tC8@@@@8Gfi    C888@@@@0Lt     888@@@@@@@L i                 \n                   i@@@@8t  18@@@8   10@@0LttfC@@8f  :C@@GfffC0@@01  i8@@fttttfft                   \n                   i8@80@@ff@@G8@8i  0@@L      18@@t :C@@f     f@@8i i8@81i1111i                    \n                   i8@8iC@@@@Li8@8i t@@8       :C@@C::C@@f iii  8@@t i8@@@@@@@@G i                  \n                   i8@8i f88t 18@8  i8@@f:     10@@t  C@@f    :f@@8i  8@81iiiii                     \n                 i i8@8i  11  1@@8i  10@@0LttfC@@8f i C@@GfffL0@@0i  i8@@fffffff1                   \n                   i880i i  i i880i    tC8@@@@8GLi    C88@@@@80L1    i888@@@@@@@C:                  \n                    iii        iii        iiiii         iiii          iiiii iiii                    \n                                 ii   ii     i                iiii                                  \n                             : i :  ii :,::::::::::::::::::::::::   i                               \n                               :iL08@@8Gt:,,,,,: :,,,::::::,::::::,:                                \n                             i:t@@@@@@@@@0:,:f0008C ,G8CCCL180CCCt,,,:                              \n                            i :@@@@@@@@@@@L.C@L,,i@8:0@CfLii@8LLL ,,,,                              \n                            i :0@@@@@@@@@@t.f@Giif@G:8@Ltfii@8tff:,:,:                              \n                              : C@@@@@@@8f,,,1C00Gt:,CG:.,.iGf.,.,,,,                               \n                                :ifLCCL1:,,,,,,,,,,,,,,,::,,,,:::,::                                \n                               ii  :::::::::   ::::::::::::::::::                                   \n                                 i                                                                  \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                     1CfLffCt1LftLtftt i1 t 1i                                      \n                                     1f11CCtLGLCfG tLii11itit1                                      \n                                        1GfLL1GiGLLLCGLLGCCCLGt                                     \n                                        ii ii i 1 11111i111111                                      \n                                                                                                    \n                                                                                                    \n                                                                                                    \n';n[1] = '                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                  .....                      ....                                   \n                                ,,,,:,:::;;.  .,.. .:,.   .;i1111i;.                                \n                              .,:,,,,::::t08L,:;ii,:@f,,,:1111111111,                               \n                              .:,,,,:,:;,, CL,i@GCi;@t,,,i1111111111i                               \n                              .:,,,,::,:::i8C,;Gt:iL@f,,.i1111111111i                               \n                               ,::,,,::;;fGL;.,.;,,fG1,. ,i11111111i.                               \n                                .,,,,,,,..                 ,;;ii;:,                                 \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n                                                                                                    \n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>

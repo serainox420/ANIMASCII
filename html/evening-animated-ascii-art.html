@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: monospace;
+        }
+        #output {
+            white-space: pre;
+            text-align: center;
+            font-size: 14px;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .controls input {
+            margin: 5px;
+            padding: 5px;
+            background: #222;
+            color: white;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="output"></div>
+
+    <div class="controls">
+        <input type="button" value="Red" onclick="setColour('#ff0000')">
+        <input type="button" value="Green" onclick="setColour('#00ff00')">
+        <input type="button" value="Blue" onclick="setColour('#0000ff')">
+        <input type="button" value="White" onclick="setColour('#ffffff')">
+    </div>
+
+    <script>
+        var n = [];
+        var colour = '#00ff00';
+n[0] = '  88000008888888888888888888888888888888888888888888888888888888888 88888 8                         \n 0GCG000000088888888888888888888888888888888888888888 888 8888888  8   8                            \nCLG00008888888888888888888888888888888888888888888 888 8888888                                      \nLC00088888888888888888888888888888888888888888888888888888888      88                               \nLG0888888888888     88888888888888888  8888      88 88888888 888888   8                             \n0G8888888888880LffL08     88    8    0G 88 0LffCG8 8        8      GL8          08                  \n 888888888888C1tGCff00LfLG80LffG8GftLtf 88 CifCGGCG 0f00LffG CLLLL8L;GGCCCC8GLCL;f                  \n  8888888888 fi0 CfL0ft0LtfLLGLitLtGfiL 88 0ffCL0Cf0f1LtCLtiGGfCf18GiGftGLfG1iGL1G                  \n  8888888888 C;1GCt1Ct1GCfftf0f;fft0t:t 88 G1LGGG8ftf0CifGL1Gft L18L;GLf ff01iLLL0                  \n  88888888888 0LffGG00LtLG80LffC GLfLLC 88 GLLLCG 0LG88CffLG CL 0C80L00G GCC1tffii8         88      \n  888888888888      8     8     8      8 88      8   8                     80GGCC0         0C088    \n  8888888888888888888888888888888888888888 888888 888  88 8                               0fL0G8    \n  8888888888888888888888888888  8   8888888   88                                     8    GtLC0     \n  88888888888888888888888888888  888  888     88                                    8     0fC08 8   \n  8888888888888888888888888888 888  888   8    8                                     88   8LC0      \n  8888888888888888888888888888 8888                                                   888  GCG8     \n  88888888888888888888888888888 88       8                                     88       88 0CG8     \n  8888888888888888888 8888     88    88                                        8       888 8GG8     \n  8888888888888888888 88    888    8                                          8         888 0G8     \n  8888888888888888888  888 888    8                                        8             88 800     \n  88888888888888888888888  8   888                                         888           88  80     \n  88888888888888888888888   8  8                                                          88 808    \n  888888888888888888888    88                                                        8888888  08    \n  8888888888888888888      8                                        8GGGG00888  8GGGG0000GGC0888    \n  8888888888 8888       8                                         0CLCG88    0LCCG8       8000G8    \n  88 8    888  8      888                                       8GC00       0CCfL  800GGGGCCGGCG88  \n  8        888      88                    88                   8C0 8      8CC08 LLGGG0088888800GGG08\n  8       88      888                     888         8880G08  08 88     8CG 0 8GfL       8     8800\n  8    8  88    88                        888       888888800808 88      GG 8080 GfGCG8 88    8 8   \n  888       888           808888          88 88    8888 88888808 8      8C8 0G0  8LC8 80888  8  8   \n  888                    808               88808   888888888  808       8C  8C8   GC 008808    8 888\n  8                      08                 88808  88888      8 0888     G8 8C8   GLCG880888888    8\n         8               88         8          888808         8808       808 C0  8CCG0GGGGCCC08     \n  8                     8888        00888888 8G00880888         88  8GGGG00GG0G88CCLLLLCCG000       \n  88888                 8  88         88888888GGG0 88  8        88GCGG08    8GLCCLCCCG008888        \n  88                     80000                8CG8  8           0LC08800000GCCLCGGG0088   8         \n          8880000000088   8CG008      8888888888GG0888808888   8fG    80CCCCLLCCGCLGGG000088        \n         80000000GGGCCCCCG00CLCG088    888888   800G000880000GGGC880GCCCGGGCLCG0 8CfCCLC0888888     \n        88            88800080CLCCG0008880008888 88800088888GCCCGGGGG0080GCLCG0 8  0CCGLL0     8    \n                                80GGGGGGG008888  8G0    880GG0         80CfC08      80GGCC888       \n                                    88888888888    00GGG000880     88888LL0       88   888          \n                                    88                 8     80088     80      88    88             \n                                     88888         8888      88           8888             888888888\n';n[1] = '  88000008888888888888888888888888888888888888888888888888888888888 88888 8                         \n 0GCG000000088888888888888888888888888888888888888888 888 8888888  8   8                            \nCLG00008888888888888888888888888888888888888888888 888 8888888                                      \nLC00088888888888888888888888888888888888888888888888888888888      88                               \nLG08888888888888    88888888888888888  8888      88 88888888 888888   88                            \n0G8888888888880GLfLG88    88    8   800888 GCCLfL  8        8      0G8          00                  \n 888888888888CifGGt100CLfC80CLCC8GfCL1L 88 CtLCCCLG 8C00LLG08CLLLL80LGCfLGG8GfCLiL                  \n  8888888888 fiG CGLC1f0L1tff0Cittt0Lif 88 L1LLL8LtGftL1fLf1GL1CL10G1GfiGL1GtiLftG                  \n  8888888888 GftGCt1LfL0Cff1fGLff1tGCtt 88 CtCGGG8ft;0G;tCff0ti Li00tGCf ftGLLffLG                  \n  88888888888 0LtfCL08GffG80CtfG 0ftCCG 88 08GCCL 0CG 8GffL0 CL GL8 G0CC GGCifCfii8         88      \n  888888888888      88    8     8         8      8   8                     8GG0CC0         0C088    \n  8888888888888888888888888888888888888    8888888888  88 8                               0fL0G8    \n  8888888888888888888888888888      8888888   88                                     8    GtLC0     \n  8888888888888888888888888888   888  888     88                                    8     0fC08 8   \n  8888888888888888888888888888 888  888   8    8                                     88   8LC0      \n  8888888888888888888888888888 8888                                                   888  GCG8     \n  88888888888888888888888888888 88       8                                     88       88 0CG8     \n  8888888888888888888 8888     88    88                                        8       888 8GG8     \n  8888888888888888888 88    888    8                                          8         888 0G8     \n  8888888888888888888  888 888    8                                        8             88 800     \n  88888888888888888888888  8   888                                         888           88  80     \n  88888888888888888888888   8  8                                                          88 808    \n  888888888888888888888    88                                                        8888888  08    \n  8888888888888888888      8                                        8GGGG00888  8GGGG0000GGC0888    \n  8888888888 8888       8                                         0CLCG88    0LCCG8       8000G8    \n  88 8    888  8      888                                       8GC00       0CCfL  800GGGGCCGGCG88  \n  8        888      88                    88                   8C0 8      8CC08 LLGGG0088888800GGG08\n  8       88      888                     888         8880G08  08 88     8CG 0 8GfL       8     8800\n  8    8  88    88                        888       888888800808 88      GG 8080 GfGCG8 88    8 8   \n  888       888           808888          88 88    8888 88888808 8      8C8 0G0  8LC8 80888  8  8   \n  888                    808               88808   888888888  808       8C  8C8   GC 008808    8 888\n  8                      08                 88808  88888      8 0888     G8 8C8   GLCG880888888    8\n         8               88         8          888808         8808       808 C0  8CCG0GGGGCCC08     \n  8                     8888        00888888 8G00880888         88  8GGGG00GG0G88CCLLLLCCG000       \n  88888                 8  88         88888888GGG0 88  8        88GCGG08    8GLCCLCCCG008888        \n  88                     80000                8CG8  8           0LC08800000GCCLCGGG0088   8         \n          8880000000088   8CG008      8888888888GG0888808888   8fG    80CCCCLLCCGCLGGG000088        \n         80000000GGGCCCCCG00CLCG088    888888   800G000880000GGGC880GCCCGGGCLCG0 8CfCCLC0888888     \n        88            88800080CLCCG0008880008888 88800088888GCCCGGGGG0080GCLCG0 8  0CCGLL0     8    \n                                80GGGGGGG008888  8G0    880GG0         80CfC08      80GGCC888       \n                                    88888888888    00GGG000880     88888LL0       88   888          \n                                    88                 8     80088     80      88    88             \n                                     88888         8888      88           8888             888888888\n';n[2] = '  88000008888888888888888888888888888888888888888888888888888888888 88888 8                         \n 0GCG000000088888888888888888888888888888888888888888 888 8888888  8   8                            \nCLG00008888888888888888888888888888888888888888888 88888888888                                      \nLC00088888888888888888888888888888888888888888888888888888888      88                               \nLG0888888888888     88888888888888888  8888      88 88888888 888888   88                            \n0G8888888888880CLLC088    88    8   8CG 88 GC0GCL  8        8      808          00                  \n 88888888888 CifGGtt08CLfG80CffC8Gfff1f 88 GfCGCCC0 0t00LLfG 0LfLC80fGCLCGC8GfGL;L                  \n  8888888888 t:G CLfGff0L1fft0f:tttGt:f 88 0LfLL8L1CtiLiLLi;GL1Cfi0GiGt1Gf;Gi;CfiG                  \n  8888888888 Ci1GCftL1t8CtLtf0C1f1t0Lit 88 L;C0GG8tt10C;fCCf0ti Ci0CiGLt ft0ftfLL0                  \n  88888888888 0LtLGC00CCCG80CfLG 0LLCLG 88 GCC0GC 0CG 8CffC08CL 0C80C80C GGGi1Lf1f8         88      \n  888888888888      8     8     8      8 8       8   8                     8GC0CC0         0C088    \n  8888888888888888888888888888888888888  88888888 888  88                                 0fL0G8    \n  8888888888888888888888888888  8   8888888   88                                     8    GtLC0     \n  888888888888888888888888888888 888  888     88                                    8     0fC08 8   \n  8888888888888888888888888888 888  888   8    8                                     88   8LC0      \n  8888888888888888888888888888 8888                                                   888  GCG8     \n  88888888888888888888888888888 88       8                                     88       88 0CG8     \n  8888888888888888888 8888     88    88                                        8       888 8GG8     \n  8888888888888888888 88    888    8                                          8         888 0G8     \n  8888888888888888888  888 888    8                                        8             88 800     \n  88888888888888888888888  8   888                                         888           88  80     \n  88888888888888888888888   8  8                                                          88 808    \n  888888888888888888888    88                                                        8888888  08    \n  8888888888888888888      8                                        8GGGG00888  8GGGG0000GGC0888    \n  8888888888 8888       8                                         0CLCG88    0LCCG8       8000G8    \n  88 8    888  8      888                                       8GC00       0CCfL  800GGGGCCGGCG88  \n  8        888      88                    88                   8C0 8      8CC08 LLGGG0088888800GGG08\n  8       88      888                     888         8880G08  08 88     8CG 0 8GfL       8     8800\n  8    8  88    88                        888       888888800808 88      GG 8080 GfGCG8 88    8 8   \n  888       888           808888          88 88    8888 88888808 8      8C8 0G0  8LC8 80888  8  8   \n  888                    808               88808   888888888  808       8C  8C8   GC 008808    8 888\n  8                      08                 88808  88888      8 0888     G8 8C8   GLCG880888888    8\n         8               88         8          888808         8808       808 C0  8CCG0GGGGCCC08     \n  8                     8888        00888888 8G00880888         88  8GGGG00GG0G88CCLLLLCCG000       \n  88888                 8  88         88888888GGG0 88  8        88GCGG08    8GLCCLCCCG008888        \n  88                     80000                8CG8  8           0LC08800000GCCLCGGG0088   8         \n          8880000000088   8CG008      8888888888GG0888808888   8fG    80CCCCLLCCGCLGGG000088        \n         80000000GGGCCCCCG00CLCG088    888888   800G000880000GGGC880GCCCGGGCLCG0 8CfCCLC0888888     \n        88            88800080CLCCG0008880008888 88800088888GCCCGGGGG0080GCLCG0 8  0CCGLL0     8    \n                                80GGGGGGG008888  8G0    880GG0         80CfC08      80GGCC888       \n                                    88888888888    00GGG000880     88888LL0       88   888          \n                                    88                 8     80088     80      88    88             \n                                     88888         8888      88           8888             888888888\n';
+        async function play() {
+            var frames = n.length;
+            for (var i = 0; i < frames; i++) {
+                document.getElementById("output").innerHTML = "<pre style='color:" + colour + ";'>" + n[i] + "</pre>";
+                await new Promise(r => setTimeout(r, 69)); // Delay for animation
+            }
+            play(); // Loop animation
+        }
+
+        function setColour(hexString){
+            colour = hexString;
+        }
+
+        play();
+    </script>
+
+</body>
+</html>
